@@ -25,6 +25,11 @@ add_definitions(
 
 add_executable(test
     main.cpp
+    shader.cpp
+    shader.hpp
+
+    simplevertexshader.vertexshader
+    simplefragmentshader.fragmentshader
 )
 
 #target_link_libraries(test ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES} ${glfw3_LIBRARIES})

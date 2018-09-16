@@ -11,10 +11,13 @@
 #include <glm/glm.hpp>
 using namespace glm;
 
+//Include our custom shader:
+#include "shader.hpp"
+
 //Array of 3D vectors to represent 3D vertices:
 static const GLfloat g_vertex_buffer_data[] = {
-    -1.0f,-1.0f,0.0f,
-    1.0f,-1.0f,0.0f,
+    -1.0f,-0.5f,0.0f,
+    1.0f,-0.5f,0.0f,
     0.0f,1.0f,0.0f,
 };
 
@@ -26,7 +29,7 @@ void error_callback(int error, const char* description)
 GLFWwindow* setupScreen(void);
 
 //Routine defining what happens before window is closed:
-void loop(GLFWwindow * window);
+void loop(GLFWwindow * window,GLuint vertexBuffer, GLuint programID);
 
 int main()
 {
@@ -39,9 +42,23 @@ int main()
     glGenVertexArrays(1,&VertexArrayID);
     glBindVertexArray(VertexArrayID);
 
+    //RENDERING:
+    GLuint programID = LoadShaders("simplevertexshader.vertexshader","simplefragmentshader.fragmentshader");
+
+    GLuint vertexBuffer;
+    glGenBuffers(1,&vertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER,vertexBuffer);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data),g_vertex_buffer_data, GL_STATIC_DRAW);
+
     do{
-        loop(window);
+        loop(window,vertexBuffer,programID);
     }while(glfwGetKey(window,GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
+
+    glDeleteBuffers(1, &vertexBuffer);
+    glDeleteVertexArrays(1,&VertexArrayID);
+    glDeleteProgram(programID);
+
+    glfwTerminate();
 
     return 0;
 }
@@ -83,9 +100,24 @@ GLFWwindow* setupScreen(void){
     return window;
 }
 
-void loop(GLFWwindow * window){
+void loop(GLFWwindow * window,GLuint vertexBuffer, GLuint programID){
     //Clear the screen, otherwise we might get flickering:
     glClear(GL_COLOR_BUFFER_BIT);
+
+    // Use our shader
+    glUseProgram(programID);
+
+    glEnableVertexAttribArray(0);   //Enable the 0th index
+    glBindBuffer(GL_ARRAY_BUFFER,vertexBuffer);
+    glVertexAttribPointer(
+                0,          //Attribute 0. No particular reasonfor 0, just needs to match the layout in the shader
+                3,          //Size
+                GL_FLOAT,   //type
+                GL_FALSE,   //Normalized
+                0,          //stride
+                nullptr);  //Array buffer offset
+    glDrawArrays(GL_TRIANGLES,0,3); //Starting from vertex 0; 3 vertices total -> 1 triangle
+    glDisableVertexAttribArray(0);
 
     //Swap buffers
     glfwSwapBuffers(window);
