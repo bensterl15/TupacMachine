@@ -1,0 +1,80 @@
+2.1 Photography and holography:
+
+Mathematically intensity I(x,y) is proportional to the complex amplitude squred: I(x,y) prop |psi(x,y)|^2. 
+
+t(x,y) is the amplitude transmittance: to broadcast a proper t(x,y) we can make it proportional to the recorded intesntiy, or:
+t(x,y) = |psi(x,y)|^2	-	As a result of this recording, all information about relative phase (depth) is lost
+
+Holography invented by Gabor in 1948 to record both amplitude and phase.
+
+Referring to figure 2.1:
+
+This setup is used to record a point (inside of the pinhole aperture). 
+
+It uses:
+A collimated laser as a light source
+BS1 to split the beam
+M2 along with the pinhole aperture to record the point
+M1 to pass along reference light
+BS2 to combine the reference light WITH the recorded light
+The recording medium to project the object
+
+To describe the pinhole mathematically: we say
+psi0(x,y,z0) = delta(x,y) convolved with h(x,y,z0) where h(x,y,z0) is the inverse Fourier Transform of THE Spatial Frequency Transfer Function of propagation.
+
+Specifically: exp(-jk0z0)*(jk0/2piz0) * exp[-jk0(x^2 + y^2)/2z0]
+
+Assuming psi0 is a plane wave, we can expand t(x,y) = |psi_r + psi_o|^2 (psi_r is a plane wave and psi_o is h(x,y,z0)). We simplify and get:
+t(x,y) = A + Bsin(k0(x^2 + y^2)/2z0)
+
+If we take the local frequency of t(x,y) we get:
+k0x/2piz0 (taking a derivative of the quantity inside the sin): This is like a chirp along the x axis!
+
+To reconstruct the hologram, we hit the transmittance with a simple plane wave (psiR), and then convolve that with the spatial frequency transfer function of propagation.
+
+Made a math mistake on page 31 (twice!)
+
+FZP = Fresnel Zone Plate
+
+To analyze the behaviour of a two-hole plate, we convolve with the plate function of: d(x,y) + d(x - x1,y - y2) and get similar results as the single hole experiment
+
+Section 2.3: Three-dimensional holographic imaging
+
+We see a diagram of 2 different points being recorded into a single hole: Each has different depth and x-y positions and therefore gets convolved differently. And thus:
+
+t(x,y) = |psi1 + psi2 + psiR|^2	And the book picks out t_reli(x,y) the relevant transmittances needed for reconstruction (the book does a poor job at explaining the other relevant terms are complex conjugates of each other)
+
+The reconstructions due to the relevant terms in total is:
+
+psi_pr(x,y)*t_reli(x,y), and we can calculate each virtual distance from the real distance with this formula.
+
+2.3.1:
+We define magnifications in this section by taking the ratio of the physical distances and virtual distances: these can be defined in both the latitudal and lonigtudal directions.
+
+2.3.2
+One factor present in the latitude magnifiication is (b/l2 - a/l1)*(zr2 - zr1) where a is the x distance of the source point from the pinhole, and b is the distance of the reconstruction point, li is the z distance from the aperture and point i. a should be chosen correctly to prevent Translational distortion.
+
+2.3.3
+
+Chromatic Distortion can occur if the reconstruction wavelength is different than the wavelength of the incoming light (Table 2.1 displays some of the affects).
+
+2.4.1
+
+We define the interferogram between two waves A and B as:
+I = <|A + B|^2>		where 	<.> = integral(-T/2,T/2){.}/T lim T -> infinity
+
+Then we investigate the temporal coherence between waves in this section.
+
+v is defined the same way as reflection (Imax - Imin)/(Imax + Imin) but with interferences instead of impedances. v simplifies to:
+
+v = 2A0B0*|gamma(tau)|/(A0^2 + B0^2), where gamma is the time average of the product of phases!
+
+If A and B are out of phase, gamma is zero and if they are completely in phase gamma is one.
+
+Skipping 2.4.2 and 2.4.3
+
+2.4.4:
+
+If we multiply the incoming wave by e^jwt, the interference pattern turns into the Fourier Transform
+
+

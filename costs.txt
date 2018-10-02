@@ -1,0 +1,6 @@
+LA1301-A	-	Lens (f = 25cm d = 5cm)		-	$56.10
+LA1417-A	-	Lens (f = 15cm d = 5cm)		-	$42.84
+LPVISE200-A	-	Polarizer			-	$156.06
+BS013		-	Cube Beam Splitter		-	$212.16
+
+(There is more, but will message Elie and Jason to figure out if there's anything left over)
