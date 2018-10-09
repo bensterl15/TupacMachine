@@ -1,0 +1,33 @@
+3.1: Gabor Hologram:
+
+The chapter starts by describing a Gabor Hologram. This is the simplest kind of hologram that illuminates the object with a plane wave and reference wave.
+
+The total transparency (sigma(x,y)) = sigma0 + delta(x,y)
+
+the complex field (light that hit the reflected medium) u(x,y) = A[sigma(x,y)] convolved with h(x,y,z0) = psi_ref + psi_object
+
+Thus we get: t(x,y) = |psi_ref + psi_object|^2, if we expand with complex rules we get:
+
+t(x,y) = |psi_ref|^2 + |psi_object|^2 + psi_ref(psi_object*) + psi_object(psi_ref*)
+----We convolve with h(x,y,z0) AGAIN to get the back-propagated wave
+----The zeroth order wave is the |blah|^2 terms convolved with h
+----The twin image is the other term in the sum convolved with h
+----This is called on-axis holography because the reference light and object light overlap along the same direction (heading towards the reflected medium)
+
+3.2 Off-axis Holography
+
+If change the orientation (as in figure 3.3(a)) and get the light to hit at angle, we get the following formula for intensity:
+
+t(x,y) = |psi_object + psi_ref( exp(jk0sin(theta)x)) ) |^2	-	The only difference is that we add the phase factor to compensate for the extra distance (we multiply x by sin(theta) to account for the vertical distance the wave travels)
+
+t(x,y) = |psi_object|^2 |psi_ref|^2 + 2|psi_object*psi_ref|*cos(2pi*fx*x + phi(x,y))
+
+fx = sin(theta)/lambda	-	This is the SPATIAL CARRIER FREQUENCY of the hologram, and MODULATES the received light.
+
+We multiply by t(x,y) by psi_rec*phase_factor to get the reconstruction (because the reference light is received at an angle). We then look at the reconstruction over the frequency spectrum: 
+-The wave centered at DC is Psi3 which is simply F(psi_obj|psi_rec|^2) (a zeroth order wave)	(I THINK THIS IS THE DESIRED WAVE!!)
+-The psi2 wave carries the intensity of the object wave at -k0sin(theta) with twice the bandwidth of the original object (because it is squared in the time domain)
+-The reference wave is just a constant, so the fourier transform of the reconstruction is just a carrier centered at -k0sin(theta)
+-The last wave psi4 is centered at -2k0sin(theta) is just a copy of the other zeroth order wave
+
+
