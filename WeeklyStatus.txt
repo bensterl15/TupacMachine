@@ -7,5 +7,7 @@ Also tried to find the equipment for the SLM, but only found the optical table. 
 Week of 9/30/18
 
 Ben:
-Talked to Dino and found the lenses/lasers in his lab; we still need to find the correct room to shoot them in and get something out of the SLM. Also summarized chapter 3 of Poon's book: some of the key points included the effects of changing the angle of reference light (this was equivalent to the comm theory concept of frequency shifting)
+-Talked to Dino and found the lenses/lasers in his lab; we still need to find the correct room to shoot them in and get something out of the SLM. 
+-Summarized chapter 3 of Poon's book: some of the key points included the effects of changing the angle of reference light (this was equivalent to the comm theory concept of frequency shifting)
+-Implemented one of the scripts in this section and get good results
 
