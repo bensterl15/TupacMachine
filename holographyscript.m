@@ -59,3 +59,6 @@ endfor
 IMA = IMA/max(max(IMA));
 imshow(IMA);
 imwrite(IMA,"5cm.png");
+
+while 1
+endwhile
