@@ -1,4 +1,4 @@
-Activity Log
+﻿Activity Log
 DongKyu Kim
 ECE395
 Week (9/25~10/1)
@@ -6,3 +6,6 @@ Activity log has been started. We wanted to take a look at the optical table, an
 Week (10/2~10/8)
 We checked that in room 601, there is an optical table, but nothing else. We realized we need to buy or obtain polarizers, beam splitters, and other things that we will figure out in the near future. We tried to find a way and an appropriate space in the senior lab to move the optical table, so that we don't have to go to 601 to do the experiment. However, there are some health regulations and limited physical space, there is a chance that the optical table has to stay in 601. In the meantime before we get an update on the optical table's location, we decided to do more Poon summary. I did chapter 4.
 Week (10/9~10/15)
+We presented on the status, and we finally got the lab space that we needed. I had gre this week, I didn't contribute much for the senior lab.
+Week (10/16~10/23)
+We have the lab bench set up in 601. Ben and I went to Dino and obtained safety goggles, some mirrors, beam splitters, and lasers. We did elementary experiments with the lasers and the beam splitters, to see if we can get the configuration that the textbook describes. We are still pending on the 601 lab access.
