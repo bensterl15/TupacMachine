@@ -9,3 +9,6 @@ Week (10/9~10/15)
 We presented on the status, and we finally got the lab space that we needed. I had gre this week, I didn't contribute much for the senior lab.
 Week (10/16~10/23)
 We have the lab bench set up in 601. Ben and I went to Dino and obtained safety goggles, some mirrors, beam splitters, and lasers. We did elementary experiments with the lasers and the beam splitters, to see if we can get the configuration that the textbook describes. We are still pending on the 601 lab access.
+Week (10/24~10/29)
+We started the paper work on the 601 access. Ben and I were able to connect the SLM to the monitor via HDMI cable, and checked that the SLM can be used as a second monitor, and it actually does something. When we reflected light off the SLM, we got what seemed like a default pattern for the SLM, indicating SLM isn't broken.
+Week (10/30~11)
