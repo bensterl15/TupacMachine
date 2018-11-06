@@ -1,6 +1,0 @@
-Week of 9/23/18:
-
-Ben:
-Read chapters 1 and 2 and summarized chapter 2 of the Poon book. We have now read and understand enough of the Fourier Optics to make something to display out of the SLM.
-Also tried to find the equipment for the SLM, but only found the optical table. Looked up the complete list of necessary parts and a few of the associated costs (the polarizer in particular is $156.06)
- 

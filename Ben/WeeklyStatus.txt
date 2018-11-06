@@ -1,0 +1,36 @@
+Week of 9/23/18:
+
+Ben:
+Read chapters 1 and 2 and summarized chapter 2 of the Poon book. We have now read and understand enough of the Fourier Optics to make something to display out of the SLM.
+Also tried to find the equipment for the SLM, but only found the optical table. Looked up the complete list of necessary parts and a few of the associated costs (the polarizer in particular is $156.06)
+ 
+Week of 9/30/18
+
+Ben:
+-Talked to Dino and found the lenses/lasers in his lab; we still need to find the correct room to shoot them in and get something out of the SLM. 
+-Summarized chapter 3 of Poon's book: some of the key points included the effects of changing the angle of reference light (this was equivalent to the comm theory concept of frequency shifting)
+-Implemented one of the scripts in this section and get good results
+
+Week of 10/8/18
+
+Ben:
+-Read chapter 4 for myself and implemented a Matlab script DiffractionFieldRectAperture.m to see the effects of Fresnel diffraction through a square aperture
+
+Week of 10/15/18
+
+Ben:
+-Tried several experimental setups according to the Poon book on the Optical Board (bounced a light off the SLM and observed a spherical diffraction pattern).
+-Purchased a wireless HDMI device (from Tinkersphere), plugged it into the SLM, and a special light turns on indicating video signal is received.
+-Figured out how to setup the device and broadcast the output of Ellie's matlab script to it.
+-Most importantly: To get anything useful out of the SLM, we really need 1.) Spatial Filter 2.) Colimiting Lense 3.) Polarizer 4.) Analyzer.. We need to buy these or
+find these in the lab with Yecko's help ASAP
+
+Week of 10/22/18
+
+Presentation
+
+Week of 10/29/18
+
+Ben:
+-Got in contact with Prof Yecko, but he did not have time to help us look through our parts. He will sometime this week.
+-Found the correct WPF project with Jun's help and started customizing the UI (this will work as our project)
