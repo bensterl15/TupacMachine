@@ -1,0 +1,11 @@
+C:\Users\Ben\Desktop\Microsoft.Kinect.Fusion\bin\Debug\Microsoft.Kinect.Fusion.dll
+C:\Users\Ben\Desktop\Microsoft.Kinect.Fusion\bin\Debug\Microsoft.Kinect.Fusion.pdb
+C:\Users\Ben\Desktop\Microsoft.Kinect.Fusion\bin\Debug\Microsoft.Kinect.dll
+C:\Users\Ben\Desktop\Microsoft.Kinect.Fusion\bin\Debug\Microsoft.Kinect.xml
+C:\Users\Ben\Desktop\Microsoft.Kinect.Fusion\obj\Debug\Microsoft.Kinect.Fusion.csprojAssemblyReference.cache
+C:\Users\Ben\Desktop\Microsoft.Kinect.Fusion\obj\Debug\Microsoft.Kinect.Fusion.Resources.resources
+C:\Users\Ben\Desktop\Microsoft.Kinect.Fusion\obj\Debug\Microsoft.Kinect.Fusion.csproj.GenerateResource.cache
+C:\Users\Ben\Desktop\Microsoft.Kinect.Fusion\obj\Debug\Microsoft.Kinect.Fusion.csproj.CoreCompileInputs.cache
+C:\Users\Ben\Desktop\Microsoft.Kinect.Fusion\obj\Debug\Microsoft.Kinect.Fusion.csproj.CopyComplete
+C:\Users\Ben\Desktop\Microsoft.Kinect.Fusion\obj\Debug\Microsoft.Kinect.Fusion.dll
+C:\Users\Ben\Desktop\Microsoft.Kinect.Fusion\obj\Debug\Microsoft.Kinect.Fusion.pdb
