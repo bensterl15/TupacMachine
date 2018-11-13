@@ -455,7 +455,7 @@
 
                         <CheckBox Margin="10 20 10 0" Style="{StaticResource KinectCheckBox}" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Use Camera Pose Finder" IsChecked="{Binding UseCameraPoseFinder}" AutomationProperties.AutomationId="UseCameraPoseFinder"/>
 
-                        <Button Margin="10 15 10 5" Background="{StaticResource KinectPurpleBrush}" BorderBrush="White" BorderThickness="2" Content="Reset Virtual Camera" Height="35" Width="186" Foreground="White" Focusable="False" Click="ResetCameraButtonClick"/>
+                        <Button Margin="10 15 10 5" Background="{StaticResource KinectPurpleBrush}" BorderBrush="White" BorderThickness="2" Content="Send to SLM" Height="35" Width="186" Foreground="White" Focusable="False" Click="SendToSLM"/>
                     </StackPanel>
                 </Grid>
 

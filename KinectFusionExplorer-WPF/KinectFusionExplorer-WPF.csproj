@@ -111,6 +111,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <EmbeddedResource Include="script.py" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Kinect.ico" />

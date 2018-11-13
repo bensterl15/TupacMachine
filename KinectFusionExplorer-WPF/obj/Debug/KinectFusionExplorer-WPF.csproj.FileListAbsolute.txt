@@ -1,3 +1,11 @@
+C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF.csprojAssemblyReference.cache
+C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\MainWindow.g.cs
+C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\App.g.cs
+C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF_MarkupCompile.cache
+C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF_MarkupCompile.lref
+C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF.exe
+C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF.pdb
 C:\Users\Ben\Desktop\KinectFusionExplorer-WPF\bin\Debug\KinectFusionExplorer-WPF.exe
 C:\Users\Ben\Desktop\KinectFusionExplorer-WPF\bin\Debug\KinectFusionExplorer-WPF.pdb
 C:\Users\Ben\Desktop\KinectFusionExplorer-WPF\bin\Debug\Microsoft.Kinect.dll
@@ -18,11 +26,3 @@ C:\Users\Ben\Desktop\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF
 C:\Users\Ben\Desktop\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF.csproj.CopyComplete
 C:\Users\Ben\Desktop\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF.exe
 C:\Users\Ben\Desktop\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF.pdb
-C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF.csprojAssemblyReference.cache
-C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\MainWindow.g.cs
-C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\App.g.cs
-C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF_MarkupCompile.cache
-C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF_MarkupCompile.lref
-C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF.exe
-C:\Users\Ben\Desktop\TupacMachine\KinectFusionExplorer-WPF\obj\Debug\KinectFusionExplorer-WPF.pdb
