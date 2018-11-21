@@ -12,7 +12,7 @@ We have the lab bench set up in 601. Ben and I went to Dino and obtained safety 
 Week (10/24~10/29)
 We started the paper work on the 601 access. Ben and I were able to connect the SLM to the monitor via HDMI cable, and checked that the SLM can be used as a second monitor, and it actually does something. When we reflected light off the SLM, we got what seemed like a default pattern for the SLM, indicating SLM isn't broken. Worked on presentations.
 Week (10/30~11/6) Compiled the list of things that we need. Checked in with Yecko to see what he has. He didn't really have antyhing. Ebey
-Week (11/7~11/13) Poster
+Week (11/7~11/13) Poster, Kind of worked on porting the MATLAB code to python. didn't finish yet.
 Week (11/14~11/20) Worked on the feedback, final report outline. Thanks giving break.
 Week (11/21~11/27) Thanks giving break
  	
