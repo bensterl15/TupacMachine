@@ -25,6 +25,11 @@ Week of 10/22/18
 
 -Prepared and presented the PowerPoint presentation on our progress
 
+Week of 10/29/18
+
+-Got in contact with Prof Yecko, but he did not have time to help us look through our parts. He will sometime this week.
+-Found the correct WPF project with Jun's help and started customizing the UI (this will work as our project)
+
 Week of 11/5/18
 
 -Met with Professor Yecko and figured out that we could order the parts we needed off EBay very cheaply. We prepared an inventory and got it all ordered on EBay.
