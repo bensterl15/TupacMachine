@@ -1,0 +1,23 @@
+﻿Activity Log
+DongKyu Kim
+ECE395
+Week (9/25~10/1)
+Activity log has been started. We wanted to take a look at the optical table, and see what components are available and what componenets are needed to be bought, but we don’t have access 601. So, Ben and I decided to do a summary of the Poon’s textbook (Poon_Text.pdf). I did Chapter 1, and ben did Chapter 2, and the summary for Chapter 1 was done in overleaf, and will be uploaded into the archive as (Poon_Summary.pdf) when there are updates.
+Week (10/2~10/8)
+We checked that in room 601, there is an optical table, but nothing else. We realized we need to buy or obtain polarizers, beam splitters, and other things that we will figure out in the near future. We tried to find a way and an appropriate space in the senior lab to move the optical table, so that we don't have to go to 601 to do the experiment. However, there are some health regulations and limited physical space, there is a chance that the optical table has to stay in 601. In the meantime before we get an update on the optical table's location, we decided to do more Poon summary. I did chapter 4.
+Week (10/9~10/15)
+We presented on the status, and we finally got the lab space that we needed. I had gre exam this week, I didn't contribute much for the senior lab.
+Week (10/16~10/23)
+We have the lab bench set up in 601. Ben and I went to Dino and obtained safety goggles, some mirrors, beam splitters, and lasers. We did elementary experiments with the lasers and the beam splitters, to see if we can get the configuration that the textbook describes. We are still pending on the 601 lab access.
+Week (10/24~10/29)
+We started the paper work on the 601 access. Ben and I were able to connect the SLM to the monitor via HDMI cable, and checked that the SLM can be used as a second monitor, and it actually does something. When we reflected light off the SLM, we got what seemed like a default pattern for the SLM, indicating SLM isn't broken. Worked on presentations for the class.
+Week (10/30~11/6)
+Compiled the list of things that we need and links for things that we need to purchase. We checked in with Yecko to see what optical devices he has for us to use. He didn't have anything that we could use. Ebey order was approved and made.
+Week (11/7~11/13)
+We spent this week to make a poster for presentation. I worked on porting the MATLAB code to python that was given in the Poon textbook to do the necessary conversion from a real picture to a SLM projectible image. The code is not complete yet.
+Week (11/14~11/20)
+Worked on the feedback, final report outline document. Thanksgiving break.
+Week (11/21~11/27)
+Thanksgiving break
+Week (11/28~12/4)
+ 	
