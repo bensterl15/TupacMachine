@@ -7,7 +7,7 @@
     <Window.Resources>
         <SolidColorBrush x:Key="MediumGreyBrush" Color="#ff6e6e6e"/>
         <SolidColorBrush x:Key="KinectBlueBrush" Color="#ff00BCF2"/>
-        <SolidColorBrush x:Key="KinectPurpleBrush" Color="#ff52318f"/>
+        <SolidColorBrush x:Key="KinectPurpleBrush" Color="#ff0000"/>
         
         <l:DepthToTextConverter x:Key="dtt"/>
         
