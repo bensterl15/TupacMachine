@@ -1,23 +1,63 @@
 ﻿Activity Log
 DongKyu Kim
 ECE395
+
 Week (9/25~10/1)
-Activity log has been started. We wanted to look at the optical table and see what is available and what needs to be purchased., but we did not have access to the room 601. So, Ben and I decided to do a summary of the Poon’s textbook (Poon_Text.pdf) to understand theories behind the 3D hologram better. I did the Chapter 1 summary through Overleaf, and the summary as uploaded into the archive as (Poon_Summary.pdf). This summary will be updated in the future.
+Activity log has been started.
+We wanted to look at the optical table and see what is available and what needs to be purchased, but we did not have access to the room 601.
+So, Ben and I decided to do a summary of the Poon’s textbook (Poon_Text.pdf) to understand theories behind the 3D hologram better.
+I did the Chapter 1 summary through Overleaf, and the summary as uploaded into the archive as (Poon_Summary.pdf).
+This summary will be updated in the future.
+
 Week (10/2~10/8)
-We checked that in room 601, there is an optical table, but nothing else. We realized we need to buy or obtain polarizers, beam splitters, and other things that we will figure out soon. We tried to find a way and an appropriate space in the senior lab to move the optical table, so that we don't have to go to 601 to do the experiment. However, there are some health regulations and limited physical space, there is a chance that the optical table must stay in 601. In the meantime, before we get an update on the optical table's location, we decided to do more Poon summary. I did the Chapter 4 summary.
+We checked that in room 601, there is an optical table, but nothing else.
+We realized we need to buy or obtain polarizers, beam splitters, and other things that we will figure out soon.
+We tried to find a way and an appropriate space in the senior lab to move the optical table, so that we don't have to go to 601 to do the experiment.
+However, there are some health regulations and limited physical space, there is a chance that the optical table must stay in 601.
+In the meantime, before we get an update on the optical table's location, we decided to do more Poon summary.
+I did the Chapter 4 summary.
+
 Week (10/9~10/15)
-We presented on the status in class, and we got the lab space that we needed in the room 601. I had the GRE exam this week, so I couldn't contribute much for the senior lab.
+We presented on the status in class, and we got the lab space that we needed in the room 601.
+I had the GRE exam this week, so I couldn't contribute much for the senior lab.
+
 Week (10/16~10/23)
-We set the lab bench in the corner of the room 601. Ben and I went to Dino's office and obtained safety goggles, some mirrors, beam splitters, and lasers as well as all the additional optical devices that might be useful to us. We did elementary experiments with the lasers and the beam splitters, to see if we can get the configuration that the textbook describes, and to figure out functions of some components that were new to us. We found out that all the lasers were of the same color (red), and similar power, so it didn't really matter which one we choose to use for the hologram. We taught ourselves how some of optical devices worked and how to use the optical table. We are still pending on the 601 lab access.
+We set the lab bench in the corner of the room 601.
+Ben and I went to Dino's office and obtained safety goggles, some mirrors, beam splitters, and lasers as well as all the additional optical devices that might be useful to us.
+We did elementary experiments with the lasers and the beam splitters, to see if we can get the configuration that the textbook describes, and to figure out functions of some components that were new to us.
+We found out that all the lasers were of the same color (red), and similar power, so it didn't really matter which one we choose to use for the hologram.
+We taught ourselves how some of optical devices worked and how to use the optical table.
+We are still pending on the 601 lab access.
+
 Week (10/24~10/29)
-We started the paper work on the 601 access. Ben and I were able to connect the SLM to the monitor via HDMI cable, and checked that the SLM can be used as a second monitor. When we reflected light off the SLM without connecting anything, we got what seemed like a default pattern for the SLM (dotted cross shape), indicating SLM isn't broken. We worked on the presentation slides for the class this week.
+We started the paper work on the 601 access.
+Ben and I were able to connect the SLM to the monitor via HDMI cable, and checked that the SLM can be used as a second monitor.
+When we reflected light off the SLM without connecting anything, we got what seemed like a default pattern for the SLM (dotted cross shape), indicating SLM isn't broken.
+We worked on the presentation slides for the class this week.
+
 Week (10/30~11/6)
-We compiled the list of things that we need to purchase because we were missing polarizers, some lenses and a spatial filter. We checked in with Professor Yecko to see what optical devices he has for us to use, but he didn't have anything that we could use. However, he suggested that the spatial filter that we need, which costs $1000, can be made by ourselves using a small aperture. The aperture could be bought at a reasonable price, so we decided to purchase the aperture instead of the spatial filter. We collected appropriate links for each component for purchase and got approved. The order was made for all the components. As the hardware part of the project is being delayed by lack of components, we decided to work extensively on the software side.
+We compiled the list of things that we need to purchase because we were missing polarizers, some lenses and a spatial filter.
+We checked in with Professor Yecko to see what optical devices he has for us to use, but he didn't have anything that we could use.
+However, he suggested that the spatial filter that we need, which costs $1000, can be made by ourselves using a small aperture.
+The aperture could be bought at a reasonable price, so we decided to purchase the aperture instead of the spatial filter.
+We collected appropriate links for each component for purchase and got approved.
+The order was made for all the components.
+As the hardware part of the project is being delayed by lack of components, we decided to work extensively on the software side.
+
 Week (11/7~11/13)
-We spent this week to make a poster for the poster presentation. In addition, I cross checked the MATLAB code that Jason and Eli wrote with Poon's text and edited the code so that the code will work for our SLM's resolution and pixel numbers. In addition, I started working on porting the MATLAB code that converts jpeg or png images to an SLM projectible images so that it can be incorporated to the final software that JB is working on.
+We spent this week to make a poster for the poster presentation.
+In addition, I cross checked the MATLAB code that Jason and Eli wrote with Poon's text and edited the code so that the code will work for our SLM's resolution and pixel numbers.
+In addition, I started working on porting the MATLAB code that converts jpeg or png images to an SLM projectible images so that it can be incorporated to the final software that JB is working on.
+
 Week (11/14~11/20)
-I Worked on the poster feedback, final report outline document. It is the Thanksgiving break.
+I Worked on the poster feedback, final report outline document.
+It is the Thanksgiving break.
+
 Week (11/21~11/27)
-Thanksgiving break continues. I looked at the python code a bit.
+Thanksgiving break continues.
+I looked at the python code a bit.
+
 Week (11/28~12/4)
-I will be finishing up the python code that I am working on. We will also improve the outline of the document, as well as order the last missing parts through Dino.
+I will be finishing up the python code that I am working on.
+We will also improve the outline of the document, as well as order the last missing parts through Dino.
+
