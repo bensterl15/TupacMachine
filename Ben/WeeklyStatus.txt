@@ -42,3 +42,7 @@ Week of 11/12/18
 Week of 11/19/18
 
 -Thanksgiving Break
+
+Week of 11/26/18
+
+-Worked on the theory/intro sections of the final Latex report
