@@ -5,6 +5,7 @@
 
 \usepackage{amsmath}
 \usepackage{mathrsfs}
+\usepackage{mathtools}
 \usepackage[pdftex]{graphicx}
 
 \begin{document}
@@ -205,7 +206,7 @@ Finally, if we take the Fourier Transform of both sides of (26) we obtain:
 While this looks complicated, it is really only an Ordinary Differential Equation of \(\Psi_{p}\) with respect to z. It's solution is:
 
 \begin{equation}
-	\Psi_{p} = \big(\Psi_{p}\vert_{z = 0}\big) exp\bigg(-jk_{0}z\sqrt{1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_{0}^2}}\bigg)
+	\Psi_{p} = \big(\Psi_{p}\vert_{z = 0}\big) exp\Bigg(-jk_{0}z\sqrt{1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_{0}^2}}\Bigg)
 \end{equation}
 
 If we let
@@ -217,16 +218,99 @@ If we let
 Then we can recognize the solution in (32) as a transfer function. We define:
 
 \begin{equation}
-	\mathscr{H} = \frac{\Psi_{p}}{\Psi_{p0}} = exp\bigg(-jk_{0}z\sqrt{1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_{0}^2}}\bigg)
+	\mathscr{H} = \frac{\Psi_{p}}{\Psi_{p0}} = exp\Bigg(-jk_{0}z\sqrt{1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_{0}^2}}\Bigg)
 \end{equation}
 
 \(\mathscr{H}\) is called the Spatial Frequency Transfer Function of Propagation. It applies to our specific apparatus under consideration and describes Fresnel Diffraction of the output of a plane wave hitting an aperture. \(\psi_{p0}\) is the function controlled by the shape of the aperture; if this equals \(\delta(x,y)\), for example, then the output of the aperture is purely the Spatial Frequency Transfer Function response, because this is equivalent to convolving with a delta in 2-Dimensions, returning \(\mathscr{F}^{-1} \{\mathscr{H}\} \) in the time domain.
 
+\subsubsection{Fresnel Diffraction}
+
+We have \(\mathscr{H}\), but more often than not, the traveling waves make very small angles from the normal direction of the aperture. This allows us to utilize the Paraxial Approximation:
+
+\begin{equation}
+	\sqrt{1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_0^2}} \approx 1 - \frac{k_{x}^2}{2k_{0}^2} - \frac{k_{y}^2}{2k_{0}^2}
+\end{equation}
+
+Once we apply this approximation, the Spatial Frequency Transfer Function of Propagation simplifies:
+
+\begin{equation}
+	\mathscr{H} = exp(-jk_{0}z)exp\bigg[\frac{j(k_{x}^2 + k_{y}^2)z}{2k_{0}}\bigg]
+\end{equation}
+
+In this specific example, we are using the Two Dimensional Fourier Transform (z remains constant):
+
+\begin{equation}
+	\Psi_{p}(k_{x},k_{y},z) = \iint \limits_{R^2}^{} \psi_{p}(x,y,z)e^{-jk_{x}x - jk_{y}} \,dx\,dy
+\end{equation}
+
+Thus we get the Spatial Impulse Response, h:
+
+\begin{equation}
+	h(x,y,z) = \mathscr{F}^{-1}\{\mathscr{H}\} = \frac{jk_{0}}{2\pi z} exp(-jk_{0}z)exp\bigg[\frac{-jk_{0}(x^2 + y^2)}{2z}\bigg]
+\end{equation}
+
 \subsection{Holography Fundamentals}
+
+The simplest holography setup, and a good starting point to understanding the subject, is this collection of Fresnel Plates:
+
+\begin{center}
+	\includegraphics[width=100mm]{tupac7.png}	
+\end{center}
+
+First, we use a collimated laser so that the direction of propagation of each wave is parallel.
+The first beam splitter (BS1) divides the laser in two paths of equal power, one will be used as a reference and the other contains the object information.
+We recombine the waves at the second beam splitter (BS2). If the object wave is denoted as \(\psi_{0}\) and the reference wave is \(\psi_{r}\).
+Since our aperture is a pinhole, our input function (referencing the Spatial Frequency Transfer Function) is \(\delta(x,y)\), thus:
+
+\begin{equation}
+	\begin{multlined}
+		\psi_{0}(x,y,z_{0}) = \delta(x,y) * h(x,y,z_{0}) = h(x,y,z_{0}) 
+		\\= exp(-jk_{0}z_{0})\frac{jk_{0}}{2\pi z_{0}}exp\bigg[\frac{-jk_{0}(x^2 + y^2)^2}{2z_{0}}\bigg]
+	\end{multlined}
+\end{equation}
+
+and \(\psi_{r}\) is just a plane wave propagating in the \(z_{0}\) direction:
+
+\begin{equation}
+	\psi_{r} = a\,exp(-jk_{0}z_{0})
+\end{equation}
+
+It is important to note that the light intensity is proportional to square of the complex amplitude, I(x,y) \(\propto\) \(|\psi_{p}(x,y)|^2\).
+Thus we define transmittance, t(x,y) as:
+
+\begin{equation}
+	t(x,y) = |\psi_{p}(x,y)|^2
+\end{equation}
+
+For our specific case:
+
+\begin{equation}
+	\begin{multlined}
+	t(x,y) = |\psi_{o}(x,y) + \psi_{r}(x,y)|^2
+	=(\psi_{o} + \psi_{r})(\psi_{o} + \psi_{r})^*
+	\\= a^2 + (\frac{k_{0}^2}{2\pi z_{0}})^2 - \frac{-jk_{0}a}{2\pi z_{0}}
+	exp\bigg[ \frac{jk_{0}}{2z_{0}}(x^2 + y^2) \bigg] + 
+	\\\frac{-jk_{0}a}{2\pi z_{0}}
+	\exp\bigg[\frac{-jk_{0}}{2z_{0}}(x^2 + y^2) \bigg]
+	\end{multlined}
+\end{equation}
+
+We can recognize the sine function inside the last line:
+
+\begin{equation}
+	t(x,y) = a^2 + \big(\frac{k_{0}}{2\pi z_{0}}\big)^2 + 
+	\frac{ak_{0}}{\pi z_{0}}sin\bigg[\frac{k_{0}}{2z_{0}}(x^2 + y^2)\bigg]
+\end{equation}
+
+And thus, we can observe the diffraction pattern of this aperture as follows:
+
+\begin{center}
+\includegraphics[width=100mm]{tupac8.png}
+\end{center}
 
 \subsubsection{Holgraphic Magnifications}
 \subsubsection{Holographic Translation}
-\subsubsection{Holographic Magnification}
+\subsubsection{Temporal Coherence}
 
 \subsection{Types of Holograms}
 \subsubsection{On-Axis Holography}
@@ -245,3 +329,4 @@ Then we can recognize the solution in (32) as a transfer function. We define:
 \section{Future goals}
 
 \end{document}
+
