@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.16)  8 DEC 2018 21:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.16)  9 DEC 2018 17:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -80,9 +80,19 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
+(/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
 (/usr/share/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
-\symrsfs=\mathgroup4
+\symrsfs=\mathgroup6
 )
 (/usr/share/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
@@ -143,18 +153,18 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
 
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -225,7 +235,17 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 12.
+LaTeX Font Info:    Try loading font information for U+msa on input line 13.
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 13.
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 13.
 
 (/usr/share/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
@@ -237,52 +257,64 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 <tupac5.png, id=26, 307.1475pt x 164.11313pt>
 File: tupac5.png Graphic file (type png)
 <use tupac5.png>
-Package pdftex.def Info: tupac5.png  used on input line 167.
+Package pdftex.def Info: tupac5.png  used on input line 168.
 (pdftex.def)             Requested size: 284.52756pt x 152.03764pt.
  [5 <./tupac5.png (PNG copy)>] [6]
 <tupac7.png, id=36, 508.90125pt x 442.65375pt>
 File: tupac7.png Graphic file (type png)
 <use tupac7.png>
-Package pdftex.def Info: tupac7.png  used on input line 257.
+Package pdftex.def Info: tupac7.png  used on input line 258.
 (pdftex.def)             Requested size: 284.52756pt x 247.4994pt.
 
 [7 <./tupac7.png (PNG copy)>]
 <tupac8.png, id=41, 176.15813pt x 164.86594pt>
 File: tupac8.png Graphic file (type png)
 <use tupac8.png>
-Package pdftex.def Info: tupac8.png  used on input line 308.
+Package pdftex.def Info: tupac8.png  used on input line 309.
 (pdftex.def)             Requested size: 284.52756pt x 266.28888pt.
-<tupac10.png, id=42, 805.50937pt x 506.6428pt>
+ [8 <./tupac8.png (PNG copy)>]
+<tupac11.png, id=45, 268.00125pt x 222.07968pt>
+File: tupac11.png Graphic file (type png)
+<use tupac11.png>
+Package pdftex.def Info: tupac11.png  used on input line 343.
+(pdftex.def)             Requested size: 284.52756pt x 235.77269pt.
+<tupac12.png, id=46, 372.64218pt x 167.12437pt>
+File: tupac12.png Graphic file (type png)
+<use tupac12.png>
+Package pdftex.def Info: tupac12.png  used on input line 347.
+(pdftex.def)             Requested size: 284.52756pt x 127.61pt.
+ [9 <./tupac11.png (PNG copy)>] [10 <./tupac12.png (PNG copy)>] [11]
+<tupac10.png, id=57, 805.50937pt x 506.6428pt>
 File: tupac10.png Graphic file (type png)
 <use tupac10.png>
-Package pdftex.def Info: tupac10.png  used on input line 322.
+Package pdftex.def Info: tupac10.png  used on input line 504.
 (pdftex.def)             Requested size: 284.52756pt x 178.95882pt.
- [8 <./tupac8.png (PNG copy)>] [9 <./tupac10.png (PNG copy)>] (./report.aux) ) 
+ [12] [13 <./tupac10.png (PNG copy)>] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 2641 strings out of 492642
- 37464 string characters out of 6135566
- 110842 words of memory out of 5000000
- 6494 multiletter control sequences out of 15000+600000
- 10012 words of font info for 39 fonts, out of 8000000 for 9000
+ 2940 strings out of 492642
+ 40733 string characters out of 6135566
+ 111143 words of memory out of 5000000
+ 6772 multiletter control sequences out of 15000+600000
+ 12492 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,11n,25p,1060b,195s stack positions out of 5000i,500n,10000p,200000b,80000s
-<
-/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-i5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/sh
-are/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/
-share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/
-public/rsfs/rsfs10.pfb>
-Output written on report.pdf (9 pages, 490221 bytes).
+ 41i,12n,27p,1060b,201s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pf
+b></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/
+msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on report.pdf (13 pages, 550495 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
+ 113 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

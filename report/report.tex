@@ -4,6 +4,7 @@
 \author{Ben Sterling, Dongkyu Kim, Junbum Kim, David Kim}
 
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
 \usepackage[pdftex]{graphicx}
@@ -308,9 +309,190 @@ And thus, we can observe the diffraction pattern of this aperture as follows:
 \includegraphics[width=100mm]{tupac8.png}
 \end{center}
 
-\subsubsection{Holgraphic Magnifications}
+By inspection, the output of the machine obeys a sinusoidal pattern, with some DC value in towards the center (x = 0 and y = 0), and the frequency
+of the sinusoid increases parabolically moving radially outward.
+Also, for any tangent vector \(v_{p}\), the spatial frequency is defined as the directional derivative of the angle:
+
+\begin{equation}
+	v_{p}\bigg[ \frac{k_{0}(x^2 + y^2)}{2z_{0}} \bigg] = \frac{k_{0}}{z_{0}}(v_{1}p_{1} + v_{2}p_{2}), \forall v_{p} \in T_{p} \mathbb{R}^2
+\end{equation}
+
+This result is more significant in differential form:
+
+\begin{equation}
+	d \bigg( \frac{k_{0}(x^2 + y^2)}{2z_{0}} \bigg) = \frac{k_{0}}{z_{0}}(xdx + ydy)
+\end{equation}
+
+The frequency increases linearly in any direction of our choosing.
+It is important to note that an observer at a distance will see the following 
+\(\psi_{rec}\) instead because they are at a distance, z, away from the
+recording medium.
+
+\begin{equation}
+	\psi_{p} = \psi_{rec}t(x,y)*h(x,y,z)
+\end{equation}
+
+Where \(\psi_{rec}\) is the field on the projecting surface.
+
+\subsubsection{3D Holographic Imaging}
+
+In this next section, we wish to identify the effects of different coplanar displacements 
+(x and y) and different distances from the medium (z). We can visualize this problem with the following diagrams:
+
+\begin{center}
+\includegraphics[width=100mm]{tupac11.png}
+\end{center}
+
+\begin{center}
+\includegraphics[width=100mm]{tupac12.png}
+\end{center}
+
+The first graph displays two source points with a reference wave R, and the second displays the reconstructed point r (the location a viewer SEE'S the object).
+
+The following identity under convolution helps to simplify the upcoming calculations.
+
+\begin{equation}
+	\delta(x - \alpha,y - \beta)*h(x,y,z) = \delta(x,y)*h(x - \alpha,y - \beta,z)
+\end{equation}
+
+The physical significance of this identity is that being off-center from the pinhole
+aperture is equivalent to translating the center Spatial Impulse Response: a very important property.
+
+Thus, we can find the three relevant complex fields as follows:
+
+\begin{equation}
+	\psi_{p1} = \delta(x - \frac{h}{2},y)*h(x,y,R) = h(x - \frac{h}{2},y,R)
+\end{equation}
+
+\begin{equation}
+	\psi_{p2} = \delta(x + \frac{h}{2},y)*h(x,y,R + d) = 
+	h(x - \frac{h}{2},y,R + d)
+\end{equation}
+
+\begin{equation}
+	\psi_{pR} = \delta(x + a,y)*h(x,y,l_{1}) = h(x + a,y,l_{1})
+\end{equation}
+
+Now, the intensity can be found as follows (by definition)
+
+\begin{equation}
+	\begin{multlined}
+	t(x,y) = |\psi_{p1} + \psi_{p2} + \psi_{pR}|^2
+	\\ (\psi_{p1} + \psi_{p2} + \psi_{pR})(\psi_{p1} + \psi_{p2} + \psi_{pR})^*
+	\end{multlined}
+\end{equation}
+
+Each \(\psi_{pi}\psi_{pi}^*\) for \(i \in \mathbb{Z}^+\) is not very interesting, because the wave parts cancel and they are just zeroth order waves.
+Also, note \(\psi_{pi}\psi_{pj}^* = (\psi_{pj}\psi_{pi}^*)^* \), so we only need three transmittances to determine the intensity
+
+If we take one transmittance:
+
+\begin{equation}
+	t_{rel1}(x,y) = \psi_{p1}^*\psi_{pR}(x,y) = exp(\frac{jk_{0}}{2R}[(x - \frac{h}{2})^2 + y^2])exp(\frac{-jk_{0}}{2R}[(x + a)^2 + y^2])
+\end{equation}
+
+and then solve for the reflected \(\psi\), we get:
+
+\begin{equation}
+	\psi_{pr}(x,y)t_{rel1}(x,y)*h(x,y,z)
+\end{equation}
+
+Where:
+\begin{equation}
+	\psi_{pr} = \delta(x - b,y)*h(x,y,l_{2}) = h(x - b,y,l_{2})
+\end{equation}
+
+This must be true because INDEPENDENT of the points 1 and 2, the field is being
+affected by a plane wave coming from the reconstruction point. Thus, if we want to 
+approximate the reflected wave, it is given by:
+
+\begin{equation}
+	\begin{multlined}
+	\psi_{ref} \propto exp\bigg(\frac{-jk_{0}}{2l_{2}}[(x - b)^2 + y^2]\bigg)
+	exp\bigg(\frac{-jk_{0}}{2R}[(x - \frac{h}{2})^2 + y^2]\bigg)
+	\\exp\bigg(\frac{-jk_{0}}{2l_{1}}[(x + a)^2 + y^2]\bigg)
+	*\frac{jk_{0}}{2\pi z}exp\bigg(\frac{-jk_{0}}{2z}[x^2 + y^2]\bigg)
+	\end{multlined}
+\end{equation}
+
+At this point in the derivation, we must remember the definition of 2D convolution we are working with:
+
+\begin{equation}
+	\big(f_{1}*f_{2}\big)(x,y) = \iint \limits_{R^2}^{} f_{1}(x',y')f_{2}(x - x',y - y') \,dx'\,dy'
+\end{equation}
+
+By far the most confusing part of this derivation: the coefficients in front of \(x'^2\) and \(y'^2\) must equal zero because the convolution in (55) must evaluate to a \(\delta\) function.
+Think of it this way: If it did not evaluate to a \(\delta\), this would imply the field has multiple non-zero space values for a single image point; we do not allow a single point 
+to spread into a cloud, this would violate our empirical observations.
+
+Thus by inspection, we derive the equation:
+
+\begin{equation}
+	\frac{1}{R} - \frac{1}{l_{1}} - \frac{1}{l_{2}} - \frac{1}{z_{r1}} = 0
+\end{equation}
+
+Through very tedious math, we get that:
+
+\begin{equation}
+	\psi_{ref} \propto \delta \bigg[ x + z_{r1}\bigg( 
+	\frac{b}{l_{2}} - \frac{h}{2R} - \frac{a}{l_{1}}\bigg),y\bigg]
+\end{equation}
+
+Similarly for the second point:
+
+\begin{equation}
+	\frac{1}{R + d} - \frac{1}{l_{1}} - \frac{1}{l_{2}} - \frac{1}{z_{r2}} = 0
+\end{equation}
+
+\begin{equation}
+        \psi_{ref} \propto \delta \bigg[ x + z_{r2}\bigg(
+        \frac{b}{l_{2}} - \frac{h}{2(R + d)} - \frac{a}{l_{1}}\bigg),y\bigg]
+\end{equation}
+
+These equations are the starting point to understanding magnification and translation distortion of images.
+For the most part, we are simplifying the problem of displaying an image to 
+effects between two points.
+
+\subsubsection{Holographic Magnification}
+
+In this context, magnification is defined as:
+
+\begin{equation}
+	M_{Long}^r = \frac{z_{r2} - z_{r1}}{d}
+\end{equation}
+
+This is literally a ratio of the hologram depth over the real depth between these two points.
+
+We substitute from equation (57) and (59) (Assuming: R \(\gg\) d)
+
+\begin{equation}
+	M_{Long}^r = \bigg(\frac{l_{1}l_{2}}{l_{1}l_{2} - Rl_{1} - Rl_{2}}\bigg)^2
+\end{equation}
+
+We define lateral magnification as the difference in x virtual positions over the real x distance (h). We use equations (58) and (60):
+
+\begin{equation}
+	\begin{multlined}
+		M_{Lat}^r = \frac{z_{r2}\bigg( \frac{b}{l_{2}} + \frac{h}{2(R + d)} - \frac{a}{l_{1}}\bigg) - z_{r1}\bigg(\frac{b}{l_{2}} - \frac{h}{2R} - \frac{a}{l_{1}} \bigg)}{h}
+		\\\approx \frac{(z_{r2} - z_{r1})\bigg(\frac{b}{l_{2}} -\frac{a}{l_{1}} \bigg) + (z_{r2} + z_{r1})\frac{h}{2R}}{h}
+	\end{multlined}
+\end{equation}
+
+assuming \(R \gg d\)
+
+If we align the points in a special way such that:
+
+\begin{equation}
+	\frac{b}{l_{2}} - \frac{a}{l_{1}} = 0
+\end{equation}
+
+We get the fascinating result that
+
+\begin{equation}
+	M_{Long}^r = (M_{Lat}^r)^2
+\end{equation}
+
 \subsubsection{Holographic Translation}
-\subsubsection{Temporal Coherence}
 
 \subsection{Types of Holograms}
 \subsubsection{On-Axis Holography}
