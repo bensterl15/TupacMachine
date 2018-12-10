@@ -46,3 +46,7 @@ Week of 11/19/18
 Week of 11/26/18
 
 -Worked on the theory/intro sections of the final Latex report
+
+Week of 12/3/18
+
+-Finished up the bulk of the Latex Report/Decoded some of the very-hard to understand explanations.
