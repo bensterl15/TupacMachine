@@ -5,12 +5,14 @@ import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--display',action = 'store_true',help='')
-parser.add_argument('--resolution',default = 512,type=int,help='')
+parser.add_argument('--h',default = 512,type=int,help='')
+parser.add_argument('--w',default = 1024,type=int,help='')
 parser.add_argument('--imagedir',default='peppers.png',help='')
 args = parser.parse_args()
 
 
-def transform(display,N,imagedir):
+def transform(display,M,imagedir):
+	N = 512
 	I0 = plt.imread(imagedir)
 	I0 = skimage.transform.resize(I0,[N,N])
 	I0 = skimage.color.rgb2gray(I0)
@@ -18,7 +20,7 @@ def transform(display,N,imagedir):
 	avI0 = np.mean(I0)
 	I = I0
 	k = 0
-	err = 1 
+	err = 1
 	#GS algorithm Loop
 	while (err > 0.087):
 		k = k+1
@@ -45,11 +47,13 @@ def transform(display,N,imagedir):
 				h[n,m] = 1
 			else:
 				h[n,m] = 0
+	h = skimage.transform.resize(h,M)
 	if display:
 		plot = plt.subplot()
 		plot.imshow(h, cmap ="gray")
 		plt.show()
+
 	return h
 
 if __name__ == '__main__':
-	transform(args.display,args.resolution,args.imagedir)
+	transform(args.display,[args.h,args.w],args.imagedir)
