@@ -4,7 +4,9 @@
 \author{Ben Sterling, Dongkyu Kim, Junbum Kim, David Kim}
 
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{mathrsfs}
+\usepackage{mathtools}
 \usepackage[pdftex]{graphicx}
 
 \begin{document}
@@ -205,7 +207,7 @@ Finally, if we take the Fourier Transform of both sides of (26) we obtain:
 While this looks complicated, it is really only an Ordinary Differential Equation of \(\Psi_{p}\) with respect to z. It's solution is:
 
 \begin{equation}
-	\Psi_{p} = \big(\Psi_{p}\vert_{z = 0}\big) exp\bigg(-jk_{0}z\sqrt{1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_{0}^2}}\bigg)
+	\Psi_{p} = \big(\Psi_{p}\vert_{z = 0}\big) exp\Bigg(-jk_{0}z\sqrt{1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_{0}^2}}\Bigg)
 \end{equation}
 
 If we let
@@ -217,26 +219,362 @@ If we let
 Then we can recognize the solution in (32) as a transfer function. We define:
 
 \begin{equation}
-	\mathscr{H} = \frac{\Psi_{p}}{\Psi_{p0}} = exp\bigg(-jk_{0}z\sqrt{1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_{0}^2}}\bigg)
+	\mathscr{H} = \frac{\Psi_{p}}{\Psi_{p0}} = exp\Bigg(-jk_{0}z\sqrt{1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_{0}^2}}\Bigg)
 \end{equation}
 
 \(\mathscr{H}\) is called the Spatial Frequency Transfer Function of Propagation. It applies to our specific apparatus under consideration and describes Fresnel Diffraction of the output of a plane wave hitting an aperture. \(\psi_{p0}\) is the function controlled by the shape of the aperture; if this equals \(\delta(x,y)\), for example, then the output of the aperture is purely the Spatial Frequency Transfer Function response, because this is equivalent to convolving with a delta in 2-Dimensions, returning \(\mathscr{F}^{-1} \{\mathscr{H}\} \) in the time domain.
 
+\subsubsection{Fresnel Diffraction}
+
+We have \(\mathscr{H}\), but more often than not, the traveling waves make very small angles from the normal direction of the aperture. This allows us to utilize the Paraxial Approximation:
+
+\begin{equation}
+	\sqrt{1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_0^2}} \approx 1 - \frac{k_{x}^2}{2k_{0}^2} - \frac{k_{y}^2}{2k_{0}^2}
+\end{equation}
+
+Once we apply this approximation, the Spatial Frequency Transfer Function of Propagation simplifies:
+
+\begin{equation}
+	\mathscr{H} = exp(-jk_{0}z)exp\bigg[\frac{j(k_{x}^2 + k_{y}^2)z}{2k_{0}}\bigg]
+\end{equation}
+
+In this specific example, we are using the Two Dimensional Fourier Transform (z remains constant):
+
+\begin{equation}
+	\Psi_{p}(k_{x},k_{y},z) = \iint \limits_{R^2}^{} \psi_{p}(x,y,z)e^{-jk_{x}x - jk_{y}} \,dx\,dy
+\end{equation}
+
+Thus we get the Spatial Impulse Response, h:
+
+\begin{equation}
+	h(x,y,z) = \mathscr{F}^{-1}\{\mathscr{H}\} = \frac{jk_{0}}{2\pi z} exp(-jk_{0}z)exp\bigg[\frac{-jk_{0}(x^2 + y^2)}{2z}\bigg]
+\end{equation}
+
 \subsection{Holography Fundamentals}
 
-\subsubsection{Holgraphic Magnifications}
-\subsubsection{Holographic Translation}
+The simplest holography setup, and a good starting point to understanding the subject, is this collection of Fresnel Plates:
+
+\begin{center}
+	\includegraphics[width=100mm]{tupac7.png}	
+\end{center}
+
+First, we use a collimated laser so that the direction of propagation of each wave is parallel.
+The first beam splitter (BS1) divides the laser in two paths of equal power, one will be used as a reference and the other contains the object information.
+We recombine the waves at the second beam splitter (BS2). If the object wave is denoted as \(\psi_{0}\) and the reference wave is \(\psi_{r}\).
+Since our aperture is a pinhole, our input function (referencing the Spatial Frequency Transfer Function) is \(\delta(x,y)\), thus:
+
+\begin{equation}
+	\begin{multlined}
+		\psi_{0}(x,y,z_{0}) = \delta(x,y) * h(x,y,z_{0}) = h(x,y,z_{0}) 
+		\\= exp(-jk_{0}z_{0})\frac{jk_{0}}{2\pi z_{0}}exp\bigg[\frac{-jk_{0}(x^2 + y^2)^2}{2z_{0}}\bigg]
+	\end{multlined}
+\end{equation}
+
+and \(\psi_{r}\) is just a plane wave propagating in the \(z_{0}\) direction:
+
+\begin{equation}
+	\psi_{r} = a\,exp(-jk_{0}z_{0})
+\end{equation}
+
+It is important to note that the light intensity is proportional to square of the complex amplitude, I(x,y) \(\propto\) \(|\psi_{p}(x,y)|^2\).
+Thus we define transmittance, t(x,y) as:
+
+\begin{equation}
+	t(x,y) = |\psi_{p}(x,y)|^2
+\end{equation}
+
+For our specific case:
+
+\begin{equation}
+	\begin{multlined}
+	t(x,y) = |\psi_{o}(x,y) + \psi_{r}(x,y)|^2
+	=(\psi_{o} + \psi_{r})(\psi_{o} + \psi_{r})^*
+	\\= a^2 + (\frac{k_{0}^2}{2\pi z_{0}})^2 - \frac{-jk_{0}a}{2\pi z_{0}}
+	exp\bigg[ \frac{jk_{0}}{2z_{0}}(x^2 + y^2) \bigg] + 
+	\\\frac{-jk_{0}a}{2\pi z_{0}}
+	\exp\bigg[\frac{-jk_{0}}{2z_{0}}(x^2 + y^2) \bigg]
+	\end{multlined}
+\end{equation}
+
+We can recognize the sine function inside the last line:
+
+\begin{equation}
+	t(x,y) = a^2 + \big(\frac{k_{0}}{2\pi z_{0}}\big)^2 + 
+	\frac{ak_{0}}{\pi z_{0}}sin\bigg[\frac{k_{0}}{2z_{0}}(x^2 + y^2)\bigg]
+\end{equation}
+
+And thus, we can observe the diffraction pattern of this aperture as follows:
+
+\begin{center}
+\includegraphics[width=50mm]{tupac8.png}
+\end{center}
+
+By inspection, the output of the machine obeys a sinusoidal pattern, with some DC value in towards the center (x = 0 and y = 0), and the frequency
+of the sinusoid increases parabolically moving radially outward.
+Also, for any tangent vector \(v_{p}\), the spatial frequency is defined as the directional derivative of the angle:
+
+\begin{equation}
+	v_{p}\bigg[ \frac{k_{0}(x^2 + y^2)}{2z_{0}} \bigg] = \frac{k_{0}}{z_{0}}(v_{1}p_{1} + v_{2}p_{2}), \forall v_{p} \in T_{p} \mathbb{R}^2
+\end{equation}
+
+This result is more significant in differential form:
+
+\begin{equation}
+	d \bigg( \frac{k_{0}(x^2 + y^2)}{2z_{0}} \bigg) = \frac{k_{0}}{z_{0}}(xdx + ydy)
+\end{equation}
+
+The frequency increases linearly in any direction of our choosing.
+It is important to note that an observer at a distance will see the following 
+\(\psi_{rec}\) instead because they are at a distance, z, away from the
+recording medium.
+
+\begin{equation}
+	\psi_{p} = \psi_{rec}t(x,y)*h(x,y,z)
+\end{equation}
+
+Where \(\psi_{rec}\) is the field on the projecting surface.
+
+\subsubsection{3D Holographic Imaging}
+
+In this next section, we wish to identify the effects of different coplanar displacements 
+(x and y) and different distances from the medium (z). We can visualize this problem with the following diagrams:
+
+\begin{center}
+\includegraphics[width=100mm]{tupac11.png}
+\end{center}
+
+\begin{center}
+\includegraphics[width=100mm]{tupac12.png}
+\end{center}
+
+The first graph displays two source points with a reference wave R, and the second displays the reconstructed point r (the location a viewer SEE'S the object).
+
+The following identity under convolution helps to simplify the upcoming calculations.
+
+\begin{equation}
+	\delta(x - \alpha,y - \beta)*h(x,y,z) = \delta(x,y)*h(x - \alpha,y - \beta,z)
+\end{equation}
+
+The physical significance of this identity is that being off-center from the pinhole
+aperture is equivalent to translating the center Spatial Impulse Response: a very important property.
+
+Thus, we can find the three relevant complex fields as follows:
+
+\begin{equation}
+	\psi_{p1} = \delta(x - \frac{h}{2},y)*h(x,y,R) = h(x - \frac{h}{2},y,R)
+\end{equation}
+
+\begin{equation}
+	\psi_{p2} = \delta(x + \frac{h}{2},y)*h(x,y,R + d) = 
+	h(x - \frac{h}{2},y,R + d)
+\end{equation}
+
+\begin{equation}
+	\psi_{pR} = \delta(x + a,y)*h(x,y,l_{1}) = h(x + a,y,l_{1})
+\end{equation}
+
+Now, the intensity can be found as follows (by definition)
+
+\begin{equation}
+	\begin{multlined}
+	t(x,y) = |\psi_{p1} + \psi_{p2} + \psi_{pR}|^2
+	\\ (\psi_{p1} + \psi_{p2} + \psi_{pR})(\psi_{p1} + \psi_{p2} + \psi_{pR})^*
+	\end{multlined}
+\end{equation}
+
+Each \(\psi_{pi}\psi_{pi}^*\) for \(i \in \mathbb{Z}^+\) is not very interesting, because the wave parts cancel and they are just zeroth order waves.
+Also, note \(\psi_{pi}\psi_{pj}^* = (\psi_{pj}\psi_{pi}^*)^* \), so we only need three transmittances to determine the intensity
+
+If we take one transmittance:
+
+\begin{equation}
+	t_{rel1}(x,y) = \psi_{p1}^*\psi_{pR}(x,y) = exp(\frac{jk_{0}}{2R}[(x - \frac{h}{2})^2 + y^2])exp(\frac{-jk_{0}}{2R}[(x + a)^2 + y^2])
+\end{equation}
+
+and then solve for the reflected \(\psi\), we get:
+
+\begin{equation}
+	\psi_{pr}(x,y)t_{rel1}(x,y)*h(x,y,z)
+\end{equation}
+
+Where:
+\begin{equation}
+	\psi_{pr} = \delta(x - b,y)*h(x,y,l_{2}) = h(x - b,y,l_{2})
+\end{equation}
+
+This must be true because INDEPENDENT of the points 1 and 2, the field is being
+affected by a plane wave coming from the reconstruction point. Thus, if we want to 
+approximate the reflected wave, it is given by:
+
+\begin{equation}
+	\begin{multlined}
+	\psi_{ref} \propto exp\bigg(\frac{-jk_{0}}{2l_{2}}[(x - b)^2 + y^2]\bigg)
+	exp\bigg(\frac{-jk_{0}}{2R}[(x - \frac{h}{2})^2 + y^2]\bigg)
+	\\exp\bigg(\frac{-jk_{0}}{2l_{1}}[(x + a)^2 + y^2]\bigg)
+	*\frac{jk_{0}}{2\pi z}exp\bigg(\frac{-jk_{0}}{2z}[x^2 + y^2]\bigg)
+	\end{multlined}
+\end{equation}
+
+At this point in the derivation, we must remember the definition of 2D convolution we are working with:
+
+\begin{equation}
+	\big(f_{1}*f_{2}\big)(x,y) = \iint \limits_{R^2}^{} f_{1}(x',y')f_{2}(x - x',y - y') \,dx'\,dy'
+\end{equation}
+
+By far the most confusing part of this derivation: the coefficients in front of \(x'^2\) and \(y'^2\) must equal zero because the convolution in (55) must evaluate to a \(\delta\) function.
+Think of it this way: If it did not evaluate to a \(\delta\), this would imply the field has multiple non-zero space values for a single image point; we do not allow a single point 
+to spread into a cloud, this would violate our empirical observations.
+
+Thus by inspection, we derive the equation:
+
+\begin{equation}
+	\frac{1}{R} - \frac{1}{l_{1}} - \frac{1}{l_{2}} - \frac{1}{z_{r1}} = 0
+\end{equation}
+
+Through very tedious math, we get that:
+
+\begin{equation}
+	\psi_{ref} \propto \delta \bigg[ x + z_{r1}\bigg( 
+	\frac{b}{l_{2}} - \frac{h}{2R} - \frac{a}{l_{1}}\bigg),y\bigg]
+\end{equation}
+
+Similarly for the second point:
+
+\begin{equation}
+	\frac{1}{R + d} - \frac{1}{l_{1}} - \frac{1}{l_{2}} - \frac{1}{z_{r2}} = 0
+\end{equation}
+
+\begin{equation}
+        \psi_{ref} \propto \delta \bigg[ x + z_{r2}\bigg(
+        \frac{b}{l_{2}} - \frac{h}{2(R + d)} - \frac{a}{l_{1}}\bigg),y\bigg]
+\end{equation}
+
+These equations are the starting point to understanding magnification and translation distortion of images.
+For the most part, we are simplifying the problem of displaying an image to 
+effects between two points.
+
 \subsubsection{Holographic Magnification}
 
-\subsection{Types of Holograms}
-\subsubsection{On-Axis Holography}
+In this context, magnification is defined as:
+
+\begin{equation}
+	M_{Long}^r = \frac{z_{r2} - z_{r1}}{d}
+\end{equation}
+
+This is literally a ratio of the hologram depth over the real depth between these two points.
+
+We substitute from equation (57) and (59) (Assuming: R \(\gg\) d)
+
+\begin{equation}
+	M_{Long}^r = \bigg(\frac{l_{1}l_{2}}{l_{1}l_{2} - Rl_{1} - Rl_{2}}\bigg)^2
+\end{equation}
+
+We define lateral magnification as the difference in x virtual positions over the real x distance (h). We use equations (58) and (60):
+
+\begin{equation}
+	\begin{multlined}
+		M_{Lat}^r = \frac{z_{r2}\bigg( \frac{b}{l_{2}} + \frac{h}{2(R + d)} - \frac{a}{l_{1}}\bigg) - z_{r1}\bigg(\frac{b}{l_{2}} - \frac{h}{2R} - \frac{a}{l_{1}} \bigg)}{h}
+		\\\approx \frac{(z_{r2} - z_{r1})\bigg(\frac{b}{l_{2}} -\frac{a}{l_{1}} \bigg) + (z_{r2} + z_{r1})\frac{h}{2R}}{h}
+	\end{multlined}
+\end{equation}
+
+assuming \(R \gg d\)
+
+If we align the points in a special way such that:
+
+\begin{equation}
+	\frac{b}{l_{2}} - \frac{a}{l_{1}} = 0
+\end{equation}
+
+We get the fascinating result that
+
+\begin{equation}
+	M_{Long}^r = (M_{Lat}^r)^2
+\end{equation}
+
+\subsubsection{Holographic Translation}
+
+The equation for Lateral Magnification gives us the distortion between two holographic points if (64) is not met:
+
+\begin{equation}
+	\Delta x = x_{1} - x_{2} = (z_{r2} - z_{r1})\bigg(\frac{b}{l_{2}} - \frac{a}{l_{1}}\bigg)
+\end{equation}
+
+This figure shows how an artificial \(\Delta x\) comes about from erroneous orientation
+
+\begin{center}
+\includegraphics[width=100mm]{tupac13.png}
+\end{center}
+
 \subsubsection{Off-Axis Holography}
+
+The standard holography setup we have studied is called on-axis holography.
+The only problem with this approach is that we get twin images when we expand
+the full equation for transmittance: (the conjugation terms make the twin images)
+
+\begin{equation}
+	t(x,y) = |\psi_{r} + \psi_{o}|^2 = |\psi_{r}|^2 + |\psi_{o}|^2
+	 + \psi_{r}^*\psi_{o} + \psi_{r}\psi_{o}^*
+\end{equation}
+
+Off-Axis holography takes care of this problem by introducing the reference
+light at an angle \(\theta\)
+
+\begin{center}
+\includegraphics[width=100mm]{tupac9.png}
+\end{center}
+
+We can redo the logic of equation (67) as follows (the extra phase factor comes
+out from the extra distance the reference wave needs to travel)
+
+\begin{equation}
+	\begin{multlined}
+	t(x,y) = |\psi_{r}e^{jk_{0}sin\theta x} + \psi_{o}|^2 = |\psi_{r}|^2 + |\psi_{o}|^2
+         + \psi_{r}^*\psi_{o}e^{-jk_{0}sin(\theta) x} + \psi_{r}\psi_{o}^*e^{jk_{0}sin(\theta)x}
+	\\=|\psi_{r}|^2 + |\psi_{o}|^2 + 2|\psi_{0}^*\psi_{r}|cos(2\pi f_{x}x + \phi (x,y))
+	\end{multlined}
+\end{equation}
+
+The phase getting scaled by \(xsin(\theta)\) makes sense because at \(\theta = \pi/2\), the extra distance turns into just x, and at \(\theta = 0\)
+the reference wave is already in phase with the object wave, so no adjustment would be necessary. Just like the earlier section,
+we recognize the cosine identity in the top of the last equation (the \(\phi\) is any extra phase that came from the \(\psi_{o}\) \(\psi_{r}\) pair not counting
+the angle \(\theta\)). Specifically, \(f_{x} = \frac{sin(\theta)}{\lambda}\).
+
+Finally, we need to factor in the reconstruction light. If it has the same magnitude and direction
+as the reference light, we can represent it with the following wave function (which
+later gets convolved with h(x,y,z) to render the real image):
+
+\begin{equation}
+	\begin{multlined}
+	\psi = \psi_{r}e^{jk_{0}sin(\theta)x}t(x,y)
+	\\=|\psi_{r}|^2\psi_{r}e^{jk_{0}sin(\theta)x} + |\psi_{0}|^2\psi_{r}e^{jk_{0}sin(\theta)x}
+	\\+ \psi_{o}|\psi_{r}|^2 + \psi_{o}^*\psi_{r}^2e^{2jk_{0}sin(\theta)x}
+	\end{multlined}
+\end{equation}
+
+\begin{center}
+\includegraphics[width=100mm]{tupac14.png}
+\end{center}
+
+Upon closer examination, we can regard \(k_{0}sin(\theta)\) our carrier frequeny (in radians). Since \(\psi_{r}\) is a reference light, it is entirely DC, so the first term
+in (69) is \(\Psi_{1}\), the carrier.
+The second term in (69) is \(\Psi_{2}\) because the phasor convolves the magnitude-squared of the object wave out to the carrier frequency.
+The third (and most important) term, \(\Psi_{3}\) is the only one that is not modulated by the carrier (it gets cancels out by the algebra). 
+This is the only term that is visible to the human eye!
+
+By inspection, the minimal angle \(\theta\) we need to prevent aliasing can be given by:
+
+\begin{equation}
+	k_{0}sin(\theta) \geq \frac{3B}{2}
+\end{equation}
 
 \section{Project Setup}
 
 \begin{center}
 \includegraphics[width=100mm]{tupac10.png}
 \end{center}
+
+
 
 \section{List of Materials}
 
@@ -245,3 +583,4 @@ Then we can recognize the solution in (32) as a transfer function. We define:
 \section{Future goals}
 
 \end{document}
+
