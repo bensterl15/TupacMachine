@@ -61,3 +61,7 @@ Week (11/28~12/4)
 I will be finishing up the python code that I am working on.
 We will also improve the outline of the document, as well as order the last missing parts through Dino.
 
+Week (12/5~12/11)
+I worked on and finished the python code that computes the binary computer generated hologram out of the input image.
+The file is labeled as 'hologram.py'
+
