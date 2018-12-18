@@ -5,9 +5,12 @@ import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--display',action = 'store_true',help='')
+parser.add_argument('--sanity_check',action = 'store_true',help='')
+parser.add_argument('--progress',action = 'store_true', help='')
 parser.add_argument('--h',default = 512,type=int,help='')
 parser.add_argument('--w',default = 1024,type=int,help='')
 parser.add_argument('--imagedir',default='peppers.png',help='')
+parser.add_argument('--threshold',default = 0.1,help='')
 args = parser.parse_args()
 
 
@@ -22,12 +25,16 @@ def transform(display,M,imagedir):
 	k = 0
 	err = 1
 	#GS algorithm Loop
-	while (err > 0.087):
-		k = k+1
-		IF = np.fft.fftshift(np.fft.fft2(I))
+	while (err > args.threshold):
+		k += 1
+		if args.progress:
+			print('iteration '+str(k))
+			print('error ' + str(err))
+
+		IF = np.fft.fftshift(np.fft.fft2(np.fft.fftshift(I)))
 		angIF = np.angle(IF)
 		IF2 = np.exp(1j*angIF)
-		g = np.fft.ifft2(np.fft.fftshift(IF2))
+		g = np.fft.fftshift(np.fft.ifft2(np.fft.fftshift(IF2)))
 		avg = np.mean(np.abs(g))
 		g = g*avI0/avg
 		ampg = np.abs(g)
@@ -42,15 +49,20 @@ def transform(display,M,imagedir):
 	h = np.zeros((N,N))
 	for n in range(0,N):
 		for m in range(0,N):
-			h[n,m] = np.sin(angIF[m,n])
+			h[n,m] = np.cos(angIF[m,n])
 			if h[n,m] > 0:
 				h[n,m] = 1
 			else:
 				h[n,m] = 0
 	h = skimage.transform.resize(h,M)
-	if display:
+	if args.display:
 		plot = plt.subplot()
 		plot.imshow(h, cmap ="gray")
+		plt.show()
+
+	if args.sanity_check:
+		plot = plt.subplot()
+		plot.imshow(np.abs(g),cmap='gray')
 		plt.show()
 
 	return h
