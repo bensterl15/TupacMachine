@@ -14,6 +14,7 @@ parser.add_argument('--imagedir',default='peppers.png',help='')
 parser.add_argument('--threshold',default = 0.1,help='')
 parser.add_argument('--iter',default=1,type=int,help='')
 parser.add_argument('--subroutine',action = 'store_true',help='')
+parser.add_argument('--subroutine2',action = 'store_true',help='')
 args = parser.parse_args()
 
 
@@ -29,7 +30,9 @@ def transform(display,M,imagedir):
 	err = 1
 	tic_total = time()
 	#GS algorithm Loop
-	while (err > args.threshold and k < args.iter):
+	if args.subroutine2:
+		err_st = np.zeros(args.iter)
+	while (err > args.threshold or k < args.iter):
 		k += 1
 		if args.progress:
 			elapsed = time()-tic_total
@@ -51,11 +54,12 @@ def transform(display,M,imagedir):
 		if args.subroutine:
 			if k == 2:
 				g1 = g/np.max(np.abs(g))
+		if args.subroutine2:
+			err_st[k-1] = err
 
 		if k > 150:
 			break
 	g = g/np.max(np.abs(g))
-
 	h = np.floor(255*angIF) # SLM is 8 bit.
 
 
@@ -106,10 +110,13 @@ def transform(display,M,imagedir):
 		ax4.axes.get_xaxis().set_visible(False)
 		ax4.axes.get_yaxis().set_visible(False)
 		ax4.title.set_text('Reconstruction (20th iteration)')
-
-
 		plt.show()
 
+	if args.subroutine2:
+		plt.plot(range(k),err_st)
+		plt.title('RMSE')
+		plt.xlabel('Number of Iterations')
+		plt.show()
 
 
 
