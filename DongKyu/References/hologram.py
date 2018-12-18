@@ -45,15 +45,17 @@ def transform(display,M,imagedir):
 		if k > 150:
 			break
 	g = g/np.max(np.abs(g))
+
+	h = np.floor(255*angIF)
 	# Binary CG hologram
-	h = np.zeros((N,N))
-	for n in range(0,N):
-		for m in range(0,N):
-			h[n,m] = np.cos(angIF[m,n])
-			if h[n,m] > 0:
-				h[n,m] = 1
-			else:
-				h[n,m] = 0
+#	h = np.zeros((N,N))
+#	for n in range(0,N):
+#		for m in range(0,N):
+#			h[n,m] = np.cos(angIF[m,n])
+#			if h[n,m] > 0:
+#				h[n,m] = 1
+#			else:
+#				h[n,m] = 0
 	h = skimage.transform.resize(h,M)
 	if args.display:
 		plot = plt.subplot()
