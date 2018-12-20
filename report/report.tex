@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 \title{Senior Projects Holography Report}
 \date{2018-12-02}
 \author{Ben Sterling, Dongkyu Kim, Junbum Kim, David Kim}
@@ -7,27 +7,82 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{mathtools}
+\usepackage{listings}
+\usepackage{courier}
 \usepackage[pdftex]{graphicx}
+\renewcommand{\baselinestretch}{1.2} 
 
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
 \begin{document}
 \maketitle
 \clearpage
 
 \section{Introduction}
+\qquad
+Fast prototyping of real-world object has been addressed by many engineers and companies over the past few decades. For instance, 3D printing has especially gained much attention for its practicality. It has improved the time required to produce a visible and tangible product in a matter of few hours. On the other end of the spectrum, holography has been attracting attention due to its potentials. The technology, compared to 3D printing, can produce less tangible but faster results. Moreover, holography-based 3D printing is much faster, i.e. matter of seconds instead of hours, than the traditional 3D printer that builds one microscopic layer at a time. These characteristics make holography technology a crucial tool in 3D modelling on its own and also in context of 3D printing.
 
-The objective of the project is to create a 3D sample of a real-life object and project onto a surface as a hologram. The applications of this project include displaying an artwork or a building schematic in 3D to help visualize the product for artists and architects. We believe this is a great alternative to existing solutions as the previous technologies are difficult and time consuming. Several prototyping tools and techniques exist including AutoCAD, SolidWorks, and 3D printing. The AutoCAD and SolidWorks are programs that require the user to manually model the real life object, and 3D printing also requires a model that has been already modeled digitally. In addition, 3D printing often takes a while to create a 3D object in real life depending on the size of the object. The substages of the projects can be largely divided into include the sampling stage, digital conversion stage, digital projection stage, and optical holography projection stage. The following report discusses each step in more detail.
+However, the application still remains a mystery because of its barriers to entry - not only the parts required for the technology are too expensive for easy access, but the theory behind it requires sophisticated understanding of physics. To make things worse, unlike 3D printing, the theory is essential in crafting a reliable holography projection. We believe these traits make holography an adequate topic for our senior project; it is very interesting, and successful investigation of the technology will be a great influence on the scientific community. In this paper, we will be exploring 3D modelling and holographic projection to demystify and familiarize the audience with the concept of holography so that more people could investigate and invest in the technology.
+\par
+The following sections of the paper are organized by discussing the experimental procedures to produce a relatively affordable holographic image of a real-life object. The main sections of the paper include the sampling stage, digital conversion stage, transmission stage, and optical holography projection stage. The sampling stage scans a real-world object and stores it digitally on a computer. The digital conversion stage transforms the digitally stored data into a holographic compatible format. The transformed image is then transmitted into the holographic machine called Source Light Modulator (SLM). Finally, the optical setup projects the holographic image created by the SLM onto a flat white surface at the projection stage. Each of the stages is explained in more detail in the following sections of the paper.
 
+\newpage
 \section{Sampling Stage}
 
-As the focus of the project was to investigate holographic application, existing solutions for 3D reconstruction tools were used for the project. Xbox Kinect for Windows Development was the specific machine used for the project. Windows Presentation Foundation (WPF) application was built to communicate the hardware with software. Kinect Studio Version 2.0 and Kinect Software Development Kits were installed to develop the program. Specifically, the KinectFusionExplorer module proved practical for the purpose. The module allows 3D modelling from a single photo shoot from one angle by reconstructing picture from plain camera, infrared sensors, and depth sensors. Although the technology cannot provide a 360-degree capture of the sample, it does reconstruct the sides of the image with only small depth errors. The rotation of the model allows users to see the sides of the real object within the computer. Note that USB 3.0 is required to reproduce the program, as the Kinect hardware requires the extra bandwidth for communication of data. 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{sampling}
+    \caption{Sampling object using Kinect}
+    \label{fig:my_label}
+\end{figure}
+\qquad
+The first stage of the project is sampling a real-world object and storing it into a computer digitally. Since the perception of depth is a crucial part of the holographic projection, it is imperative to sample both the shape and depth of a real-time object. In this experiment, Xbox Kinect for Windows Development was used to sample objects. Kinect is originally developed as a module for Xbox to track human motions for entertainment purposes. It can capture an object from a single viewpoint and reconstruct 3D models based on it because it has an ordinary camera, a depth sensor, and an infrared sensor. 
 
+Windows Presentation Foundation (WPF) application was built to communicate the hardware with software. The program was developed using C\# which is the natural platform for the machine. Kinect Studio Version 2.0 and Kinect Software Development Kits were installed to develop the program. Specifically, the KinectFusionExplorer module proved practical for the purpose. The module allows 3D modelling from a single photo shoot from one angle by reconstructing picture from the ordinary camera, infrared sensors, and depth sensors. Although the technology cannot provide a 360-degree capture of the sample, it does reconstruct the sides of the image with only small depth errors. The rotation of the model allows users to see the sides of the real object within the computer. Note that USB 3.0 is required to reproduce the program, as the Kinect hardware requires the extra bandwidth for communication of data. Features such as shape and depth collected from the Kinect is stored in the computer to later be transformed. More details in what information needs to be encrypted into holographic image remains a subject of investigation at this point. Refer to Figure 2 for a 3D sample constructed using a depth sensor (top right) and an infrared sensor (bottom right).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{kinectsample}
+    \caption{Sample data obtained from Kinect}
+    \label{fig:my_label}
+\end{figure}
+
+The WPF application serves two important purposes. Firstly, it provides a user-friendly interface so that the users can use the application without much difficulty. The users can select the thresholds at which they want to set their foreground and background of the sampled data. These would allow users to produce a holographic image without having to know the details of the functionality. Easily speaking, it serves as a black box for the end users. Secondly, it allows the integration of different programming modules that we need for the program. Specifically, the data extracted from the Kinect needs to be converted into a proper format, and be sent to the SLM. There are existing libraries to transmit data to SLM in python. C\# WPF applications allow users to execute python script on top of the application. To summarize, the application serves as an easy way to integrate software parts while hiding unnecessary details from the end users. 
+\newpage
 \section{Digital Conversion Stage}
 
-Bitmaps can be constructed from the 3D model constructed, but the exact input for source light modulator has not exactly been specified yet, and since the development of the digital conversion stage basically depends on the exact requirement of SLM, this field has yet not been developed properly yet.
+The first program that has to run on top of the WPF application transforms the image obtained from the previous sample stage to an SLM compatible format. The system that we have is JD9554 spatial light modulator, which is part of Jasper Display's EDKv2 education kit. This modulator is a phase-only modulator, hence our program must convert the image into a phase mask that contains enough information to reconstruct an image. There are multiple ways of achieving this result, but one of the most efficient and popular approaches for our application is the kinoform method. The kinoform method, which is based on the observation that when the actual projection occurs, there are random-phase masks applied to the object pattern, making the amplitude of the actual object pattern unimportant. This observation leads to the kinoform method, which becomes the basis of our algorithm. According to the Poon's textbook, the kinoform method without any additional adjustment is very noisy due to its dimension reducing nature \cite{Poon14}. In order to optimize the phase-only holograms, iterative Fourier transform algorithm (IFTA) is used. This algorithm iteratively reduces the error of the reconstructed image by smoothing out the complex amplitude.
 
+Fig. \ref{fig:RMSE} shows changes in the root mean square error (RMSE) as more iterations are done using the IFTA algorithm. There is a big drop in the error from iteration 1 to 4, and a plateau from 4 to 10, and then the error starts to decay again. We have noticed that each iteration takes about 0.1 seconds, and for our real-time application, doing only 4 loops of IFTA algorithm would be the most beneficial case, as it delivers a reasonable quality in the shortest time. Fig. \ref{fig:images_recon} contains images regarding our experiment with the algorithm. We have used the "peppers" picture for our original image and obtained the phase mask for the SLM. The example that is given in the figure was obtained after 20th iteration. It is important to note that this will be the image that will be transferred to the SLM and used to steer the incoming lights to create the hologram. As we do not have a physical system yet, the images were reconstructed mathematically. Reconstructed images after 2nd iteration and 20th iteration were compared, and there is a visible quality improvement for the latter.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{subroutine2.png}
+    \caption{Root Mean Square Error (RMSE) of the Reconstructed Image to the Original Image}
+    \label{fig:RMSE}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{Result.png}
+    \caption{Collection of Images for the Performance Measurement}
+    \label{fig:images_recon}
+\end{figure}
+
+
+
+\newpage
 \section{Digital Projection Stage}
 
-SLM is simply speaking, a monitor. It takes a digital output from servers via an HDMI cable. Python programs will run on top of the WPF application to project data onto SLM via wireless HDMI. Modules such as slmpy exist to perform SLM projection. This is yet a step being investigated.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{transmission}
+    \caption{Transmitting data from Computer to SLM}
+    \label{fig:my_label}
+\end{figure}
+
+In the most basic form, SLM can be considered as a monitor that displays image obtained from a computer. The SLM model that we use connects to the computer via an HDMI port. For the manipulation of the image shown on the SLM screen, we use slmPy, a python module created to dynamically control the SLM by Sebastien Popoff. (https://github.com/wavefrontshaping/slmPy)
+The depth and phase information of the image produced from the digital conversion stage can be sent to the SLM as numpy arrays using the slmPy module. The module has a function that retrieves the resolution of the screen, which may be critical for successful projection of the holography. The depth and phase information is then displayed on the reflective surface of the SLM, which simultaneously is shined by a laser that goes through a beam splitter. The laser that reflects off of the surface will contain the depth and phase information of the image, which subsequently will be projected on a 2D screen as holography.
+
 
 \section{Holography Background}
 
@@ -578,9 +633,21 @@ By inspection, the minimal angle \(\theta\) we need to prevent aliasing can be g
 
 \section{List of Materials}
 
-\section{What we have done}
+\section{Status}
+\subsection{Current Progress}
+Our progress of the project so far was greatly hindered by materials that we need not arriving due to the Canada Post strike. However, we have started setting up the system at the lab, and we feel confident that the hologram system would work with our knowledge. On the software side of the project, the program that converts images into inputs appropriate for the spatial light modulator (SLM) is implemented in two different algorithms. In addition, the Windows Presentation Foundation application that guides the transportation of the Microsoft Kinect images or videos into the SLM is implemented and waiting for testing.
+
+It has been tested that the digital projection stage of the SLM assisted by slmPy module works flawlessly on a computer monitor. The desired image in the form of numpy array is automatically resized to fit the entire screen, and both still image and animation are displayed without any issue. However, additional testing on the SLM is yet to be done as the setup was not completed for projection. 
 
 \section{Future goals}
+For the upcoming semester, as all the materials have finally arrived, we will be building the holography system, and starting the necessary tests to pick the optimal algorithms for image conversion, resolutions, and sample methods. We hope to be done with the building of the system and getting a complete hologram image by late February so that we can concentrate on making the holography to look more 3D like, and presented in real-time. Currently, another missing piece of the system is the program that encodes the depth information appropriately into the 2D images. Our system inherently deals with 2D images, and the only way to encode the depth information to imbue 3D-like characteristics is through 
+
+For the projection stage, as there is an apparent difference between the SLM reflective surface and a computer monitor, we hope to thoroughly test it the upcoming semester. While the automatically scaled image to fit the computer screen showed no issue, it should also be tested whether such adjustments potentially disturb the quality of holography. After confirmation of reliable projection, we hope to figure out how manipulating certain settings, e.g. the frequency and intensity of the laser beam, refresh rate of the screen, would incur qualitative changes to the projection. 
+
+\bibliographystyle{plain}
+\bibliography{ref}
+
 
 \end{document}
+
 
