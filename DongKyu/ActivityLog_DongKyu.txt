@@ -69,4 +69,12 @@ I also worked on the paper a bit.
 
 Week (12/12~12/18)
 I looked for algorithms and methods of combining pictures of a 3D object into a single 2D image that reprsents the depth information through the intensity.
+I also improved the program that transforms an image into an SLM.
+The improvement was I fixed the problem of image rotating in wrong ways.
+We also found out that the SLM, which I thought to be only capable of taking binary inputs (as the documentation said '2pi phase modulation'), was actually capable of taking 8 bit inputs.
+It looks like the SLM converts the 8bits into a certain phase shift, which I believe is from a look up table which contains values that are proportional (as in 8 bit number 0 corresponds to 0 phase difference and 8-bit number 1 corresponds to 1/(2pi) phase difference.
 
+
+Week (12/19~)
+Final Presentation Week.
+We did the presentation, and worked on the final report for the semester.
