@@ -12,6 +12,7 @@
 \usepackage[pdftex]{graphicx}
 \renewcommand{\baselinestretch}{1.2} 
 
+
 \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
 \begin{document}
 \maketitle
@@ -19,7 +20,7 @@
 
 \section{Introduction}
 \qquad
-Fast prototyping of real-world object has been addressed by many engineers and companies over the past few decades. For instance, 3D printing has especially gained much attention for its practicality. It has improved the time required to produce a visible and tangible product in a matter of few hours. On the other end of the spectrum, holography has been attracting attention due to its potentials. The technology, compared to 3D printing, can produce less tangible but faster results. Moreover, holography-based 3D printing is much faster, i.e. matter of seconds instead of hours, than the traditional 3D printer that builds one microscopic layer at a time. These characteristics make holography technology a crucial tool in 3D modelling on its own and also in context of 3D printing.
+Fast prototyping of real-world object has been addressed by many engineers and companies over the past few decades. For instance, 3D printing has especially gained much attention for its practicality. It has improved the time required to produce a visible and tangible product in a matter of few hours. On the other end of the spectrum, holography has been attracting attention due to its potentials. The technology, compared to 3D printing, can produce less tangible but faster results. Moreover, holography-based 3D printing is much faster, i.e. matter of seconds instead of hours, than the traditional 3D printer that builds one microscopic layer at a time.\cite{Shusteffeaao5496} These characteristics make holography technology a crucial tool in 3D modelling on its own and also in context of 3D printing.
 
 However, the application still remains a mystery because of its barriers to entry - not only the parts required for the technology are too expensive for easy access, but the theory behind it requires sophisticated understanding of physics. To make things worse, unlike 3D printing, the theory is essential in crafting a reliable holography projection. We believe these traits make holography an adequate topic for our senior project; it is very interesting, and successful investigation of the technology will be a great influence on the scientific community. In this paper, we will be exploring 3D modelling and holographic projection to demystify and familiarize the audience with the concept of holography so that more people could investigate and invest in the technology.
 \par
@@ -50,9 +51,9 @@ The WPF application serves two important purposes. Firstly, it provides a user-f
 \newpage
 \section{Digital Conversion Stage}
 
-The first program that has to run on top of the WPF application transforms the image obtained from the previous sample stage to an SLM compatible format. The system that we have is JD9554 spatial light modulator, which is part of Jasper Display's EDKv2 education kit. This modulator is a phase-only modulator, hence our program must convert the image into a phase mask that contains enough information to reconstruct an image. There are multiple ways of achieving this result, but one of the most efficient and popular approaches for our application is the kinoform method. The kinoform method, which is based on the observation that when the actual projection occurs, there are random-phase masks applied to the object pattern, making the amplitude of the actual object pattern unimportant. This observation leads to the kinoform method, which becomes the basis of our algorithm. According to the Poon's textbook, the kinoform method without any additional adjustment is very noisy due to its dimension reducing nature \cite{Poon14}. In order to optimize the phase-only holograms, iterative Fourier transform algorithm (IFTA) is used. This algorithm iteratively reduces the error of the reconstructed image by smoothing out the complex amplitude.
+The first program that has to run on top of the WPF application transforms the image obtained from the previous sample stage to an SLM compatible format. The system that we have is JD9554 spatial light modulator, which is part of Jasper Display's EDKv2 education kit. This modulator is a phase-only modulator, hence our program must convert the image into a phase mask that contains enough information to reconstruct an image. There are multiple ways of achieving this result, but one of the most efficient and popular approaches for our application is the kinoform method. The kinoform method, which is based on the observation that when the actual projection occurs, there are random-phase masks applied to the object pattern, making the amplitude of the actual object pattern unimportant. This observation leads to the kinoform method, which becomes the basis of our algorithm. According to Poon, the kinoform method without any additional adjustment is very noisy due to its dimension reducing nature \cite{Poon14}. In order to optimize the phase-only holograms, iterative Fourier transform algorithm (IFTA) is used. This algorithm iteratively reduces the error of the reconstructed image by smoothing out the complex amplitude.
 
-Fig. \ref{fig:RMSE} shows changes in the root mean square error (RMSE) as more iterations are done using the IFTA algorithm. There is a big drop in the error from iteration 1 to 4, and a plateau from 4 to 10, and then the error starts to decay again. We have noticed that each iteration takes about 0.1 seconds, and for our real-time application, doing only 4 loops of IFTA algorithm would be the most beneficial case, as it delivers a reasonable quality in the shortest time. Fig. \ref{fig:images_recon} contains images regarding our experiment with the algorithm. We have used the "peppers" picture for our original image and obtained the phase mask for the SLM. The example that is given in the figure was obtained after 20th iteration. It is important to note that this will be the image that will be transferred to the SLM and used to steer the incoming lights to create the hologram. As we do not have a physical system yet, the images were reconstructed mathematically. Reconstructed images after 2nd iteration and 20th iteration were compared, and there is a visible quality improvement for the latter.
+Fig. \ref{fig:RMSE} shows changes in the root mean square error (RMSE) as more iterations are done using the IFTA algorithm. There is a big drop in the error from iteration 1 to 4, and a plateau from 4 to 10, and then the error starts to decay again. We have noticed that each iteration takes about 0.1 seconds, and for our real-time application, doing only 4 loops of IFTA algorithm would be the most beneficial case, as it delivers a reasonable quality in the shortest time. Fig. \ref{fig:images_recon} contains images regarding our experiment with the algorithm. We have used the ``peppers.png'' picture for our original image and obtained the phase mask for the SLM. The example that is given in the figure was obtained after 20th iteration. It is important to note that this will be the image that will be transferred to the SLM and used to steer the incoming lights to create the hologram. As we do not have a physical system yet, the images were reconstructed mathematically. Reconstructed images after 2nd iteration and 20th iteration were compared, and there is a visible quality improvement for the latter.
 
 \begin{figure}
     \centering
@@ -80,8 +81,7 @@ Fig. \ref{fig:RMSE} shows changes in the root mean square error (RMSE) as more i
     \label{fig:my_label}
 \end{figure}
 
-In the most basic form, SLM can be considered as a monitor that displays image obtained from a computer. The SLM model that we use connects to the computer via an HDMI port. For the manipulation of the image shown on the SLM screen, we use slmPy, a python module created to dynamically control the SLM by Sebastien Popoff. (https://github.com/wavefrontshaping/slmPy)
-The depth and phase information of the image produced from the digital conversion stage can be sent to the SLM as numpy arrays using the slmPy module. The module has a function that retrieves the resolution of the screen, which may be critical for successful projection of the holography. The depth and phase information is then displayed on the reflective surface of the SLM, which simultaneously is shined by a laser that goes through a beam splitter. The laser that reflects off of the surface will contain the depth and phase information of the image, which subsequently will be projected on a 2D screen as holography.
+In the most basic form, SLM can be considered as a monitor that displays image obtained from a computer. The SLM model that we use connects to the computer via an HDMI port. For the manipulation of the image shown on the SLM screen, we use slmPy, a python module created to dynamically control the SLM by Sebastien Popoff \cite{slmPy}. The depth and phase information of the image produced from the digital conversion stage can be sent to the SLM as numpy arrays using the slmPy module. The module has a function that retrieves the resolution of the screen, which may be critical for successful projection of the holography. The depth and phase information is then displayed on the reflective surface of the SLM, which simultaneously is shined by a laser that goes through a beam splitter. The laser that reflects off of the surface will contain the depth and phase information of the image, which subsequently will be projected on a 2D screen as holography.
 
 
 \section{Holography Background}
@@ -391,7 +391,7 @@ Where \(\psi_{rec}\) is the field on the projecting surface.
 
 \subsubsection{3D Holographic Imaging}
 
-In this next section, we wish to identify the effects of different coplanar displacements 
+In this next section, we wish to identify the effects of different co-planar displacements 
 (x and y) and different distances from the medium (z). We can visualize this problem with the following diagrams:
 
 \begin{center}
@@ -611,7 +611,7 @@ later gets convolved with h(x,y,z) to render the real image):
 \includegraphics[width=100mm]{tupac14.png}
 \end{center}
 
-Upon closer examination, we can regard \(k_{0}sin(\theta)\) our carrier frequeny (in radians). Since \(\psi_{r}\) is a reference light, it is entirely DC, so the first term
+Upon closer examination, we can regard \(k_{0}sin(\theta)\) our carrier frequency (in radians). Since \(\psi_{r}\) is a reference light, it is entirely DC, so the first term
 in (69) is \(\Psi_{1}\), the carrier.
 The second term in (69) is \(\Psi_{2}\) because the phasor convolves the magnitude-squared of the object wave out to the carrier frequency.
 The third (and most important) term, \(\Psi_{3}\) is the only one that is not modulated by the carrier (it gets cancels out by the algebra). 
@@ -635,7 +635,7 @@ We put a beam splitter in front of the polarizer to send half of the incoming be
 
 \section{List of Materials}
 
-We are using a JD9554 Spatial Light Modulator, P20S 20 micro-meter pinhole from Thorlabs, a BS013 Cube Beam Splitter, AL2520-A collimated lenses, C560TME-B Aspheric Lens, an LPVISE200-A Polarizer, and a high powered laser 
+We are using a JD9554 Spatial Light Modulator, a P20S 20 micro-meter pinhole from Thorlabs, a BS013 Cube Beam Splitter, AL2520-A collimated lenses, C560TME-B Aspheric Lens, an LPVISE200-A Polarizer, and a high powered laser 
 (we are using a low powered one at the moment, but may need to get the high powered one from Professor Yecko).
 
 \section{Status}
@@ -644,16 +644,13 @@ Our progress of the project so far was greatly hindered by materials that we nee
 It has been tested that the digital projection stage of the SLM assisted by slmPy module works flawlessly on a computer monitor. The desired image in the form of numpy array is automatically resized to fit the entire screen, and both still image and animation are displayed without any issue. However, additional testing on the SLM is yet to be done as the setup was not completed for projection. 
 
 \section{Future goals}
-For the upcoming semester, as all the materials have finally arrived, we will be building the holography system, and starting the necessary tests to pick the optimal algorithms for image conversion, resolutions, and sample methods. We hope to be done with the building of the system and getting a complete hologram image by late February so that we can concentrate on making the holography to look more 3D like, and presented in real-time. Currently, another missing piece of the system is the program that encodes the depth information appropriately into the 2D images. Our system inherently deals with 2D images, and the only way to encode the depth information to imbue 3D-like characteristics is through 
+For the upcoming semester, as all the materials have finally arrived, we will be building the holography system, and starting the necessary tests to pick the optimal algorithms for image conversion, resolutions, and sample methods. We hope to be done with the building of the system and getting a complete hologram image by late February so that we can concentrate on making the holography to look more 3D like, and presented in real-time. Currently, another missing piece of the system is the program that encodes the depth information appropriately into the 2D images. Our system inherently deals with 2D images, and the only way to encode the depth information to imbue 3D-like characteristics is through simultaneous projection of phase mask and the depth information to the SLM. It is currently unknown if naively projecting them at the same time will work or additional measures need to be taken. Moreover, it is also important to figure out if we have successfully encoded the depth information without seeing the desired holography, because encoding the depth information is necessary but may not be sufficient for our final goal. These will be the top priorities to be addressed in the upcoming semester.
 
 While we are currently utilizing the IFTA algorithm, it is more computationally intensive than the other algorithm Poon proposes in his book. The other algorithm accounts for the Spatial Distortion that occurs from Fresnel Diffraction and thus premultiplies by the transfer function's inverse to cancel the aperture effects. We will try and get a working prototype with the IFTA algorithm first, but we can speed up computations with this other algorithm if it needed.
 
 For the projection stage, as there is an apparent difference between the SLM reflective surface and a computer monitor, we hope to thoroughly test it the upcoming semester. While the automatically scaled image to fit the computer screen showed no issue, it should also be tested whether such adjustments potentially disturb the quality of holography. After confirmation of reliable projection, we hope to figure out how manipulating certain settings, e.g. the frequency and intensity of the laser beam, refresh rate of the screen, would incur qualitative changes to the projection. 
 
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \bibliography{ref}
 
-
 \end{document}
-
-

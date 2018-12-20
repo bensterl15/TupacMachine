@@ -1,8 +1,21 @@
 \begin{thebibliography}{1}
 
+\bibitem{Shusteffeaao5496}
+Maxim Shusteff, Allison E.~M. Browar, Brett~E. Kelly, Johannes Henriksson,
+  Todd~H. Weisgraber, Robert~M. Panas, Nicholas~X. Fang, and Christopher~M.
+  Spadaccini.
+\newblock One-step volumetric additive manufacturing of complex polymer
+  structures.
+\newblock {\em Science Advances}, 3(12), 2017.
+
 \bibitem{Poon14}
 Ting-Chung Poon and Jung-Ping Liu.
 \newblock {\em Introduction to Modern Digital Holography : With MATLAB}.
 \newblock Cambridge University Press, Cambridge, United Kingdom, 2014.
+
+\bibitem{slmPy}
+Sebastien~M. Popoff.
+\newblock wavefronthsaping/slmpy: First release, 2017.
+\newblock Accessed: 2018-11-30.
 
 \end{thebibliography}
