@@ -629,18 +629,24 @@ By inspection, the minimal angle \(\theta\) we need to prevent aliasing can be g
 \includegraphics[width=100mm]{tupac10.png}
 \end{center}
 
+This is a picture of our Hollistic project. the software component is on top as described before. We start on the bottom left corner with a coherent laser source; it is important that the laser is coherent otherwise random phase artifacts would be introduced from the start further degrading the quality of the final hologram. We next use a pinhole apparatus to filter out the higher order noise artifacts that might have been introduced by the laser and surrounding distance; this also centers the laser by converting the incoming plane wave of the laser into a spherical wave (which turns into a plane wave again after applying the Paraxial Approximation). We also put a polarizer in front of the pinhole so that the light incoming into the SLM has the anticipated linear polarization that it expects (the wrong polarization may not reflect off the SLM as expected).
 
+We put a beam splitter in front of the polarizer to send half of the incoming beam onto the screen and half to the SLM. The SLM is electronically steered by the incoming video signal, and has 8 bit precision in the phase of the wave that it reflects. An important note is that the wave reflected off the SLM occupies the same physical space as the incoming wave: this works due to Transmission Line Theory (the two waves do not interfere with one another; they are governed only by Maxwell's Equations). Finally, the reflected wave goes into the beam splitter and sums with the incident light as both waves travel to the recording medium. This is how our hologram appears on the screen.
 
 \section{List of Materials}
 
+We are using a JD9554 Spatial Light Modulator, P20S 20 micro-meter pinhole from Thorlabs, a BS013 Cube Beam Splitter, AL2520-A collimated lenses, C560TME-B Aspheric Lens, an LPVISE200-A Polarizer, and a high powered laser 
+(we are using a low powered one at the moment, but may need to get the high powered one from Professor Yecko).
+
 \section{Status}
-\subsection{Current Progress}
 Our progress of the project so far was greatly hindered by materials that we need not arriving due to the Canada Post strike. However, we have started setting up the system at the lab, and we feel confident that the hologram system would work with our knowledge. On the software side of the project, the program that converts images into inputs appropriate for the spatial light modulator (SLM) is implemented in two different algorithms. In addition, the Windows Presentation Foundation application that guides the transportation of the Microsoft Kinect images or videos into the SLM is implemented and waiting for testing.
 
 It has been tested that the digital projection stage of the SLM assisted by slmPy module works flawlessly on a computer monitor. The desired image in the form of numpy array is automatically resized to fit the entire screen, and both still image and animation are displayed without any issue. However, additional testing on the SLM is yet to be done as the setup was not completed for projection. 
 
 \section{Future goals}
 For the upcoming semester, as all the materials have finally arrived, we will be building the holography system, and starting the necessary tests to pick the optimal algorithms for image conversion, resolutions, and sample methods. We hope to be done with the building of the system and getting a complete hologram image by late February so that we can concentrate on making the holography to look more 3D like, and presented in real-time. Currently, another missing piece of the system is the program that encodes the depth information appropriately into the 2D images. Our system inherently deals with 2D images, and the only way to encode the depth information to imbue 3D-like characteristics is through 
+
+While we are currently utilizing the IFTA algorithm, it is more computationally intensive than the other algorithm Poon proposes in his book. The other algorithm accounts for the Spatial Distortion that occurs from Fresnel Diffraction and thus premultiplies by the transfer function's inverse to cancel the aperture effects. We will try and get a working prototype with the IFTA algorithm first, but we can speed up computations with this other algorithm if it needed.
 
 For the projection stage, as there is an apparent difference between the SLM reflective surface and a computer monitor, we hope to thoroughly test it the upcoming semester. While the automatically scaled image to fit the computer screen showed no issue, it should also be tested whether such adjustments potentially disturb the quality of holography. After confirmation of reliable projection, we hope to figure out how manipulating certain settings, e.g. the frequency and intensity of the laser beam, refresh rate of the screen, would incur qualitative changes to the projection. 
 
