@@ -1,0 +1,19 @@
+Activity Log Spring Semester (2019)
+DongKyu Kim
+ECE395
+
+Week (1/16~1/22)
+We discussed what we need to get done this semester.
+
+Week (1/23~1/29)
+We asked Professor Yecko to ask about the laser specifications and whether we can borrow the high powered green laser.
+Professor Yecko suggested that we contact Professor Wolf to see what he has.
+
+Week (1/30~2/5)
+Flood
+
+Week (2/6~2/12)
+We started the hardware setup to test whether the SLM works, and we started to think about alternatives for the holders.
+
+Week (2/13~2/19)
+We went to the hardware shop to buy screws, and did basic setup in the 601 lab.
