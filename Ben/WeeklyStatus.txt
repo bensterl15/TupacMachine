@@ -50,3 +50,27 @@ Week of 11/26/18
 Week of 12/3/18
 
 -Finished up the bulk of the Latex Report/Decoded some of the very-hard to understand explanations.
+
+Week of 12/10/18
+
+-Prepared the presentation and finished up the final paper
+
+Week of 1/14/18
+
+-Started putting pieces together on the Optical Table and noticed two problems: Our laser is not powerful enough and we need our parts at precise heights. We started talking to Prof. Yecko and made an appt to get Wolf's advice.
+
+Week of 1/21/18
+
+-While my group members talk to Wolf, I completed the 3D model of the holder in OnShape just in case.
+
+Week of 1/28/18
+
+-Added the finishing touches to the 3D model and sent it to Makerspace to get printed.
+
+Week of 2/4/18
+
+-School flooded. I got good advice from 3D printing people and revised my model to be hexagonal. Printed two complete sets over the weekend.
+
+Week of 2/11/18
+
+-
