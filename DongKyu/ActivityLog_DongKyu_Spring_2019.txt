@@ -17,3 +17,12 @@ We started the hardware setup to test whether the SLM works, and we started to t
 
 Week (2/13~2/19)
 We went to the hardware shop to buy screws, and did basic setup in the 601 lab.
+
+Week (2/20~2/26)
+We set up the system, and we got the SLM to output the default screen.
+We have aligned all the necessary components, and we checked the functionality of the SLM by sending in sample images into the machine and visually checked the correct output.
+Our next step would be developing a tool to make the depth information available for the viewers to create the 3D modeling.
+
+Week (2/26~3/5)
+We worked on the poster. I went to a trip for student visit day, so I didn't contribute that much.
+However, we found a paper on creating 3D-like images through image processing, which we will look into and try to implement and improve to be used on our system.
