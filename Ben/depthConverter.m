@@ -63,7 +63,7 @@ for i = 1:width
 		#Right Image Loop:
 		depth = r_depth_scaling(i,j);
 
-		if(j < eye_displacement - 1)
+		if(j < eye_displacement + 1)
 			orientation = -1;
 		else
 			orientation = 1;
@@ -74,6 +74,20 @@ for i = 1:width
 	endfor
 endfor
 
+for k = 1:2
+for i = 1:width
+	for j = 2:(2*height - 1)
+		if(right(i,j) == 0)
+			right(i,j) = (right(i,j - 1) + right(i,j + 1))/2;
+		endif
+
+		if(left(i,j) == 0)
+			left(i,j) = (left(i,j - 1) + left(i,j + 1))/2;
+		endif
+	endfor
+endfor
+endfor
+
 subplot(121);
 imshow(mat2gray(left));
 subplot(122);
@@ -81,54 +95,6 @@ imshow(mat2gray(right));
 
 imwrite(mat2gray(right),'right.jpg');
 imwrite(mat2gray(left),'left.jpg');
-
-
-#{
-left_screen = zeros(width,p_density*f*tan(theta));
-right_screen = zeros(width,p_density*f*tan(theta));
-
-left_screen = [screen left_screen];
-right_screen = [right_screen screen];
-
-subplot(241);
-imshow(screen);
-subplot(245);
-imshow(left_screen);
-subplot(248);
-imshow(right_screen);
-
-imwrite(left_screen,'left.jpg');
-imwrite(right_screen,'right.jpg');
-
-width_adjusted = floor(width/cos(theta))
-cols_alloc = width_adjusted - width;
-#imshow(screen);
-
-left_screen = zeros(2*width,height);
-
-horizontalAllocation = floor(1e5*normpdf(1:width,0,200));
-#horizontalAllocation = 90*horizontalAllocation/sum(horizontalAllocation);
-
-epsilon = 0;
-i = 1;
-do
-	epsilon = sum(nonzeros(horizontalAllocation))/(size(nonzeros(horizontalAllocation))(1));
-	horizontalAllocation(horizontalAllocation < epsilon) = 0;
-	horizontalAllocation = 90*horizontalAllocation/sum(horizontalAllocation);
-	i = i + 1;
-	if(i == 10000)
-		#plot(horizontalAllocation);
-		#horizontalAllocation
-	endif
-until(all(nonzeros(horizontalAllocation) > 1))
-
-
-plot(horizontalAllocation);
-
-ugh = screen(1:width,1:(height/3));
-ugh2 = imresize(ugh,3);
-imshow(ugh,[],'XData',[0 0.5],'YData',[0 .1]);
-#}
 
 while 1
 endwhile
