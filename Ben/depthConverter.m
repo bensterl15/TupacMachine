@@ -64,7 +64,6 @@ endfor
 
 #Fill up the NaN spaces by averaging:
 #has_nan = 1;
-'start'
 function im = filterImage(im,width,height)
 	threshold = 30;
 	while sum(sum(isnan(im))) > 2*width

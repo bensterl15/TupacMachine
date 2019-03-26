@@ -3,6 +3,7 @@ import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 from skimage import color
 from skimage.transform import downscale_local_mean
+from scipy.ndimage import gaussian_filter
 import math
 
 image_name = 'Cubic_Structure.jpg'
@@ -77,9 +78,46 @@ for k in range(2):
 			if left[i][j] < threshold:
 				left[i][j] = left[i][j-1] + left[i][j+1]/2
 
+def filterImage(im,width,height):
+	threshold = 30/255
+	while(np.count_nonzero(im==0) > 2*width):
+		for i in range(1,width+1):
+			for j in range(2,int(2.5*height)):
+				index_i = i - 1
+				index_j = j - 1
+				if(im[index_i][index_j] == 0):
+					if(im[index_i][index_j - 1] != 0 and im[index_i][index_j + 1] != 0):
+						im[index_i][index_j] = (im[index_i][index_j - 1] + im[index_i][index_j + 1])/2
+					elif(im[index_i][index_j - 1] != 0):
+						im[index_i][index_j] = im[index_i][index_j - 1]
+					elif(im[index_i][index_j + 1] != 0):
+						im[index_i][index_j] = im[index_i][index_j + 1]
+				elif(im[index_i][index_j] < threshold):
+					im[index_i][index_j] = (im[index_i][index_j - 1] + im[index_i][index_j + 1])/2
+		
+		for i in range(width,0,-1):
+			for j in range(int(2.5*height - 1),1,-1):
+				index_i = i - 1
+				index_j = j - 1
+				if(im[index_i][index_j] == 0):
+					if(im[index_i][index_j - 1] != 0 and im[index_i][index_j + 1] != 0):
+						im[index_i][index_j] = (im[index_i][index_j - 1] + im[index_i][index_j + 1])/2
+					elif(im[index_i][index_j - 1] != 0):
+						im[index_i][index_j] = im[index_i][index_j - 1]
+					elif(im[index_i][index_j + 1] != 0):
+						im[index_i][index_j] = im[index_i][index_j + 1]
+	im = gaussian_filter(im,sigma=2)
+	return im
+
+left = filterImage(left,width,height)
+right = filterImage(right,width,height)
+
+left = downscale_local_mean(left,(1,2))
+right = downscale_local_mean(right,(1,2))
+
 fig = plt.figure()
 plt.subplot(121)
-plt.imshow(left,cmap='Greys',interpolation='nearest')
-plt.subplot(122)
 plt.imshow(right,cmap='Greys',interpolation='nearest')
+plt.subplot(122)
+plt.imshow(left,cmap='Greys',interpolation='nearest')
 fig.savefig('plot.png')
