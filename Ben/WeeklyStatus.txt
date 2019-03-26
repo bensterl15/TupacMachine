@@ -78,3 +78,20 @@ Week of 2/11/18
 Week of 2/18/18
 
 -Worked with Dongkyu to position all of our components correctly, the SLM finally works! We moved the computer from Senior lab to 601 because we need it to steer the SLM
+
+Week of 2/25/18
+
+-Prepared for poster session and debugged hardware issues connecting the PC to the SLM. It turns out Jun and Dongkyu have HDMI ports so we don't need the PC for that.
+
+Week of 3/4/18
+
+-Investigated several SLM software packages/papers to try and make a 3D object. Came to the conclusion that any 3D solution will require right and left 
+perspective views; will gear my efforts to generating these first.
+
+Week of 3/11/18
+Spring Break
+
+Week of 3/18/18
+
+-Wrote the Stereoscopic Pair algorithm in Octave (had to come up with the algo).
+-Converted it to Python with Dongkyu and Jun's help

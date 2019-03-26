@@ -28,10 +28,8 @@ r_depth_scaling = depth.*double(repmat([flip(0:(eye_displacement - 1)) 0:(height
 l_depth_scaling = l_depth_scaling / max(max(l_depth_scaling)) + 1;
 r_depth_scaling = r_depth_scaling / max(max(r_depth_scaling)) + 1;
 
-left = zeros(width,2.5*height);
-right = zeros(width,2.5*height);
-
-size(left)
+left = NaN(width,2.5*height);
+right = NaN(width,2.5*height);
 
 orientation = 0;
 
@@ -64,33 +62,53 @@ for i = 1:width
 	endfor
 endfor
 
-abs(floor(new_height)) + 1
+#Fill up the NaN spaces by averaging:
+#has_nan = 1;
+'start'
+function im = filterImage(im,width,height)
+	threshold = 30;
+	while sum(sum(isnan(im))) > 2*width
+		for i = 1:width
+			for j = 2:(2.5*height - 1)
+				if(isnan(im(i,j)))
+					if(~isnan(im(i,j - 1)) && ~isnan(im(i,j + 1)))
+						im(i,j) = (im(i,j - 1) + im(i,j + 1))/2;
+					elseif(~isnan(im(i,j - 1)))
+						im(i,j) = im(i,j - 1);
+					elseif(~isnan(im(i,j + 1)))
+						im(i,j) = im(i,j + 1);
+					endif
+				elseif(im(i,j) < threshold)
+					im(i,j) = (im(i,j - 1) + im(i,j + 1))/2;
+				endif
+			endfor
+		endfor
+		
+		for i = flip(1:width)
+			for j = flip(2:(2.5*height - 1))
+				if(isnan(im(i,j)))
+					if(~isnan(im(i,j - 1) && ~isnan(im(i,j + 1))))
+						im(i,j) = (im(i,j - 1) + im(i,j + 1))/2;
+					elseif(~isnan(im(i,j - 1)))
+						im(i,j) = im(i,j - 1);
+					elseif(~isnan(im(i,j + 1)))
+						im(i,j) = im(i,j + 1);
+					endif
+				endif
+			endfor
+		endfor
+	endwhile
+	im = imsmooth(im,'gaussian',2);
+endfunction
 
-threshold = 40;
-for k = 1:2
-for i = 1:width
-	for j = 2:(2.5*height - 1)
-		if(right(i,j) < threshold)
-			right(i,j) = (right(i,j - 1) + right(i,j + 1))/2;
-		endif
+left = filterImage(left,width,height);
+right = filterImage(right,width,height);
 
-		if(left(i,j) < threshold)
-			left(i,j) = (left(i,j - 1) + left(i,j + 1))/2;
-		endif
-	endfor
-endfor
-endfor
+left = imresize(left,[width,height]);
+right = imresize(right,[width,height]);
 
-#size(left)
-#height
-#{
-subplot(121);
-imshow(mat2gray(left));
-subplot(122);
-imshow(mat2gray(right));
-#}
+#left = imsmooth(left,'gaussian',1.5);
+#right = imsmooth(right,'gaussian',1.5);
+
 imwrite(mat2gray(right),'right.jpg');
 imwrite(mat2gray(left),'left.jpg');
-
-while 1
-endwhile
