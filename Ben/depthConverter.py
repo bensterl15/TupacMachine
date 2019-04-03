@@ -18,8 +18,8 @@ def removeColsOnSides(im,N):
 def removeRowsOnSides(im,N):
 	return im[(N):(-N),:]
 
-image_name = 'image.png' #'Cubic_Structure.jpg'
-depth_name = 'depth.png' #'Cubic_Depth.jpg'
+image_name = 'image.png'
+depth_name = 'depth.png'
 
 screen = color.rgb2gray(mpimg.imread(image_name))
 screen = removeColsOnSides(screen,192)
@@ -29,8 +29,8 @@ depth = color.rgb2gray(mpimg.imread(depth_name))
 depth = removeRowsOnSides(depth,32)
 depth = depth/4+0.25
 
-print(screen.shape)
-print(depth.shape)
+#print(screen.shape)
+#print(depth.shape)
 
 #To adjust "correctly" we need two parameters, theta (the angle apart from the eyes)
 #and the focal distance (how far back the eyes are)
@@ -86,18 +86,11 @@ for i in range(1,width+1):
 		new_height = j + orientation * depth * abs(j-eye_displacement)
 		right[index_i][abs(math.floor(new_height))] = val
 
-threshold = 30/255
-for k in range(2):
-	for i in range(width):
-		for j in range(2*height-1):
-			if right[i][j] < threshold:
-				right[i][j] = right[i][j-1] + right[i][j+1]/2
-			if left[i][j] < threshold:
-				left[i][j] = left[i][j-1] + left[i][j+1]/2
-
 def filterImage(im,width,height):
 	threshold = 30/255
-	while(np.count_nonzero(im==0) > 2*width):
+	iteration = 0
+	while(np.count_nonzero(im==0) > 2*width and iteration < 3):
+		iteration += 1
 		for i in range(1,width+1):
 			for j in range(2,int(3*height)):
 				index_i = i - 1
@@ -111,7 +104,7 @@ def filterImage(im,width,height):
 						im[index_i][index_j] = im[index_i][index_j + 1]
 				elif(im[index_i][index_j] < threshold):
 					im[index_i][index_j] = (im[index_i][index_j - 1] + im[index_i][index_j + 1])/2
-		
+
 		for i in range(width,0,-1):
 			for j in range(int(3*height - 1),1,-1):
 				index_i = i - 1
