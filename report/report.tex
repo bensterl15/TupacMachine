@@ -10,6 +10,7 @@
 \usepackage{listings}
 \usepackage{courier}
 \usepackage[pdftex]{graphicx}
+\usepackage{xfrac}
 \renewcommand{\baselinestretch}{1.2} 
 
 
@@ -635,8 +636,98 @@ We put a beam splitter in front of the polarizer to send half of the incoming be
 
 \section{List of Materials}
 
-We are using a JD9554 Spatial Light Modulator, a P20S 20 micro-meter pinhole from Thorlabs, a BS013 Cube Beam Splitter, AL2520-A collimated lenses, C560TME-B Aspheric Lens, an LPVISE200-A Polarizer, and a high powered laser 
-(we are using a low powered one at the moment, but may need to get the high powered one from Professor Yecko).
+We are using a JD9554 Spatial Light Modulator, a P20S 20 micro-meter pinhole from Thorlabs, a BS013 Cube Beam Splitter, AL2520-A collimated lenses, C560TME-B Aspheric Lens, an LPVISE200-A Polarizer, and a high powered laser
+
+\section{Physical Setup}
+At the very end of the first semester, we recieved all the parts needed to finish the SLM setup. The problem was that we knew the order in which to place the parts, but we didn't know what precision we needed to get the hologram working. In addition, the parts we had ordered did not fit very well into the holders that came with the optical board, we did not know if our laser was powerful enough to generate the hologram, and we could barely get any light to come out of our pinhole (it is a very delicate component).
+
+In the meantime, we decided to ask Professor Wolf for advice (he has the most Holography experience). [TODO: David]. The most important take-away we learned was that our 10mW laser was powerful enough to produce the hologram we wanted.
+
+Even though it was not ideal, we designed parts to be 3D printed to raise our components off the board by a precise height. To make them general purpose, we designed a three piece system consisting of a base, hexoganol shaft, and insert piece that could be hand-tightened by a screw:
+
+\begin{center}
+\includegraphics[width=100mm]{holder.png}
+\end{center}
+
+We were planning to make about 6 of these to precisely place the laser, collimating lense, pinhole, and polarizers, but got very lucky when we tried to investigate which piece was "most important". Once we removed the pinhole and tried the collimating lense on a stand by itself, a much wider beam of light was produced. We tried to see if would produce any noticeable pattern, but figured out the reflected light was not combining with the reference light correctly because the beam splitter's angle was slightly off. We used the precision handles to fix it and noticed the SLM produced an interesting pattern:
+
+\begin{center}
+\includegraphics[width=100mm]{initHologram.png}
+\end{center}
+
+We saw this switching pattern from diagonal lines to vertical lines when the SLM was on without video input. As soon as we connected the HDMI port to Jun's computer, we were able to see very noisy images he sent to the display. Here is an example of Ben's face:
+
+\begin{center}
+\includegraphics[width=100mm]{noisy_hologram.jpg}
+\end{center}
+
+Finally, we noticed that the polarizer made a reduction in noise, but it was not an essential piece we needed to produce an image. We also figured out that our laser is horizontally polarized because rotating our polarizer by 90 degrees completely blocked the laser's light.
+
+\section{Why we couldn't achieve "real" 3D}
+
+[TODO: Dongkyu]
+
+Instead of using a crystal, we decided to utilize a cross-eyed hologram; this works by displaying the right and left eyed images in front of the opposite eye so that the viewer crosses their eyes and sees a 3D image (by illusion).
+
+\section{Stereoscopic Pair Generation}
+
+At this stage, we had developed the WPF application to obtain a color/depth map and immidiately send it to the SLM, but needed to figure out how to convert color/depth information to right and left eyed views (the stereoscopic pair). We tried to find a library to do this conversion, but most (in particular OpenCV) provided libraries to solve the opposite problem (converting a stereoscopic pair to a color/depth map). Upon further examination, we determined our problem could be solved with simple geometry, so we came up with the following solution:
+
+\begin{center}
+\includegraphics[width=100mm]{eye_disp_pic.png}
+\end{center}
+
+To create the image pair, we need to find how far each eye is from the center, then dilate pixels accordingly. To get eye distance, we assume a certain focal distance (f), eye-angle (\(\theta\)), and pixel density (D); the pairs are not highly sensitive to these parameters because the viewer can adjust depth as needed (with the use of their finger) but we needed reasonable values, so we chose f = 2, \(\theta\) = \sfrac{\(\pi\)}{6}, and D = 75. We need to solve for x in the picture. Using basic trig and scaling by our pixel density, we get: \[x = Df\tan(\theta)\]
+
+Next, we need to dilate each pixel depending on its depth (given by the depth map) and distance from the eye:
+
+\begin{center}
+\includegraphics[width=100mm]{dilation_pic.png}
+\end{center}
+
+We derive that \(r_{1}\) = \(r_{0}\)\sfrac{\(d_{1}\)}{\(d_{0}\)} because the real and virtual distances form similar triangles. Note that \(d_{0}\) is not very important because it is constant. We first produce the following pattern as a matrix representing all the \(r_{0}\) values:
+
+\begin{center}
+\includegraphics[width=100mm]{eye_distances.png}
+\end{center}
+
+Note that this is just a linear decay away from the eye. We utilize element-wise multiplication by the depth map to get the virtual distances of every pixel in the image. Finally, we create two "larger" matrices of all zeros and loop through the 2D image pixel by pixel. We fill in each pixel value we loop through at the correct position in the "larger" left and right matrices according to the left and right eyed depths.
+
+The only problem is that this mapping is not mathematically surjective (onto). This results in dark line patterns that run down the image; to fix this, we sacrifice some image resolution. For a 2D signal, a 2D Gaussian distribution acts as a low-pass filter under 2D convolution (equation 56). We convolve the noisy image with a Gaussian of \(\sigma\) = 2 to arrive at our final stereoscopic pairs.
+
+The following image and depth map:
+
+\begin{center}
+\includegraphics[width=100mm]{image_depth_pair.png}
+\end{center}
+
+Turns into:
+
+\begin{center}
+\includegraphics[width=100mm]{stereoscopic_pair.png}
+\end{center}
+
+If one zooms into the above image, and follows the instructions detailed on this page: https://www.kula3d.com/how-to-use-the-cross-eyed-method, one should be able to view a 3D cube. (Note the link does not use a finger to focus on, but I recommend using a finger to adjust the focal-depth).
+
+Finally, we captured image and depth information from goggles on the Kinect:
+
+\begin{center}
+\includegraphics[width=100mm]{goggles.png}
+\end{center}
+
+Generated the stereoscopic pairs:
+
+\begin{center}
+\includegraphics[width=100mm]{goggle_stereoscopic.png}
+\end{center}
+
+and turned it into the following output from the SLM:
+
+\begin{center}
+\includegraphics[width=100mm]{final_hologram.jpg}
+\end{center}
+
+Once again, the focusing technique can be used to visualize a 3D pair of the goggles. Ben and Ostap in particular noticed that the mind naturally cleans up some of the noise artifacts when viewed in 3D (information loss in one image is alleviated by the other image possessing it).
 
 \section{Status}
 Our progress of the project so far was greatly hindered by materials that we need not arriving due to the Canada Post strike. However, we have started setting up the system at the lab, and we feel confident that the hologram system would work with our knowledge. On the software side of the project, the program that converts images into inputs appropriate for the spatial light modulator (SLM) is implemented in two different algorithms. In addition, the Windows Presentation Foundation application that guides the transportation of the Microsoft Kinect images or videos into the SLM is implemented and waiting for testing.

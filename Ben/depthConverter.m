@@ -18,6 +18,7 @@ eye_displacement = floor(p_density*f*tan(theta));
 
 depth = imread('Cubic_Depth.jpg');
 depth = imresize(depth,0.1);
+
 #Quantize the depth information:
 depth = double(depth)/(255*4) + 0.25;
 
@@ -27,6 +28,7 @@ r_depth_scaling = depth.*double(repmat([flip(0:(eye_displacement - 1)) 0:(height
 #Let's say at most we want a pixel to displace by is 2x(distancexdepth product):
 l_depth_scaling = l_depth_scaling / max(max(l_depth_scaling)) + 1;
 r_depth_scaling = r_depth_scaling / max(max(r_depth_scaling)) + 1;
+
 
 left = NaN(width,2.5*height);
 right = NaN(width,2.5*height);
@@ -109,5 +111,14 @@ right = imresize(right,[width,height]);
 #left = imsmooth(left,'gaussian',1.5);
 #right = imsmooth(right,'gaussian',1.5);
 
+figure;
+subplot(121);
+imshow(right/255);
+subplot(122);
+imshow(left/255);
+
 imwrite(mat2gray(right),'right.jpg');
 imwrite(mat2gray(left),'left.jpg');
+
+while 1
+endwhile

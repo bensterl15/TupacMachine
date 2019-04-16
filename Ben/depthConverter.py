@@ -135,11 +135,16 @@ fig = plt.figure()
 #plt.subplot(122)
 #plt.imshow(left,cmap='Greys',interpolation='nearest')
 
-out_img = np.random.normal(0,1,(1000,2000))
+out_img = np.random.normal(0,0.1,(5000,2000))
 row_offset = 350
 col_offset = 100
+
+#right = np.transpose(right)
+#left = np.transpose(left)
+
 out_img[row_offset:(row_offset + right.shape[0]),col_offset:(col_offset + right.shape[1])] = right
 out_img[row_offset:(row_offset + left.shape[0]),(out_img.shape[1] - col_offset - left.shape[1]):(out_img.shape[1] - col_offset)] = left
+out_img = np.transpose(out_img)
 plt.axis('off')
-plt.imshow(out_img,cmap='Greys',interpolation='nearest')
+plt.imshow(out_img,interpolation='nearest')
 fig.savefig('plot.png',transparent=True)
