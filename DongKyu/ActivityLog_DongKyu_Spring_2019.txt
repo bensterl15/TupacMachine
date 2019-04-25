@@ -26,3 +26,32 @@ Our next step would be developing a tool to make the depth information available
 Week (2/26~3/5)
 We worked on the poster. I went to a trip for student visit day, so I didn't contribute that much.
 However, we found a paper on creating 3D-like images through image processing, which we will look into and try to implement and improve to be used on our system.
+
+Week (3/6~3/12)
+Spring Break
+
+Week (3/13~3/19)
+Ben wrote the stereoscopic pair algorithm in octave.
+We converted this code into Python so that it can be incorporated into our system.
+
+Week (3/20~3/26)
+I was at the Duke campus visit, so I didn't contribute much to the porject this week.
+
+Week (3/27~4/2)
+I started working on researching different ways of embedding the depth information using a single SLM.
+I considered projecting laser beams into a thick medium such as water or fog, but after researching, it seems like our project requires femtosecond lasers which are beyond our budget, or a multiple SLMs or moving display which are all unobtainable at this point.
+We decided to stick to the stereoscopic version of our project.
+We also did the 50 words summary activity.
+
+Week (4/3~4/9)
+We prepared to do the senior project demo critique.
+A good example of the holography was prepared, and the demo was done.
+
+Week (4/10~4/16)
+We worked on the report.
+
+Week (4/17~4/23)
+I was occupied with my master's thesis, so I didn't do anything this week for the senior lab.
+
+Week (4/24~5/3)
+We worked on writing the final report, and we prepared for the final presentation.
