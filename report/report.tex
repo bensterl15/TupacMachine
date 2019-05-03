@@ -27,7 +27,7 @@ Fast prototyping of real-world object has been addressed by many engineers and c
 However, the application of 3D holography still remains a mystery because of its barriers to the entry. Not only the parts required for the technology are too expensive for easy access, but the theory behind the technology requires a sophisticated understanding of physics for reliable holography projections. These traits make holography very interesting, and successful investigation of the technology will add a great value to the scientific community. In this paper, 3D modeling and holographic projections will be explained to familiarize the audience with the concept to enhance further investigations.
 
 \par
-The following sections of the paper are organized as follows. Chapter 2 describes the system pipeline that includes the sampling stage, the digital conversion stage, the transmission stage, and the optical holography projection stage to produce a relatively affordable holographic image of a real-life object. The sampling stage scans a real-world object and stores it digitally on a computer. The digital conversion stage transforms the digitally stored data into a holographic compatible format. The transformed image is then transmitted into the holographic machine called Spatial Light Modulator (SLM). Finally, the optical setup projects the holographic image created by the SLM onto a flat white surface at the projection stage.
+The following sections of the paper are organized as follows. Chapter 2 describes the system pipeline that includes the sampling stage, the digital conversion stage, the transmission stage. The sampling stage scans a real-world object and stores it digitally on a computer. The digital conversion stage transforms the digitally stored data into a holographic compatible format. The transformed image is then transmitted into the holographic machine called Spatial Light Modulator (SLM). The last component, the optical holography projection stage is required to produce a relatively affordable holographic image of a real-life object. This holography section requires additional knowledge to fully understand, so in Chapter 3, details of how holography works and the details of the optical holography projection stage are illustrated.
 
 \newpage
 \section{System Pipeline}
@@ -57,7 +57,7 @@ The WPF application serves two important purposes. Firstly, it provides a user-f
 
 \subsection{Digital Conversion Stage}
 
-The first program that has to run on top of the WPF application transforms the image obtained from the previous sample stage to an SLM compatible format. The SLM that is available for the project is JD9554 spatial light modulator, which is part of Jasper Display's EDKv2 education kit. This modulator is a phase-only modulator, hence the program must convert images into phase masks that contain enough information to reconstruct an image. There are multiple ways of achieving this result, but one of the most efficient and popular approaches for this project is the kinoform method. The kinoform method is based on the observation that when the actual projection occurs, there are random-phase masks applied to the object pattern, making the amplitude of the actual object pattern unimportant. However, according to Poon, the kinoform method without any additional adjustment is very noisy due to its dimension reducing nature \cite{Poon14}. In order to optimize the phase-only holograms, iterative Fourier transform algorithm (IFTA) is used. This algorithm iteratively reduces the error of the reconstructed image by smoothing out the complex amplitude.
+The first program that has to run on top of the WPF application transforms the image obtained from the previous sample stage to an SLM compatible format. The SLM that is available for the project is JD9554 spatial light modulator, which is part of Jasper Display's EDKv2 education kit. This modulator is a phase-only modulator, hence the program must convert images into phase masks that contain enough information to reconstruct an image. There are multiple ways of achieving this result, but one of the most efficient and popular approaches for this project is the kinoform method. The kinoform method is based on the observation that when the actual projection occurs, there are random-phase masks applied to the object pattern, making the amplitude of the actual object pattern unimportant. However, according to Poon, the kinoform method without any additional adjustment is very noisy due to its dimension reducing nature \cite{Poon14}. In order to optimize the phase-only holograms, iterative Fourier transform algorithm (IFTA) is used. This algorithm reduces the error of the reconstructed image by smoothing out the complex amplitude through iterations.
 
 In Figure \ref{fig:RMSE}, the root mean square error (RMSE) curve for the reconstruction based on the IFTA algorithm with increasing iteration is shown. The error compares the average of the squared differences between the pixel values of the original image and the image after the reconstruction using the algorithm. There is a big drop in the error from iteration 1 to 4, and a plateau from 4 to 10, and then the error starts to decay again. Each iteration takes about 0.1 seconds, and for the real-time application, doing only 4 loops of IFTA algorithm would be the most beneficial case, as it delivers a reasonable quality in the shortest time. Fig. \ref{fig:images_recon} contains images regarding the experiment with the algorithm. ``peppers.png'' picture was used for the original image which is shown on the top left, and a corresponding phase masks for the SLM was obtained and shown on the top right. Reconstructed images after 2nd and 20th iterations are shown on the bottom left and the bottom right respectively. It is important to note that the phase mask will be the information that will be transferred to the SLM and used to steer the incoming lights to create the hologram.
 
@@ -75,18 +75,16 @@ In Figure \ref{fig:RMSE}, the root mean square error (RMSE) curve for the recons
     \label{fig:images_recon}
 \end{figure}
 
-% Bookmark
-
 \subsection{Digital Projection Stage}
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{transmission}
     \caption{Transmitting data from Computer to SLM}
-    \label{fig:my_label}
+    \label{fig:transmit}
 \end{figure}
 
-In the most basic form, SLM can be considered as a monitor that displays image obtained from a computer. The SLM model that we use connects to the computer via an HDMI port. For the manipulation of the image shown on the SLM screen, we use slmPy, a python module created to dynamically control the SLM by Sebastien Popoff \cite{slmPy}. The depth and phase information of the image produced from the digital conversion stage can be sent to the SLM as numpy arrays using the slmPy module. The module has a function that retrieves the resolution of the screen, which may be critical for successful projection of the holography. The depth and phase information is then displayed on the reflective surface of the SLM, which simultaneously is shined by a laser that goes through a beam splitter. The laser that reflects off of the surface will contain the depth and phase information of the image, which subsequently will be projected on a 2D screen as holography.
+In the most basic form, SLM can be considered as a monitor that displays a screen obtained from a computer. The specific SLM in use connects to the computer via an HDMI port. For the manipulation of the image shown on the SLM screen, slmPy, a python module created to dynamically control the SLM by Sebastien Popoff \cite{slmPy}, was used. The depth and the phase information of the image produced from the digital conversion stage can be sent to the SLM as numpy arrays using the slmPy module. The module has a function that retrieves the resolution of the screen, which may be critical for the successful projection of the holography. The depth and the phase information is then displayed on the reflective surface of the SLM, which simultaneously is shined by a laser that goes through a beam splitter. The laser that reflects off of the surface will contain the depth and phase information of the image, which subsequently will be projected on a 2D screen as holography. A schmatic of this process is shown in Figure \ref{fig:transmit}.
 
 
 \section{Holography Background}
@@ -111,7 +109,7 @@ The fundamentals of Holography start from Maxwell's Equations. In the most gener
 	\nabla \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}
 \end{equation}
 
-However, we are interested in utilizing these equations to study optics. Since light waves travel in the air, \(\rho\) = 0 and \(\vec{J}\) = \(\vec{0}\) because there is no source charge or current in the air. Here are the equations we obtain setting sources to zero:
+In this project, light waves travel in the air, so there is no source charge or current. This leads to the condition, \(\rho\) = 0 and \(\vec{J}\) = \(\vec{0}\). Here are the equations with no sources:
 
 \begin{equation}
 	\nabla \cdot \vec{D} = 0
@@ -129,7 +127,7 @@ However, we are interested in utilizing these equations to study optics. Since l
 	\nabla \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}
 \end{equation}
 
-Lastly, we want to relate D to E, and B to H. The most general relationships that describes these quantities are:
+Lastly, here are equations that relate D to E, and B to H. The most general relationships that describes these quantities are:
 
 \begin{equation}
 	\vec{D} = \epsilon_{0}\vec{E} + \vec{P}
@@ -139,7 +137,7 @@ Lastly, we want to relate D to E, and B to H. The most general relationships tha
 	\vec{B} = \mu_{0}(\vec{H} + \vec{M})
 \end{equation}
 
-We assume that all the materials we are working in are Linear, Homogeneous, and Isotropic. The last two equations can be simplified to:
+To simplify the problem, all the materials are assumed to be linear, homogeneous, and isotropic. Then, the last two equations can be simplified to:
 
 \begin{equation}
 	\vec{D} = \epsilon\vec{E}
@@ -149,7 +147,7 @@ We assume that all the materials we are working in are Linear, Homogeneous, and 
 	\vec{B} = \mu\vec{H}
 \end{equation}
 
-where \(\epsilon\) = \(\epsilon_{r}\)\(\epsilon_{0}\) and \(\mu\) = \(\mu_{r}\)\(\mu_{0}\) are constants. If we combine the last two equations along with Maxwell's Equations we get:
+where \(\epsilon\) = \(\epsilon_{r}\)\(\epsilon_{0}\) and \(\mu\) = \(\mu_{r}\)\(\mu_{0}\) are constants. The last two equations can be combined along with Maxwell's Equations to get:
 
 \begin{equation}
 	\nabla \cdot \vec{E} = 0
@@ -167,13 +165,13 @@ where \(\epsilon\) = \(\epsilon_{r}\)\(\epsilon_{0}\) and \(\mu\) = \(\mu_{r}\)\
 	\nabla \times \vec{E} = -\mu\frac{\partial H}{\partial t}
 \end{equation}
 
-then we utilize the following identity from vector calculus:
+then the following identity from vector calculus:
 
 \begin{equation}
 	\nabla^2F = \nabla(\nabla \cdot F) - \nabla\times\nabla\times F
 \end{equation}
 
-and get:
+is used to get:
 
 \begin{equation}
 	\nabla^2E - \mu\epsilon\frac{\partial^2 E}{\partial t^2} = 0
@@ -215,20 +213,20 @@ Thus, in \(\psi\) notation, the wave equation turns into:
 
 \subsection{Plane and Spherical Wave Applications}
 
-For a single frequency, we are interested in the complex amplitude, \(\psi_{p}\) we define as follows:
+For a single frequency, signal of interest is the complex amplitude, \(\psi_{p}\) which is defined as follows:
 
 \begin{equation}
 	\psi = \psi_{p}e^{j \omega t}
 \end{equation}
 
-We can think of this quantity like the phasor representation of \(\psi\).
+This can be regarded as the phasor representation of \(\psi\).
 
 The central application of the classical theory is to develop the math behind Fresnel Diffraction. An aperture can be visualized by this diagram:
 \begin{center}
 \includegraphics[width=100mm]{tupac5.png}
 \end{center}
 
-We also define \(k_{0}\) as the wave number in free space, such that
+\(k_{0}\) can be defined as the wave number in free space, such that
 
 \begin{equation}
 	\nabla^2\psi_{p} + k_{0}^2\psi_{p} = 0
@@ -240,7 +238,7 @@ since
 	\lambda f = c \rightarrow k_{0} = \omega/c
 \end{equation}
 
-By considering the incoming plane wave as a superposition of plane waves (like we did with the Multi-Dimensional Fourier Transform), we obtain the result:
+By considering the incoming plane wave as a superposition of plane waves just like the Multi-Dimensional Fourier Transform the case, the following result can be obtained:
 
 \begin{equation}
 	\mathscr{F} \Big\{ \frac{\partial^2 \psi_{p}}{\partial x^2} \Big\} = (-jk_{x})^2\Psi_{p} = -k_{x}^2\Psi_{p}
@@ -258,57 +256,61 @@ where
 	\Psi_{p} = \mathscr{F} \{\psi_{p}\}
 \end{equation}
 
-Finally, if we take the Fourier Transform of both sides of (26) we obtain:
+Finally, if the Fourier Transform of both sides of (26) is taken to obtain:
 
 \begin{equation}
 	\frac{\partial^2\Psi_{p}}{\partial z^2} + k_{0}^{2} \bigg ( 1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_{0}^2} \bigg ) \Psi_{p} = 0
 \end{equation}
 
-While this looks complicated, it is really only an Ordinary Differential Equation of \(\Psi_{p}\) with respect to z. It's solution is:
+While this looks complicated, it is really only an Ordinary Differential Equation of \(\Psi_{p}\) with respect to z. Its solution is:
 
 \begin{equation}
 	\Psi_{p} = \big(\Psi_{p}\vert_{z = 0}\big) exp\Bigg(-jk_{0}z\sqrt{1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_{0}^2}}\Bigg)
 \end{equation}
 
-If we let
+If it is assumed that:
 
 \begin{equation}
 	\Psi_{p0} = \big(\Psi_{p}\vert_{z = 0}\big)
 \end{equation}
 
-Then we can recognize the solution in (32) as a transfer function. We define:
+Then the solution for (32) can be represented as the following transfer function:
 
 \begin{equation}
 	\mathscr{H} = \frac{\Psi_{p}}{\Psi_{p0}} = exp\Bigg(-jk_{0}z\sqrt{1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_{0}^2}}\Bigg)
 \end{equation}
 
-\(\mathscr{H}\) is called the Spatial Frequency Transfer Function of Propagation. It applies to our specific apparatus under consideration and describes Fresnel Diffraction of the output of a plane wave hitting an aperture. \(\psi_{p0}\) is the function controlled by the shape of the aperture; if this equals \(\delta(x,y)\), for example, then the output of the aperture is purely the Spatial Frequency Transfer Function response, because this is equivalent to convolving with a delta in 2-Dimensions, returning \(\mathscr{F}^{-1} \{\mathscr{H}\} \) in the time domain.
+\(\mathscr{H}\) is the Spatial Frequency Transfer Function of Propagation. It applies to the specific apparatus under consideration and describes the Fresnel Diffraction of the output of a plane wave hitting the aperture. \(\psi_{p0}\) is the function controlled by the shape of the aperture; if this equals \(\delta(x,y)\), for example, then the output of the aperture is purely the Spatial Frequency Transfer Function response, because this is equivalent to convolving with a delta in 2-Dimensions, returning \(\mathscr{F}^{-1} \{\mathscr{H}\} \) in the time domain.
 
 \subsubsection{Fresnel Diffraction}
 
-We have \(\mathscr{H}\), but more often than not, the traveling waves make very small angles from the normal direction of the aperture. This allows us to utilize the Paraxial Approximation:
+From the previous section, \(\mathscr{H}\) is obtained, but more often than not, the traveling waves make very small angles from the normal direction of the aperture. Then the Paraxial Approximation can be utilized:
 
 \begin{equation}
 	\sqrt{1 - \frac{k_{x}^2}{k_{0}^2} - \frac{k_{y}^2}{k_0^2}} \approx 1 - \frac{k_{x}^2}{2k_{0}^2} - \frac{k_{y}^2}{2k_{0}^2}
 \end{equation}
 
-Once we apply this approximation, the Spatial Frequency Transfer Function of Propagation simplifies:
+Under this approximation, the Spatial Frequency Transfer Function of Propagation simplifies to:
 
 \begin{equation}
 	\mathscr{H} = exp(-jk_{0}z)exp\bigg[\frac{j(k_{x}^2 + k_{y}^2)z}{2k_{0}}\bigg]
 \end{equation}
 
-In this specific example, we are using the Two Dimensional Fourier Transform (z remains constant):
+In this specific example, the Two Dimensional Fourier Transform (z remains constant):
 
 \begin{equation}
 	\Psi_{p}(k_{x},k_{y},z) = \iint \limits_{R^2}^{} \psi_{p}(x,y,z)e^{-jk_{x}x - jk_{y}} \,dx\,dy
 \end{equation}
 
-Thus we get the Spatial Impulse Response, h:
+can be used to get the Spatial Impulse Response, h:
 
 \begin{equation}
 	h(x,y,z) = \mathscr{F}^{-1}\{\mathscr{H}\} = \frac{jk_{0}}{2\pi z} exp(-jk_{0}z)exp\bigg[\frac{-jk_{0}(x^2 + y^2)}{2z}\bigg]
 \end{equation}
+
+
+%Bookmark
+
 
 \subsection{Holography Fundamentals}
 
