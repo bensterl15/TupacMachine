@@ -27,7 +27,7 @@ Fast prototyping of real-world object has been addressed by many engineers and c
 However, the application of 3D holography still remains a mystery because of its barriers to the entry. Not only the parts required for the technology are too expensive for easy access, but the theory behind the technology requires a sophisticated understanding of physics for reliable holography projections. These traits make holography very interesting, and successful investigation of the technology will add a great value to the scientific community. In this paper, 3D modeling and holographic projections will be explained to familiarize the audience with the concept to enhance further investigations.
 
 \par
-The following sections of the paper are organized as follows. Chapter 2 describes the system pipeline that includes the sampling stage, the digital conversion stage, the transmission stage. The sampling stage scans a real-world object and stores it digitally on a computer. The digital conversion stage transforms the digitally stored data into a holographic compatible format. The transformed image is then transmitted into the holographic machine called Spatial Light Modulator (SLM). The last component, the optical holography projection stage is required to produce a relatively affordable holographic image of a real-life object. This holography section requires additional knowledge to fully understand, so in Chapter 3, details of how holography works and the details of the optical holography projection stage are illustrated.
+The following sections of the paper are organized as follows. Chapter 2 describes the system pipeline that includes the sampling stage, the digital conversion stage, the transmission stage. The sampling stage scans a real-world object and stores it digitally on a computer. The digital conversion stage transforms the digitally stored data into a holographic compatible format. The transformed image is then transmitted into the holographic machine called Spatial Light Modulator (SLM). The last component, the optical holography projection stage is required to produce a relatively affordable holographic image of a real-life object. This holography section requires additional knowledge to fully understand, so in Chapter 3, details of how holography works and the details of the optical holography projection stage are illustrated. In Chapter 4, the project setup is explained including the list of materials and the physical set up. In Chapter 5, background information on stereoscopic pairs, which imbue the 3D effect is given. Then, in Chapter 6, the final status of the project and the future goals are described.
 
 \newpage
 \section{System Pipeline}
@@ -88,6 +88,8 @@ In the most basic form, SLM can be considered as a monitor that displays a scree
 
 
 \section{Holography Background}
+
+In this section, fundamentals of waves and holography are presented to help the readers understand the science and engineering behind this project.
 
 \subsection{Wave Fundamentals}
 
@@ -308,10 +310,6 @@ can be used to get the Spatial Impulse Response, h:
 	h(x,y,z) = \mathscr{F}^{-1}\{\mathscr{H}\} = \frac{jk_{0}}{2\pi z} exp(-jk_{0}z)exp\bigg[\frac{-jk_{0}(x^2 + y^2)}{2z}\bigg]
 \end{equation}
 
-
-%Bookmark
-
-
 \subsection{Holography Fundamentals}
 
 The simplest holography setup, and a good starting point to understanding the subject, is this collection of Fresnel Plates:
@@ -320,10 +318,7 @@ The simplest holography setup, and a good starting point to understanding the su
 	\includegraphics[width=100mm]{tupac7.png}
 \end{center}
 
-First, we use a collimated laser so that the direction of propagation of each wave is parallel.
-The first beam splitter (BS1) divides the laser in two paths of equal power, one will be used as a reference and the other contains the object information.
-We recombine the waves at the second beam splitter (BS2). If the object wave is denoted as \(\psi_{0}\) and the reference wave is \(\psi_{r}\).
-Since our aperture is a pinhole, our input function (referencing the Spatial Frequency Transfer Function) is \(\delta(x,y)\), thus:
+First, a collimated laser is used so that the direction of propagation of each wave is parallel. The first beam splitter (BS1) divides the laser in two paths of equal power. One path will be used as a reference and the other path will contain the object information. The two paths recombine at the second beam splitter (BS2). If the object wave is denoted as \(\psi_{0}\) and the reference wave is \(\psi_{r}\), and if the aperture is assumed to be a pinhole, and using \(\delta(x,y)\) as the input function that references the Spatial Frequency Transfer Function:
 
 \begin{equation}
 	\begin{multlined}
@@ -332,7 +327,7 @@ Since our aperture is a pinhole, our input function (referencing the Spatial Fre
 	\end{multlined}
 \end{equation}
 
-and \(\psi_{r}\) is just a plane wave propagating in the \(z_{0}\) direction:
+If \(\psi_{r}\) is just a plane wave propagating in the \(z_{0}\) direction:
 
 \begin{equation}
 	\psi_{r} = a\,exp(-jk_{0}z_{0})
@@ -345,7 +340,7 @@ Thus we define transmittance, t(x,y) as:
 	t(x,y) = |\psi_{p}(x,y)|^2
 \end{equation}
 
-For our specific case:
+For this project:
 
 \begin{equation}
 	\begin{multlined}
@@ -358,14 +353,14 @@ For our specific case:
 	\end{multlined}
 \end{equation}
 
-We can recognize the sine function inside the last line:
+The sine function inside the last line can be recognized as:
 
 \begin{equation}
 	t(x,y) = a^2 + \big(\frac{k_{0}}{2\pi z_{0}}\big)^2 +
 	\frac{ak_{0}}{\pi z_{0}}sin\bigg[\frac{k_{0}}{2z_{0}}(x^2 + y^2)\bigg]
 \end{equation}
 
-And thus, we can observe the diffraction pattern of this aperture as follows:
+Hence the diffraction pattern of this aperture will look like:
 
 \begin{center}
 \includegraphics[width=50mm]{tupac8.png}
@@ -385,21 +380,20 @@ This result is more significant in differential form:
 	d \bigg( \frac{k_{0}(x^2 + y^2)}{2z_{0}} \bigg) = \frac{k_{0}}{z_{0}}(xdx + ydy)
 \end{equation}
 
-The frequency increases linearly in any direction of our choosing.
+The frequency increases linearly in any arbitrary direction.
 It is important to note that an observer at a distance will see the following
-\(\psi_{rec}\) instead because they are at a distance, z, away from the
-recording medium.
+\(\psi_{rec}\) instead because the observer is at a distance, z, away from the
+recording medium:
 
 \begin{equation}
 	\psi_{p} = \psi_{rec}t(x,y)*h(x,y,z)
 \end{equation}
 
-Where \(\psi_{rec}\) is the field on the projecting surface.
+where \(\psi_{rec}\) is the field on the projecting surface.
 
 \subsubsection{3D Holographic Imaging}
 
-In this next section, we wish to identify the effects of different co-planar displacements
-(x and y) and different distances from the medium (z). We can visualize this problem with the following diagrams:
+In this next section, the effects of different co-planar displacements (x and y) and different distances from the medium (z) are identified. The problem can be visualized using the following diagrams:
 
 \begin{center}
 \includegraphics[width=100mm]{tupac11.png}
@@ -417,10 +411,7 @@ The following identity under convolution helps to simplify the upcoming calculat
 	\delta(x - \alpha,y - \beta)*h(x,y,z) = \delta(x,y)*h(x - \alpha,y - \beta,z)
 \end{equation}
 
-The physical significance of this identity is that being off-center from the pinhole
-aperture is equivalent to translating the center Spatial Impulse Response: a very important property.
-
-Thus, we can find the three relevant complex fields as follows:
+The physical significance of this identity is that being off-center from the pinhole aperture is equivalent to translating the center Spatial Impulse Response. Thus, the three relevant complex fields can be identified as follows:
 
 \begin{equation}
 	\psi_{p1} = \delta(x - \frac{h}{2},y)*h(x,y,R) = h(x - \frac{h}{2},y,R)
@@ -435,7 +426,7 @@ Thus, we can find the three relevant complex fields as follows:
 	\psi_{pR} = \delta(x + a,y)*h(x,y,l_{1}) = h(x + a,y,l_{1})
 \end{equation}
 
-Now, the intensity can be found as follows (by definition)
+Now, the intensity can be found as follows by definition:
 
 \begin{equation}
 	\begin{multlined}
@@ -445,28 +436,27 @@ Now, the intensity can be found as follows (by definition)
 \end{equation}
 
 Each \(\psi_{pi}\psi_{pi}^*\) for \(i \in \mathbb{Z}^+\) is not very interesting, because the wave parts cancel and they are just zeroth order waves.
-Also, note \(\psi_{pi}\psi_{pj}^* = (\psi_{pj}\psi_{pi}^*)^* \), so we only need three transmittances to determine the intensity
+Also, note \(\psi_{pi}\psi_{pj}^* = (\psi_{pj}\psi_{pi}^*)^* \), so only three transmittances are needed to determine the intensity
 
-If we take one transmittance:
+If only one transmittance is taken:
 
 \begin{equation}
 	t_{rel1}(x,y) = \psi_{p1}^*\psi_{pR}(x,y) = exp(\frac{jk_{0}}{2R}[(x - \frac{h}{2})^2 + y^2])exp(\frac{-jk_{0}}{2R}[(x + a)^2 + y^2])
 \end{equation}
 
-and then solve for the reflected \(\psi\), we get:
+and then solved for the reflected \(\psi\), the following equation is obtained:
 
 \begin{equation}
 	\psi_{pr}(x,y)t_{rel1}(x,y)*h(x,y,z)
 \end{equation}
 
-Where:
+where:
 \begin{equation}
 	\psi_{pr} = \delta(x - b,y)*h(x,y,l_{2}) = h(x - b,y,l_{2})
 \end{equation}
 
-This must be true because INDEPENDENT of the points 1 and 2, the field is being
-affected by a plane wave coming from the reconstruction point. Thus, if we want to
-approximate the reflected wave, it is given by:
+This must be true because independent of the points 1 and 2, the field is being
+affected by a plane wave coming from the reconstruction point. Thus the approximation of the reflected wave is given by:
 
 \begin{equation}
 	\begin{multlined}
@@ -477,23 +467,20 @@ approximate the reflected wave, it is given by:
 	\end{multlined}
 \end{equation}
 
-At this point in the derivation, we must remember the definition of 2D convolution we are working with:
+2D convolution is defined as follows:
 
 \begin{equation}
 	\big(f_{1}*f_{2}\big)(x,y) = \iint \limits_{R^2}^{} f_{1}(x',y')f_{2}(x - x',y - y') \,dx'\,dy'
 \end{equation}
 
-By far the most confusing part of this derivation: the coefficients in front of \(x'^2\) and \(y'^2\) must equal zero because the convolution in (55) must evaluate to a \(\delta\) function.
-Think of it this way: If it did not evaluate to a \(\delta\), this would imply the field has multiple non-zero space values for a single image point; we do not allow a single point
-to spread into a cloud, this would violate our empirical observations.
-
-Thus by inspection, we derive the equation:
+The coefficients in front of \(x'^2\) and \(y'^2\) must equal zero because the convolution in (55) must evaluate to a \(\delta\) function.
+As if it did not evaluate to a \(\delta\), this would imply the field has multiple non-zero space values for a single image point. Single points do not spread into clouds, as this would violate empirical observations. Thus by inspection, the following equation can be derived:
 
 \begin{equation}
 	\frac{1}{R} - \frac{1}{l_{1}} - \frac{1}{l_{2}} - \frac{1}{z_{r1}} = 0
 \end{equation}
 
-Through very tedious math, we get that:
+Through some algebra following equation can be obtained:
 
 \begin{equation}
 	\psi_{ref} \propto \delta \bigg[ x + z_{r1}\bigg(
@@ -512,8 +499,6 @@ Similarly for the second point:
 \end{equation}
 
 These equations are the starting point to understanding magnification and translation distortion of images.
-For the most part, we are simplifying the problem of displaying an image to
-effects between two points.
 
 \subsubsection{Holographic Magnification}
 
@@ -523,15 +508,15 @@ In this context, magnification is defined as:
 	M_{Long}^r = \frac{z_{r2} - z_{r1}}{d}
 \end{equation}
 
-This is literally a ratio of the hologram depth over the real depth between these two points.
+This is the ratio of the hologram depth over the real depth between these two points.
 
-We substitute from equation (57) and (59) (Assuming: R \(\gg\) d)
+From equation (57) and (59) (Assuming: R \(\gg\) d), substitution can be made to yield the following equation.
 
 \begin{equation}
 	M_{Long}^r = \bigg(\frac{l_{1}l_{2}}{l_{1}l_{2} - Rl_{1} - Rl_{2}}\bigg)^2
 \end{equation}
 
-We define lateral magnification as the difference in x virtual positions over the real x distance (h). We use equations (58) and (60):
+The lateral magnification is defined as the difference in x virtual positions over the real x distance (h). Using equations (58) and (60), the following equation can be obtained assuming \(R \gg d\):
 
 \begin{equation}
 	\begin{multlined}
@@ -540,15 +525,13 @@ We define lateral magnification as the difference in x virtual positions over th
 	\end{multlined}
 \end{equation}
 
-assuming \(R \gg d\)
-
-If we align the points in a special way such that:
+If the points are aligned in a special way such that:
 
 \begin{equation}
 	\frac{b}{l_{2}} - \frac{a}{l_{1}} = 0
 \end{equation}
 
-We get the fascinating result that
+the following simplification can be made:
 
 \begin{equation}
 	M_{Long}^r = (M_{Lat}^r)^2
@@ -556,7 +539,7 @@ We get the fascinating result that
 
 \subsubsection{Holographic Translation}
 
-The equation for Lateral Magnification gives us the distortion between two holographic points if (64) is not met:
+The equation for lateral magnification gives the distortion between two holographic points if (64) is not met:
 
 \begin{equation}
 	\Delta x = x_{1} - x_{2} = (z_{r2} - z_{r1})\bigg(\frac{b}{l_{2}} - \frac{a}{l_{1}}\bigg)
@@ -570,9 +553,7 @@ This figure shows how an artificial \(\Delta x\) comes about from erroneous orie
 
 \subsubsection{Off-Axis Holography}
 
-The standard holography setup we have studied is called on-axis holography.
-The only problem with this approach is that we get twin images when we expand
-the full equation for transmittance: (the conjugation terms make the twin images)
+The standard holography setup explained so far is called on-axis holography. The only problem with this approach is that twin images are obtained when the full equation for transmittance is used due to the conjugation terms.
 
 \begin{equation}
 	t(x,y) = |\psi_{r} + \psi_{o}|^2 = |\psi_{r}|^2 + |\psi_{o}|^2
@@ -586,8 +567,7 @@ light at an angle \(\theta\)
 \includegraphics[width=100mm]{tupac9.png}
 \end{center}
 
-We can redo the logic of equation (67) as follows (the extra phase factor comes
-out from the extra distance the reference wave needs to travel)
+The logic of equation (67) can be restated as follows (the extra phase factor comes out from the extra distance the reference wave needs to travel)
 
 \begin{equation}
 	\begin{multlined}
@@ -598,13 +578,9 @@ out from the extra distance the reference wave needs to travel)
 \end{equation}
 
 The phase getting scaled by \(xsin(\theta)\) makes sense because at \(\theta = \pi/2\), the extra distance turns into just x, and at \(\theta = 0\)
-the reference wave is already in phase with the object wave, so no adjustment would be necessary. Just like the earlier section,
-we recognize the cosine identity in the top of the last equation (the \(\phi\) is any extra phase that came from the \(\psi_{o}\) \(\psi_{r}\) pair not counting
-the angle \(\theta\)). Specifically, \(f_{x} = \frac{sin(\theta)}{\lambda}\).
+the reference wave is already in phase with the object wave, so no adjustment would be necessary. Just like the earlier section, the cosine identity in the top of the last equation (the \(\phi\) can be recongnized as any extra phase that came from the \(\psi_{o}\) \(\psi_{r}\) pair not counting the angle \(\theta\)), specifically, \(f_{x} = \frac{sin(\theta)}{\lambda}\).
 
-Finally, we need to factor in the reconstruction light. If it has the same magnitude and direction
-as the reference light, we can represent it with the following wave function (which
-later gets convolved with h(x,y,z) to render the real image):
+Finally, the reconstruction light can be factored in. If it has the same magnitude and direction as the reference light, the reconstruction light can be represented with the following wave equation, which later gets convolved with h(x,y,z) to render the real image:
 
 \begin{equation}
 	\begin{multlined}
@@ -618,13 +594,12 @@ later gets convolved with h(x,y,z) to render the real image):
 \includegraphics[width=100mm]{tupac14.png}
 \end{center}
 
-Upon closer examination, we can regard \(k_{0}sin(\theta)\) our carrier frequency (in radians). Since \(\psi_{r}\) is a reference light, it is entirely DC, so the first term
-in (69) is \(\Psi_{1}\), the carrier.
+Upon closer examination, \(k_{0}sin(\theta)\) can be regarded as the carrier frequency (in radians). Since \(\psi_{r}\) is a reference light, it is entirely DC, so the first term in (69) is \(\Psi_{1}\), the carrier.
 The second term in (69) is \(\Psi_{2}\) because the phasor convolves the magnitude-squared of the object wave out to the carrier frequency.
 The third (and most important) term, \(\Psi_{3}\) is the only one that is not modulated by the carrier (it gets cancels out by the algebra).
 This is the only term that is visible to the human eye!
 
-By inspection, the minimal angle \(\theta\) we need to prevent aliasing can be given by:
+By inspection, the minimal angle \(\theta\) that is needed to prevent aliasing can be given by:
 
 \begin{equation}
 	k_{0}sin(\theta) \geq \frac{3B}{2}
@@ -636,15 +611,16 @@ By inspection, the minimal angle \(\theta\) we need to prevent aliasing can be g
 \includegraphics[width=100mm]{tupac10.png}
 \end{center}
 
-This is a picture of our Hollistic project. the software component is on top as described before. We start on the bottom left corner with a coherent laser source; it is important that the laser is coherent otherwise random phase artifacts would be introduced from the start further degrading the quality of the final hologram. We next use a pinhole apparatus to filter out the higher order noise artifacts that might have been introduced by the laser and surrounding distance; this also centers the laser by converting the incoming plane wave of the laser into a spherical wave (which turns into a plane wave again after applying the Paraxial Approximation). We also put a polarizer in front of the pinhole so that the light incoming into the SLM has the anticipated linear polarization that it expects (the wrong polarization may not reflect off the SLM as expected).
+This is a picture of the project. The software component is on the top as described before. The system starts on the bottom left corner with a coherent laser source. The laser should be coherent to reduce random phase artifacts which degrade the quality of the final hologram. Then the pinhole apparatus can be used to filter out the higher order noise artifacts that might be introduced by the laser. The pinhole apparatus centers the laser by converting the incoming plane waves of the laser into a spherical wave, which turns into a plane wave again after applying the paraxial approximation. By experiment, the effect of the pinhole apparatus was not impactful to the final projection, hence this pinhole portion can be skipped. However, in place of the pinhole apparatus, collimating lense can be placed to spread the narrow laser beam so that the beam can be centered and widened enough to cover the whole SLM. After shaping the beam to an appropriate size, a polarizer is placed so that the light going into the SLM has the anticipated linear polarization.
 
-We put a beam splitter in front of the polarizer to send half of the incoming beam onto the screen and half to the SLM. The SLM is electronically steered by the incoming video signal, and has 8 bit precision in the phase of the wave that it reflects. An important note is that the wave reflected off the SLM occupies the same physical space as the incoming wave: this works due to Transmission Line Theory (the two waves do not interfere with one another; they are governed only by Maxwell's Equations). Finally, the reflected wave goes into the beam splitter and sums with the incident light as both waves travel to the recording medium. This is how our hologram appears on the screen.
+A beam splitter is placed in between the polarizer and the spatial light modulator (SLM) to send half of the incoming beam to the SLM, and the other half to the screen. The SLM is electronically steered by the incoming video signal. The SLM has 8 bit precision in the phase of the wave that it reflects. An important note is that the wave reflected off the SLM needs to occupy the same physical space as the incoming wave. Finally, the reflected wave goes into the beam splitter and sums with the incident light as both waves travel to the recording medium.
 
-\section{List of Materials}
+\subsection{List of Materials}
+The following components are used to build the system: a JD9554 Spatial Light Modulator, a P20S 20 micro-meter pinhole from Thorlabs, a BS013 Cube Beam Splitter, AL2520-A collimated lenses, C560TME-B Aspheric Lens, an LPVISE200-A Polarizer, and a high powered laser.
 
-We are using a JD9554 Spatial Light Modulator, a P20S 20 micro-meter pinhole from Thorlabs, a BS013 Cube Beam Splitter, AL2520-A collimated lenses, C560TME-B Aspheric Lens, an LPVISE200-A Polarizer, and a high powered laser
+# bookmark
 
-\section{Physical Setup}
+\subsection{Physical Setup}
 At the very end of the first semester, we recieved all the parts needed to finish the SLM setup. The problem was that we knew the order in which to place the parts, but we didn't know what precision we needed to get the hologram working. In addition, the parts we had ordered did not fit very well into the holders that came with the optical board, we did not know if our laser was powerful enough to generate the hologram, and we could barely get any light to come out of our pinhole (it is a very delicate component).
 
 In the meantime, we decided to ask Professor Wolf for advice (he has the most Holography experience). [TODO: David]. The most important take-away we learned was that our 10mW laser was powerful enough to produce the hologram we wanted.
