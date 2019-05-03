@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 \title{Senior Projects Holography Report}
-\date{2018-12-02}
+\date{\today}
 \author{Ben Sterling, Dongkyu Kim, Junbum Kim, David Kim}
 
 \usepackage{amsmath}
@@ -11,7 +11,7 @@
 \usepackage{courier}
 \usepackage[pdftex]{graphicx}
 \usepackage{xfrac}
-\renewcommand{\baselinestretch}{1.2} 
+\renewcommand{\baselinestretch}{1.2}
 
 
 \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
@@ -21,9 +21,10 @@
 
 \section{Introduction}
 \qquad
-Fast prototyping of real-world object has been addressed by many engineers and companies over the past few decades. For instance, 3D printing has especially gained much attention for its practicality. It has improved the time required to produce a visible and tangible product in a matter of few hours. On the other end of the spectrum, holography has been attracting attention due to its potentials. The technology, compared to 3D printing, can produce less tangible but faster results. Moreover, holography-based 3D printing is much faster, i.e. matter of seconds instead of hours, than the traditional 3D printer that builds one microscopic layer at a time.\cite{Shusteffeaao5496} These characteristics make holography technology a crucial tool in 3D modelling on its own and also in context of 3D printing.
+Fast prototyping of real-world object has been addressed by many engineers and companies over the past few decades. For instance, 3D printing has especially gained much attention for its practicality. 3D printing has significantly decreased the time required to produce visible and tangible products to a few hours from weeks. On the other end of the spectrum, holography has been attracting attention due to its potentials. This technology, compared to 3D printing, can produce more interactive results at the cost of tangibility. Moreover, holography-based 3D printing is much faster than the traditional 3D printer that builds one microscopic layer at a time, hence reducing the time required to seconds instead of hours,  \cite{Shusteffeaao5496}. These characteristics make holography technology a crucial tool in 3D modeling on its own and also in the context of 3D printing.
 
-However, the application still remains a mystery because of its barriers to entry - not only the parts required for the technology are too expensive for easy access, but the theory behind it requires sophisticated understanding of physics. To make things worse, unlike 3D printing, the theory is essential in crafting a reliable holography projection. We believe these traits make holography an adequate topic for our senior project; it is very interesting, and successful investigation of the technology will be a great influence on the scientific community. In this paper, we will be exploring 3D modelling and holographic projection to demystify and familiarize the audience with the concept of holography so that more people could investigate and invest in the technology.
+However, the application of 3D holography still remains a mystery because of its barriers to the entry. Not only the parts required for the technology are too expensive for easy access, but the theory behind the technology requires a sophisticated understanding of physics for reliable holography projections. These traits make holography very interesting, and successful investigation of the technology will add a great value to the scientific community. In this paper, 3D modeling and holographic projections will be explained to familiarize the audience with the concept to enhance further investigations.
+
 \par
 The following sections of the paper are organized by discussing the experimental procedures to produce a relatively affordable holographic image of a real-life object. The main sections of the paper include the sampling stage, digital conversion stage, transmission stage, and optical holography projection stage. The sampling stage scans a real-world object and stores it digitally on a computer. The digital conversion stage transforms the digitally stored data into a holographic compatible format. The transformed image is then transmitted into the holographic machine called Source Light Modulator (SLM). Finally, the optical setup projects the holographic image created by the SLM onto a flat white surface at the projection stage. Each of the stages is explained in more detail in the following sections of the paper.
 
@@ -37,7 +38,7 @@ The following sections of the paper are organized by discussing the experimental
     \label{fig:my_label}
 \end{figure}
 \qquad
-The first stage of the project is sampling a real-world object and storing it into a computer digitally. Since the perception of depth is a crucial part of the holographic projection, it is imperative to sample both the shape and depth of a real-time object. In this experiment, Xbox Kinect for Windows Development was used to sample objects. Kinect is originally developed as a module for Xbox to track human motions for entertainment purposes. It can capture an object from a single viewpoint and reconstruct 3D models based on it because it has an ordinary camera, a depth sensor, and an infrared sensor. 
+The first stage of the project is sampling a real-world object and storing it into a computer digitally. Since the perception of depth is a crucial part of the holographic projection, it is imperative to sample both the shape and depth of a real-time object. In this experiment, Xbox Kinect for Windows Development was used to sample objects. Kinect is originally developed as a module for Xbox to track human motions for entertainment purposes. It can capture an object from a single viewpoint and reconstruct 3D models based on it because it has an ordinary camera, a depth sensor, and an infrared sensor.
 
 Windows Presentation Foundation (WPF) application was built to communicate the hardware with software. The program was developed using C\# which is the natural platform for the machine. Kinect Studio Version 2.0 and Kinect Software Development Kits were installed to develop the program. Specifically, the KinectFusionExplorer module proved practical for the purpose. The module allows 3D modelling from a single photo shoot from one angle by reconstructing picture from the ordinary camera, infrared sensors, and depth sensors. Although the technology cannot provide a 360-degree capture of the sample, it does reconstruct the sides of the image with only small depth errors. The rotation of the model allows users to see the sides of the real object within the computer. Note that USB 3.0 is required to reproduce the program, as the Kinect hardware requires the extra bandwidth for communication of data. Features such as shape and depth collected from the Kinect is stored in the computer to later be transformed. More details in what information needs to be encrypted into holographic image remains a subject of investigation at this point. Refer to Figure 2 for a 3D sample constructed using a depth sensor (top right) and an infrared sensor (bottom right).
 
@@ -48,7 +49,7 @@ Windows Presentation Foundation (WPF) application was built to communicate the h
     \label{fig:my_label}
 \end{figure}
 
-The WPF application serves two important purposes. Firstly, it provides a user-friendly interface so that the users can use the application without much difficulty. The users can select the thresholds at which they want to set their foreground and background of the sampled data. These would allow users to produce a holographic image without having to know the details of the functionality. Easily speaking, it serves as a black box for the end users. Secondly, it allows the integration of different programming modules that we need for the program. Specifically, the data extracted from the Kinect needs to be converted into a proper format, and be sent to the SLM. There are existing libraries to transmit data to SLM in python. C\# WPF applications allow users to execute python script on top of the application. To summarize, the application serves as an easy way to integrate software parts while hiding unnecessary details from the end users. 
+The WPF application serves two important purposes. Firstly, it provides a user-friendly interface so that the users can use the application without much difficulty. The users can select the thresholds at which they want to set their foreground and background of the sampled data. These would allow users to produce a holographic image without having to know the details of the functionality. Easily speaking, it serves as a black box for the end users. Secondly, it allows the integration of different programming modules that we need for the program. Specifically, the data extracted from the Kinect needs to be converted into a proper format, and be sent to the SLM. There are existing libraries to transmit data to SLM in python. C\# WPF applications allow users to execute python script on top of the application. To summarize, the application serves as an easy way to integrate software parts while hiding unnecessary details from the end users.
 \newpage
 \section{Digital Conversion Stage}
 
@@ -188,7 +189,7 @@ The Multi-Dimensional Fourier Transform is defined as follows:
 and a plane wave is defined as follows:
 
 \begin{equation}
-	\vec{E} = \vec{E_{0}}e^{j \omega t - j\vec{k} \cdot \vec{x}} 
+	\vec{E} = \vec{E_{0}}e^{j \omega t - j\vec{k} \cdot \vec{x}}
 \end{equation}
 
 Because E and H field are functions of x, y, z, and time, it is possible to span all E and H fields with a superposition of plane waves. This motivates the notation:
@@ -248,7 +249,7 @@ and
 	\mathscr{F} \Big\{ \frac{\partial^2 \psi_{p}}{\partial y^2} \Big\} = (-jk_{y})^2\Psi_{p} = -k_{y}^2\Psi_{p}
 \end{equation}
 
-where 
+where
 
 \begin{equation}
 	\Psi_{p} = \mathscr{F} \{\psi_{p}\}
@@ -311,7 +312,7 @@ Thus we get the Spatial Impulse Response, h:
 The simplest holography setup, and a good starting point to understanding the subject, is this collection of Fresnel Plates:
 
 \begin{center}
-	\includegraphics[width=100mm]{tupac7.png}	
+	\includegraphics[width=100mm]{tupac7.png}
 \end{center}
 
 First, we use a collimated laser so that the direction of propagation of each wave is parallel.
@@ -321,7 +322,7 @@ Since our aperture is a pinhole, our input function (referencing the Spatial Fre
 
 \begin{equation}
 	\begin{multlined}
-		\psi_{0}(x,y,z_{0}) = \delta(x,y) * h(x,y,z_{0}) = h(x,y,z_{0}) 
+		\psi_{0}(x,y,z_{0}) = \delta(x,y) * h(x,y,z_{0}) = h(x,y,z_{0})
 		\\= exp(-jk_{0}z_{0})\frac{jk_{0}}{2\pi z_{0}}exp\bigg[\frac{-jk_{0}(x^2 + y^2)^2}{2z_{0}}\bigg]
 	\end{multlined}
 \end{equation}
@@ -346,7 +347,7 @@ For our specific case:
 	t(x,y) = |\psi_{o}(x,y) + \psi_{r}(x,y)|^2
 	=(\psi_{o} + \psi_{r})(\psi_{o} + \psi_{r})^*
 	\\= a^2 + (\frac{k_{0}^2}{2\pi z_{0}})^2 - \frac{-jk_{0}a}{2\pi z_{0}}
-	exp\bigg[ \frac{jk_{0}}{2z_{0}}(x^2 + y^2) \bigg] + 
+	exp\bigg[ \frac{jk_{0}}{2z_{0}}(x^2 + y^2) \bigg] +
 	\\\frac{-jk_{0}a}{2\pi z_{0}}
 	\exp\bigg[\frac{-jk_{0}}{2z_{0}}(x^2 + y^2) \bigg]
 	\end{multlined}
@@ -355,7 +356,7 @@ For our specific case:
 We can recognize the sine function inside the last line:
 
 \begin{equation}
-	t(x,y) = a^2 + \big(\frac{k_{0}}{2\pi z_{0}}\big)^2 + 
+	t(x,y) = a^2 + \big(\frac{k_{0}}{2\pi z_{0}}\big)^2 +
 	\frac{ak_{0}}{\pi z_{0}}sin\bigg[\frac{k_{0}}{2z_{0}}(x^2 + y^2)\bigg]
 \end{equation}
 
@@ -380,7 +381,7 @@ This result is more significant in differential form:
 \end{equation}
 
 The frequency increases linearly in any direction of our choosing.
-It is important to note that an observer at a distance will see the following 
+It is important to note that an observer at a distance will see the following
 \(\psi_{rec}\) instead because they are at a distance, z, away from the
 recording medium.
 
@@ -392,7 +393,7 @@ Where \(\psi_{rec}\) is the field on the projecting surface.
 
 \subsubsection{3D Holographic Imaging}
 
-In this next section, we wish to identify the effects of different co-planar displacements 
+In this next section, we wish to identify the effects of different co-planar displacements
 (x and y) and different distances from the medium (z). We can visualize this problem with the following diagrams:
 
 \begin{center}
@@ -421,7 +422,7 @@ Thus, we can find the three relevant complex fields as follows:
 \end{equation}
 
 \begin{equation}
-	\psi_{p2} = \delta(x + \frac{h}{2},y)*h(x,y,R + d) = 
+	\psi_{p2} = \delta(x + \frac{h}{2},y)*h(x,y,R + d) =
 	h(x - \frac{h}{2},y,R + d)
 \end{equation}
 
@@ -459,7 +460,7 @@ Where:
 \end{equation}
 
 This must be true because INDEPENDENT of the points 1 and 2, the field is being
-affected by a plane wave coming from the reconstruction point. Thus, if we want to 
+affected by a plane wave coming from the reconstruction point. Thus, if we want to
 approximate the reflected wave, it is given by:
 
 \begin{equation}
@@ -478,7 +479,7 @@ At this point in the derivation, we must remember the definition of 2D convoluti
 \end{equation}
 
 By far the most confusing part of this derivation: the coefficients in front of \(x'^2\) and \(y'^2\) must equal zero because the convolution in (55) must evaluate to a \(\delta\) function.
-Think of it this way: If it did not evaluate to a \(\delta\), this would imply the field has multiple non-zero space values for a single image point; we do not allow a single point 
+Think of it this way: If it did not evaluate to a \(\delta\), this would imply the field has multiple non-zero space values for a single image point; we do not allow a single point
 to spread into a cloud, this would violate our empirical observations.
 
 Thus by inspection, we derive the equation:
@@ -490,7 +491,7 @@ Thus by inspection, we derive the equation:
 Through very tedious math, we get that:
 
 \begin{equation}
-	\psi_{ref} \propto \delta \bigg[ x + z_{r1}\bigg( 
+	\psi_{ref} \propto \delta \bigg[ x + z_{r1}\bigg(
 	\frac{b}{l_{2}} - \frac{h}{2R} - \frac{a}{l_{1}}\bigg),y\bigg]
 \end{equation}
 
@@ -506,7 +507,7 @@ Similarly for the second point:
 \end{equation}
 
 These equations are the starting point to understanding magnification and translation distortion of images.
-For the most part, we are simplifying the problem of displaying an image to 
+For the most part, we are simplifying the problem of displaying an image to
 effects between two points.
 
 \subsubsection{Holographic Magnification}
@@ -615,7 +616,7 @@ later gets convolved with h(x,y,z) to render the real image):
 Upon closer examination, we can regard \(k_{0}sin(\theta)\) our carrier frequency (in radians). Since \(\psi_{r}\) is a reference light, it is entirely DC, so the first term
 in (69) is \(\Psi_{1}\), the carrier.
 The second term in (69) is \(\Psi_{2}\) because the phasor convolves the magnitude-squared of the object wave out to the carrier frequency.
-The third (and most important) term, \(\Psi_{3}\) is the only one that is not modulated by the carrier (it gets cancels out by the algebra). 
+The third (and most important) term, \(\Psi_{3}\) is the only one that is not modulated by the carrier (it gets cancels out by the algebra).
 This is the only term that is visible to the human eye!
 
 By inspection, the minimal angle \(\theta\) we need to prevent aliasing can be given by:
@@ -732,14 +733,14 @@ Once again, the focusing technique can be used to visualize a 3D pair of the gog
 \section{Status}
 Our progress of the project so far was greatly hindered by materials that we need not arriving due to the Canada Post strike. However, we have started setting up the system at the lab, and we feel confident that the hologram system would work with our knowledge. On the software side of the project, the program that converts images into inputs appropriate for the spatial light modulator (SLM) is implemented in two different algorithms. In addition, the Windows Presentation Foundation application that guides the transportation of the Microsoft Kinect images or videos into the SLM is implemented and waiting for testing.
 
-It has been tested that the digital projection stage of the SLM assisted by slmPy module works flawlessly on a computer monitor. The desired image in the form of numpy array is automatically resized to fit the entire screen, and both still image and animation are displayed without any issue. However, additional testing on the SLM is yet to be done as the setup was not completed for projection. 
+It has been tested that the digital projection stage of the SLM assisted by slmPy module works flawlessly on a computer monitor. The desired image in the form of numpy array is automatically resized to fit the entire screen, and both still image and animation are displayed without any issue. However, additional testing on the SLM is yet to be done as the setup was not completed for projection.
 
 \section{Future goals}
 For the upcoming semester, as all the materials have finally arrived, we will be building the holography system, and starting the necessary tests to pick the optimal algorithms for image conversion, resolutions, and sample methods. We hope to be done with the building of the system and getting a complete hologram image by late February so that we can concentrate on making the holography to look more 3D like, and presented in real-time. Currently, another missing piece of the system is the program that encodes the depth information appropriately into the 2D images. Our system inherently deals with 2D images, and the only way to encode the depth information to imbue 3D-like characteristics is through simultaneous projection of phase mask and the depth information to the SLM. It is currently unknown if naively projecting them at the same time will work or additional measures need to be taken. Moreover, it is also important to figure out if we have successfully encoded the depth information without seeing the desired holography, because encoding the depth information is necessary but may not be sufficient for our final goal. These will be the top priorities to be addressed in the upcoming semester.
 
 While we are currently utilizing the IFTA algorithm, it is more computationally intensive than the other algorithm Poon proposes in his book. The other algorithm accounts for the Spatial Distortion that occurs from Fresnel Diffraction and thus premultiplies by the transfer function's inverse to cancel the aperture effects. We will try and get a working prototype with the IFTA algorithm first, but we can speed up computations with this other algorithm if it needed.
 
-For the projection stage, as there is an apparent difference between the SLM reflective surface and a computer monitor, we hope to thoroughly test it the upcoming semester. While the automatically scaled image to fit the computer screen showed no issue, it should also be tested whether such adjustments potentially disturb the quality of holography. After confirmation of reliable projection, we hope to figure out how manipulating certain settings, e.g. the frequency and intensity of the laser beam, refresh rate of the screen, would incur qualitative changes to the projection. 
+For the projection stage, as there is an apparent difference between the SLM reflective surface and a computer monitor, we hope to thoroughly test it the upcoming semester. While the automatically scaled image to fit the computer screen showed no issue, it should also be tested whether such adjustments potentially disturb the quality of holography. After confirmation of reliable projection, we hope to figure out how manipulating certain settings, e.g. the frequency and intensity of the laser beam, refresh rate of the screen, would incur qualitative changes to the projection.
 
 \bibliographystyle{unsrt}
 \bibliography{ref}
