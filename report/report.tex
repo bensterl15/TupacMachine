@@ -9,6 +9,7 @@
 \usepackage{mathtools}
 \usepackage{listings}
 \usepackage{courier}
+\caption
 \usepackage[pdftex]{graphicx}
 \usepackage{xfrac}
 \renewcommand{\baselinestretch}{1.2}
@@ -26,36 +27,39 @@ Fast prototyping of real-world object has been addressed by many engineers and c
 However, the application of 3D holography still remains a mystery because of its barriers to the entry. Not only the parts required for the technology are too expensive for easy access, but the theory behind the technology requires a sophisticated understanding of physics for reliable holography projections. These traits make holography very interesting, and successful investigation of the technology will add a great value to the scientific community. In this paper, 3D modeling and holographic projections will be explained to familiarize the audience with the concept to enhance further investigations.
 
 \par
-The following sections of the paper are organized by discussing the experimental procedures to produce a relatively affordable holographic image of a real-life object. The main sections of the paper include the sampling stage, digital conversion stage, transmission stage, and optical holography projection stage. The sampling stage scans a real-world object and stores it digitally on a computer. The digital conversion stage transforms the digitally stored data into a holographic compatible format. The transformed image is then transmitted into the holographic machine called Source Light Modulator (SLM). Finally, the optical setup projects the holographic image created by the SLM onto a flat white surface at the projection stage. Each of the stages is explained in more detail in the following sections of the paper.
+The following sections of the paper are organized as follows. Chapter 2 describes the system pipeline that includes the sampling stage, the digital conversion stage, the transmission stage, and the optical holography projection stage to produce a relatively affordable holographic image of a real-life object. The sampling stage scans a real-world object and stores it digitally on a computer. The digital conversion stage transforms the digitally stored data into a holographic compatible format. The transformed image is then transmitted into the holographic machine called Spatial Light Modulator (SLM). Finally, the optical setup projects the holographic image created by the SLM onto a flat white surface at the projection stage.
 
 \newpage
-\section{Sampling Stage}
+\section{System Pipeline}
+
+\subsection{Sampling Stage}
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{sampling}
     \caption{Sampling object using Kinect}
-    \label{fig:my_label}
+    \label{fig:Sampling}
 \end{figure}
-\qquad
-The first stage of the project is sampling a real-world object and storing it into a computer digitally. Since the perception of depth is a crucial part of the holographic projection, it is imperative to sample both the shape and depth of a real-time object. In this experiment, Xbox Kinect for Windows Development was used to sample objects. Kinect is originally developed as a module for Xbox to track human motions for entertainment purposes. It can capture an object from a single viewpoint and reconstruct 3D models based on it because it has an ordinary camera, a depth sensor, and an infrared sensor.
 
-Windows Presentation Foundation (WPF) application was built to communicate the hardware with software. The program was developed using C\# which is the natural platform for the machine. Kinect Studio Version 2.0 and Kinect Software Development Kits were installed to develop the program. Specifically, the KinectFusionExplorer module proved practical for the purpose. The module allows 3D modelling from a single photo shoot from one angle by reconstructing picture from the ordinary camera, infrared sensors, and depth sensors. Although the technology cannot provide a 360-degree capture of the sample, it does reconstruct the sides of the image with only small depth errors. The rotation of the model allows users to see the sides of the real object within the computer. Note that USB 3.0 is required to reproduce the program, as the Kinect hardware requires the extra bandwidth for communication of data. Features such as shape and depth collected from the Kinect is stored in the computer to later be transformed. More details in what information needs to be encrypted into holographic image remains a subject of investigation at this point. Refer to Figure 2 for a 3D sample constructed using a depth sensor (top right) and an infrared sensor (bottom right).
+\qquad
+The first stage of the project is sampling a real-world object and storing it into a computer digitally. Since the perception of depth is a crucial part of the 3D holographic projection, it is imperative to sample both the shape and the depth of a real object. In this experiment, Xbox Kinect for Windows Development was used to sample objects. Kinect was originally developed as a module for Xbox to track human motions for entertainment purposes. It can capture an object from a single viewpoint and reconstruct 3D models based on the single viewpoint using a depth sensor and an infrared sensor. In Figure \ref{fig:Sampling}, a hardware connection layout of the sampling stage is shown.
+
+Windows Presentation Foundation (WPF) application was built to communicate the hardware with software. The program was developed using C\# which is the natural platform for the machine. Kinect Studio Version 2.0 and Kinect Software Development Kits were installed to develop the program. Specifically, the KinectFusionExplorer module proved practical for the purpose. The module allows 3D modelling from a single photo shoot from one angle by reconstructing picture from the ordinary camera, the infrared sensor, and the depth sensor. Although the technology cannot provide a 360-degree capture of the sample, this module does reconstruct the sides of the image with only small depth errors. As the Kinect hardware needs information from all three cameras, it requires larger bandwidth compared to other commercial cameras. Hence, USB 3.0 is required to reproduce the program for the extra bandwidth. Features such as shape and depth collected from the Kinect are stored in the computer to later be transformed. More details in what information needs to be encrypted into holographic image will be discussed later. In Figure \ref{fig:kinect}, images created by the camera (left), the depth sensor (top right), and the infrared sensor (bottom right) are shown.
 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{kinectsample}
     \caption{Sample data obtained from Kinect}
-    \label{fig:my_label}
+    \label{fig:kinect}
 \end{figure}
 
-The WPF application serves two important purposes. Firstly, it provides a user-friendly interface so that the users can use the application without much difficulty. The users can select the thresholds at which they want to set their foreground and background of the sampled data. These would allow users to produce a holographic image without having to know the details of the functionality. Easily speaking, it serves as a black box for the end users. Secondly, it allows the integration of different programming modules that we need for the program. Specifically, the data extracted from the Kinect needs to be converted into a proper format, and be sent to the SLM. There are existing libraries to transmit data to SLM in python. C\# WPF applications allow users to execute python script on top of the application. To summarize, the application serves as an easy way to integrate software parts while hiding unnecessary details from the end users.
-\newpage
-\section{Digital Conversion Stage}
+The WPF application serves two important purposes. Firstly, it provides a user-friendly interface so that the users can use the application without much difficulty. The users can select the thresholds at which they want to set their foreground and background of the sampled data. These would allow users to produce a holographic image without having to know the details of the functionality. Secondly, it allows the integration of different programming modules that is needed for the final product. Specifically, the data extracted from the Kinect need to be converted into a proper usable format, and be sent to the Spatial Light Modulator (SLM). There are existing libraries to transmit data to SLM in python. C\# WPF applications allow users to execute python script on top of the application. To summarize, the application serves as an easy way to integrate software parts while hiding unnecessary details from the end users.
 
-The first program that has to run on top of the WPF application transforms the image obtained from the previous sample stage to an SLM compatible format. The system that we have is JD9554 spatial light modulator, which is part of Jasper Display's EDKv2 education kit. This modulator is a phase-only modulator, hence our program must convert the image into a phase mask that contains enough information to reconstruct an image. There are multiple ways of achieving this result, but one of the most efficient and popular approaches for our application is the kinoform method. The kinoform method, which is based on the observation that when the actual projection occurs, there are random-phase masks applied to the object pattern, making the amplitude of the actual object pattern unimportant. This observation leads to the kinoform method, which becomes the basis of our algorithm. According to Poon, the kinoform method without any additional adjustment is very noisy due to its dimension reducing nature \cite{Poon14}. In order to optimize the phase-only holograms, iterative Fourier transform algorithm (IFTA) is used. This algorithm iteratively reduces the error of the reconstructed image by smoothing out the complex amplitude.
+\subsection{Digital Conversion Stage}
 
-Fig. \ref{fig:RMSE} shows changes in the root mean square error (RMSE) as more iterations are done using the IFTA algorithm. There is a big drop in the error from iteration 1 to 4, and a plateau from 4 to 10, and then the error starts to decay again. We have noticed that each iteration takes about 0.1 seconds, and for our real-time application, doing only 4 loops of IFTA algorithm would be the most beneficial case, as it delivers a reasonable quality in the shortest time. Fig. \ref{fig:images_recon} contains images regarding our experiment with the algorithm. We have used the ``peppers.png'' picture for our original image and obtained the phase mask for the SLM. The example that is given in the figure was obtained after 20th iteration. It is important to note that this will be the image that will be transferred to the SLM and used to steer the incoming lights to create the hologram. As we do not have a physical system yet, the images were reconstructed mathematically. Reconstructed images after 2nd iteration and 20th iteration were compared, and there is a visible quality improvement for the latter.
+The first program that has to run on top of the WPF application transforms the image obtained from the previous sample stage to an SLM compatible format. The SLM that is available for the project is JD9554 spatial light modulator, which is part of Jasper Display's EDKv2 education kit. This modulator is a phase-only modulator, hence the program must convert images into phase masks that contain enough information to reconstruct an image. There are multiple ways of achieving this result, but one of the most efficient and popular approaches for this project is the kinoform method. The kinoform method is based on the observation that when the actual projection occurs, there are random-phase masks applied to the object pattern, making the amplitude of the actual object pattern unimportant. However, according to Poon, the kinoform method without any additional adjustment is very noisy due to its dimension reducing nature \cite{Poon14}. In order to optimize the phase-only holograms, iterative Fourier transform algorithm (IFTA) is used. This algorithm iteratively reduces the error of the reconstructed image by smoothing out the complex amplitude.
+
+In Figure \ref{fig:RMSE}, the root mean square error (RMSE) curve for the reconstruction based on the IFTA algorithm with increasing iteration is shown. The error compares the average of the squared differences between the pixel values of the original image and the image after the reconstruction using the algorithm. There is a big drop in the error from iteration 1 to 4, and a plateau from 4 to 10, and then the error starts to decay again. Each iteration takes about 0.1 seconds, and for the real-time application, doing only 4 loops of IFTA algorithm would be the most beneficial case, as it delivers a reasonable quality in the shortest time. Fig. \ref{fig:images_recon} contains images regarding the experiment with the algorithm. ``peppers.png'' picture was used for the original image which is shown on the top left, and a corresponding phase masks for the SLM was obtained and shown on the top right. Reconstructed images after 2nd and 20th iterations are shown on the bottom left and the bottom right respectively. It is important to note that the phase mask will be the information that will be transferred to the SLM and used to steer the incoming lights to create the hologram.
 
 \begin{figure}
     \centering
@@ -71,10 +75,9 @@ Fig. \ref{fig:RMSE} shows changes in the root mean square error (RMSE) as more i
     \label{fig:images_recon}
 \end{figure}
 
+% Bookmark
 
-
-\newpage
-\section{Digital Projection Stage}
+\subsection{Digital Projection Stage}
 
 \begin{figure}
     \centering
