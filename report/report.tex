@@ -578,7 +578,7 @@ The logic of equation (67) can be restated as follows (the extra phase factor co
 \end{equation}
 
 The phase getting scaled by \(xsin(\theta)\) makes sense because at \(\theta = \pi/2\), the extra distance turns into just x, and at \(\theta = 0\)
-the reference wave is already in phase with the object wave, so no adjustment would be necessary. Just like the earlier section, the cosine identity in the top of the last equation (the \(\phi\) can be recongnized as any extra phase that came from the \(\psi_{o}\) \(\psi_{r}\) pair not counting the angle \(\theta\)), specifically, \(f_{x} = \frac{sin(\theta)}{\lambda}\).
+the reference wave is already in phase with the object wave, so no adjustment would be necessary. Just like the earlier section, the cosine identity in the top of the last equation (the \(\phi\) can be recognized as any extra phase that came from the \(\psi_{o}\) \(\psi_{r}\) pair not counting the angle \(\theta\)), specifically, \(f_{x} = \frac{sin(\theta)}{\lambda}\).
 
 Finally, the reconstruction light can be factored in. If it has the same magnitude and direction as the reference light, the reconstruction light can be represented with the following wave equation, which later gets convolved with h(x,y,z) to render the real image:
 
@@ -618,14 +618,12 @@ A beam splitter is placed in between the polarizer and the spatial light modulat
 \subsection{List of Materials}
 The following components are used to build the system: a JD9554 Spatial Light Modulator, a P20S 20 micro-meter pinhole from Thorlabs, a BS013 Cube Beam Splitter, AL2520-A collimated lenses, C560TME-B Aspheric Lens, an LPVISE200-A Polarizer, and a high powered laser.
 
-# bookmark
-
 \subsection{Physical Setup}
-At the very end of the first semester, we recieved all the parts needed to finish the SLM setup. The problem was that we knew the order in which to place the parts, but we didn't know what precision we needed to get the hologram working. In addition, the parts we had ordered did not fit very well into the holders that came with the optical board, we did not know if our laser was powerful enough to generate the hologram, and we could barely get any light to come out of our pinhole (it is a very delicate component).
+At the very end of the first semester, all the parts needed to finish the SLM setup arrived. The problem was the precision at which the parts were supposed to be placed with. In addition, the parts that arrived did not fit well with the holders that were available. As a result of the poor precision in the placement of the components, the initial output from the initial set up was too dim to be seen. These problems led to test whether the laser was powerful enough to generate the hologram. However, after consultation with Professors including Professor Wolf as he has the most holography experience in the school, and researching papers, the power of the laser that was available was confirmed to be adequate.
 
-In the meantime, we decided to ask Professor Wolf for advice (he has the most Holography experience). [TODO: David]. The most important take-away we learned was that our 10mW laser was powerful enough to produce the hologram we wanted.
+[TODO: David, add a section on the interviews with professor wolf. please refrain from using personal voice (I,we, and so on as Keene likes it this way)]
 
-Even though it was not ideal, we designed parts to be 3D printed to raise our components off the board by a precise height. To make them general purpose, we designed a three piece system consisting of a base, hexoganol shaft, and insert piece that could be hand-tightened by a screw:
+In order to combat the precision issues, although it is not the ideal choice, holder parts were designed and 3D printed. The main purpose of the holder parts was to raise the components such as lenses and polarizers off the optical board by a precise height. To make the holder parts general purpose, three piece system was designed. The three part system consists of a base, a hexagonal shaft, and an insert piece that can be hand-tightened by a screw. The system looks as follows:
 
 \begin{center}
 \includegraphics[width=100mm]{holder.png}
