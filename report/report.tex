@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
-\title{Senior Projects Holography Report}
+\title{\textbf{Tupac Inventors: Investigation into 3D Modelling and Holography}}
 \date{\today}
-\author{Ben Sterling, Dongkyu Kim, Junbum Kim, David Kim}
+\author{Ben Sterling, Dongkyu Kim, Junbum Kim, David Kim \\ Advisor: Sam Keene \\ The Cooper Union \\ Department of Electrical Engineering}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -9,11 +9,13 @@
 \usepackage{mathtools}
 \usepackage{listings}
 \usepackage{courier}
-\caption
 \usepackage[pdftex]{graphicx}
 \usepackage{xfrac}
-\renewcommand{\baselinestretch}{1.2}
-
+\renewcommand{\baselinestretch}{1.5} %for double space
+% for citation
+\usepackage{url}
+\usepackage{breakurl}
+\usepackage[breaklinks]{hyperref}
 
 \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
 \begin{document}
@@ -27,7 +29,7 @@ Fast prototyping of real-world object has been addressed by many engineers and c
 However, the application of 3D holography still remains a mystery because of its barriers to the entry. Not only the parts required for the technology are too expensive for easy access, but the theory behind the technology requires a sophisticated understanding of physics for reliable holography projections. These traits make holography very interesting, and successful investigation of the technology will add a great value to the scientific community. In this paper, 3D modeling and holographic projections will be explained to familiarize the audience with the concept to enhance further investigations.
 
 \par
-The following sections of the paper are organized as follows. Chapter 2 describes the system pipeline that includes the sampling stage, the digital conversion stage, the transmission stage. The sampling stage scans a real-world object and stores it digitally on a computer. The digital conversion stage transforms the digitally stored data into a holographic compatible format. The transformed image is then transmitted into the holographic machine called Spatial Light Modulator (SLM). The last component, the optical holography projection stage is required to produce a relatively affordable holographic image of a real-life object. This holography section requires additional knowledge to fully understand, so in Chapter 3, details of how holography works and the details of the optical holography projection stage are illustrated. In Chapter 4, the project setup is explained including the list of materials and the physical set up. In Chapter 5, background information on stereoscopic pairs, which imbue the 3D effect is given. Then, in Chapter 6, the final status of the project and the future goals are described.
+The following sections of the paper are organized as follows. Chapter 2 describes the system pipeline that includes the sampling stage, the digital conversion stage, the transmission stage. The sampling stage scans a real-world object and stores it digitally on a computer. The digital conversion stage transforms the digitally stored data into a holographic compatible format. The transformed image is then transmitted into the holographic machine called Spatial Light Modulator (SLM). The last component, the optical holography projection stage is required to produce a relatively affordable holographic image of a real-life object. This holography section requires additional knowledge to fully understand, so in Chapter 3, details of how holography works and the details of the optical holography projection stage are illustrated. In Chapter 4, the project setup is explained including the list of materials and the physical set up. In Chapter 5, background information on stereoscopic pairs, which imbue the 3D effect is given. Then, in Chapter 6, the final conclusion of the project and the future goals are stated.
 
 \newpage
 \section{System Pipeline}
@@ -223,10 +225,14 @@ For a single frequency, signal of interest is the complex amplitude, \(\psi_{p}\
 
 This can be regarded as the phasor representation of \(\psi\).
 
-The central application of the classical theory is to develop the math behind Fresnel Diffraction. An aperture can be visualized by this diagram:
-\begin{center}
-\includegraphics[width=100mm]{tupac5.png}
-\end{center}
+The central application of the classical theory is to develop the math behind Fresnel Diffraction. An aperture can be visualized by Figure \ref{fig:aperture}:
+
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{tupac5.png}
+    \caption{Illustration of a Sample Aperture}
+    \label{fig:aperture}
+\end{figure}
 
 \(k_{0}\) can be defined as the wave number in free space, such that
 
@@ -312,11 +318,14 @@ can be used to get the Spatial Impulse Response, h:
 
 \subsection{Holography Fundamentals}
 
-The simplest holography setup, and a good starting point to understanding the subject, is this collection of Fresnel Plates:
+The simplest holography setup, and a good starting point to understanding the subject, is this collection off Fresnel plates in Figure \ref{fig:Fresnel_Plates}.
 
-\begin{center}
+\begin{figure}
+    \centering
 	\includegraphics[width=100mm]{tupac7.png}
-\end{center}
+    \caption{The Collection of Fresnel Plates}
+    \label{fig:Fresnel_Plates}
+\end{figure}
 
 First, a collimated laser is used so that the direction of propagation of each wave is parallel. The first beam splitter (BS1) divides the laser in two paths of equal power. One path will be used as a reference and the other path will contain the object information. The two paths recombine at the second beam splitter (BS2). If the object wave is denoted as \(\psi_{0}\) and the reference wave is \(\psi_{r}\), and if the aperture is assumed to be a pinhole, and using \(\delta(x,y)\) as the input function that references the Spatial Frequency Transfer Function:
 
@@ -360,11 +369,14 @@ The sine function inside the last line can be recognized as:
 	\frac{ak_{0}}{\pi z_{0}}sin\bigg[\frac{k_{0}}{2z_{0}}(x^2 + y^2)\bigg]
 \end{equation}
 
-Hence the diffraction pattern of this aperture will look like:
+Hence the diffraction pattern of this aperture will look like as in Figure \ref{fig:diff_pattern}.
 
-\begin{center}
-\includegraphics[width=50mm]{tupac8.png}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=50mm]{tupac8.png}
+    \caption{Sample Diffraction pattern}
+    \label{fig:diff_pattern}
+\end{figure}
 
 By inspection, the output of the machine obeys a sinusoidal pattern, with some DC value in towards the center (x = 0 and y = 0), and the frequency
 of the sinusoid increases parabolically moving radially outward.
@@ -393,17 +405,24 @@ where \(\psi_{rec}\) is the field on the projecting surface.
 
 \subsubsection{3D Holographic Imaging}
 
-In this next section, the effects of different co-planar displacements (x and y) and different distances from the medium (z) are identified. The problem can be visualized using the following diagrams:
+In this next section, the effects of different co-planar displacements (x and y) and different distances from the medium (z) are identified. The problem can be visualized using the diagrams in Figure \ref{fig:diagram1}, and Figure \ref{fig:diagram2}.
 
-\begin{center}
-\includegraphics[width=100mm]{tupac11.png}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{tupac11.png}
+    \caption{Diagram 1 for Illustration of the Problem}
+    \label{fig:diagram1}
+\end{figure}
 
-\begin{center}
-\includegraphics[width=100mm]{tupac12.png}
-\end{center}
 
-The first graph displays two source points with a reference wave R, and the second displays the reconstructed point r (the location a viewer SEE'S the object).
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{tupac12.png}
+    \caption{Diagram 2 for Illustration of the Problem}
+    \label{fig:diagram2}
+\end{figure}
+
+The first graph in Figure \ref{fig:diagram1} displays two source points with a reference wave R, and the second in Figure \ref{fig:diagram2} displays the reconstructed point r (the location a viewer SEE'S the object).
 
 The following identity under convolution helps to simplify the upcoming calculations.
 
@@ -545,11 +564,14 @@ The equation for lateral magnification gives the distortion between two holograp
 	\Delta x = x_{1} - x_{2} = (z_{r2} - z_{r1})\bigg(\frac{b}{l_{2}} - \frac{a}{l_{1}}\bigg)
 \end{equation}
 
-This figure shows how an artificial \(\Delta x\) comes about from erroneous orientation
+In Figure \ref{fig:deltax}, the diagram shows how an artificial \(\Delta x\) comes about from erroneous orientation.
 
-\begin{center}
-\includegraphics[width=100mm]{tupac13.png}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{tupac13.png}
+    \caption{Source of \(\Delta x\)}
+    \label{fig:deltax}
+\end{figure}
 
 \subsubsection{Off-Axis Holography}
 
@@ -561,11 +583,14 @@ The standard holography setup explained so far is called on-axis holography. The
 \end{equation}
 
 Off-Axis holography takes care of this problem by introducing the reference
-light at an angle \(\theta\)
+light at an angle \(\theta\) as shown in Figure \ref{fig:off-axis}.
 
-\begin{center}
-\includegraphics[width=100mm]{tupac9.png}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{tupac9.png}
+    \caption{Off-Axis Holography}
+    \label{fig:off-axis}
+\end{figure}
 
 The logic of equation (67) can be restated as follows (the extra phase factor comes out from the extra distance the reference wave needs to travel)
 
@@ -590,28 +615,35 @@ Finally, the reconstruction light can be factored in. If it has the same magnitu
 	\end{multlined}
 \end{equation}
 
-\begin{center}
-\includegraphics[width=100mm]{tupac14.png}
-\end{center}
-
 Upon closer examination, \(k_{0}sin(\theta)\) can be regarded as the carrier frequency (in radians). Since \(\psi_{r}\) is a reference light, it is entirely DC, so the first term in (69) is \(\Psi_{1}\), the carrier.
 The second term in (69) is \(\Psi_{2}\) because the phasor convolves the magnitude-squared of the object wave out to the carrier frequency.
 The third (and most important) term, \(\Psi_{3}\) is the only one that is not modulated by the carrier (it gets cancels out by the algebra).
-This is the only term that is visible to the human eye!
+This is the only term that is visible to the human eye.
 
-By inspection, the minimal angle \(\theta\) that is needed to prevent aliasing can be given by:
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{tupac14.png}
+    \caption{Illustration of Aliasing}
+    \label{fig:aliase}
+\end{figure}
+
+By inspection from the Figure \ref{fig:aliase}, the minimal angle \(\theta\) that is needed to prevent aliasing can be given by:
 
 \begin{equation}
 	k_{0}sin(\theta) \geq \frac{3B}{2}
 \end{equation}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{tupac10.png}
+    \caption{Illustration of Aliasing}
+    \label{fig:project_setup}
+\end{figure}
+
+\newpage
 \section{Project Setup}
 
-\begin{center}
-\includegraphics[width=100mm]{tupac10.png}
-\end{center}
-
-This is a picture of the project. The software component is on the top as described before. The system starts on the bottom left corner with a coherent laser source. The laser should be coherent to reduce random phase artifacts which degrade the quality of the final hologram. Then the pinhole apparatus can be used to filter out the higher order noise artifacts that might be introduced by the laser. The pinhole apparatus centers the laser by converting the incoming plane waves of the laser into a spherical wave, which turns into a plane wave again after applying the paraxial approximation. By experiment, the effect of the pinhole apparatus was not impactful to the final projection, hence this pinhole portion can be skipped. However, in place of the pinhole apparatus, collimating lense can be placed to spread the narrow laser beam so that the beam can be centered and widened enough to cover the whole SLM. After shaping the beam to an appropriate size, a polarizer is placed so that the light going into the SLM has the anticipated linear polarization.
+In Figure \ref{fig:project_setup}, the diagram illustrating the project is shown. The software component is on the top as described before. The system starts on the bottom left corner with a coherent laser source. The laser should be coherent to reduce random phase artifacts which degrade the quality of the final hologram. Then the pinhole apparatus can be used to filter out the higher order noise artifacts that might be introduced by the laser. The pinhole apparatus centers the laser by converting the incoming plane waves of the laser into a spherical wave, which turns into a plane wave again after applying the paraxial approximation. By experiment, the effect of the pinhole apparatus was not impactful to the final projection, hence this pinhole portion can be skipped. However, in place of the pinhole apparatus, collimating lense can be placed to spread the narrow laser beam so that the beam can be centered and widened enough to cover the whole SLM. After shaping the beam to an appropriate size, a polarizer is placed so that the light going into the SLM has the anticipated linear polarization.
 
 A beam splitter is placed in between the polarizer and the spatial light modulator (SLM) to send half of the incoming beam to the SLM, and the other half to the screen. The SLM is electronically steered by the incoming video signal. The SLM has 8 bit precision in the phase of the wave that it reflects. An important note is that the wave reflected off the SLM needs to occupy the same physical space as the incoming wave. Finally, the reflected wave goes into the beam splitter and sums with the incident light as both waves travel to the recording medium.
 
@@ -623,94 +655,133 @@ At the very end of the first semester, all the parts needed to finish the SLM se
 
 [TODO: David, add a section on the interviews with professor wolf. please refrain from using personal voice (I,we, and so on as Keene likes it this way)]
 
-In order to combat the precision issues, although it is not the ideal choice, holder parts were designed and 3D printed. The main purpose of the holder parts was to raise the components such as lenses and polarizers off the optical board by a precise height. To make the holder parts general purpose, three piece system was designed. The three part system consists of a base, a hexagonal shaft, and an insert piece that can be hand-tightened by a screw. The system looks as follows:
+In order to combat the precision issues, although it is not the ideal choice, holder parts were designed and 3D printed. The main purpose of the holder parts was to raise the components such as lenses and polarizers off the optical board by a precise height. To make the holder parts general purpose, three piece system was designed. The three part system consists of a base, a hexagonal shaft, and an insert piece that can be hand-tightened by a screw. The illustration of the system is shown in Figure \ref{fig:holder}.
 
-\begin{center}
-\includegraphics[width=100mm]{holder.png}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{holder.png}
+    \caption{The Modelling of the Holder}
+    \label{fig:holder}
+\end{figure}
 
-We were planning to make about 6 of these to precisely place the laser, collimating lense, pinhole, and polarizers, but got very lucky when we tried to investigate which piece was "most important". Once we removed the pinhole and tried the collimating lense on a stand by itself, a much wider beam of light was produced. We tried to see if would produce any noticeable pattern, but figured out the reflected light was not combining with the reference light correctly because the beam splitter's angle was slightly off. We used the precision handles to fix it and noticed the SLM produced an interesting pattern:
+At first, 6 of this system were to be printed to account for the laser, the collimating lense, the pinhole, and polarizers. However, during the experiment while waiting for the 3D printer, it was found out that the pinhole was not necessary for a good result. Instead of a pinhole with a collimating lense, the collimating lense was used alone to produce a much wider beam of light. At the end of the experiment, only one of the holder was required for the physical set up. The holder was adjusted precisely such that all the components were aligned well to get straight paths between each other. The final setup for the system is shown in Figure \ref{fig:setup_picture}.
 
-\begin{center}
-\includegraphics[width=100mm]{initHologram.png}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{setup_picture.jpg}
+    \caption{Physical Setup}
+    \label{fig:setup_picture}
+\end{figure}
 
-We saw this switching pattern from diagonal lines to vertical lines when the SLM was on without video input. As soon as we connected the HDMI port to Jun's computer, we were able to see very noisy images he sent to the display. Here is an example of Ben's face:
+After all the precise adjustment, when the laser was directed onto the SLM, an interesting pattern emerged. The pattern is shown in Figure \ref{fig:simple_pattern}. This pattern switched from diagonal lines to vertical lines when the SLM was on without any video input. As soon as the HDMI port was connected from a computer to the SLM, very noisy images that were sent to the display were projected. In Figure \ref{fig:Ben}, an example of the noisy displays is shown.
 
-\begin{center}
-\includegraphics[width=100mm]{noisy_hologram.jpg}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{initHologram.png}
+    \caption{Initial SLM Hologram}
+    \label{fig:simple_pattern}
+\end{figure}
 
-Finally, we noticed that the polarizer made a reduction in noise, but it was not an essential piece we needed to produce an image. We also figured out that our laser is horizontally polarized because rotating our polarizer by 90 degrees completely blocked the laser's light.
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{noisy_hologram.jpg}
+    \caption{Noisy SLM Hologram}
+    \label{fig:Ben}
+\end{figure}
 
-\section{Why we couldn't achieve "real" 3D}
+The final observation is that the polarizer makes a reduction in noise, but it is not one of the essential pieces for producing a projection. In addition, the laser that was used is already linearly polarized as rotating the polarizer sometimes completely blocks the laser's light when the incident angle is exactly 90 degrees.
 
-[TODO: Dongkyu]
+\subsection{Investigation into Projecting 3D Models}
+The only part of the project remaining is projecting 3D models in the real world. There are several researches done already that attempted to solve this problem. Zaperty and her colleagues successfully demonstrated the 3D holography using multiple SLMs in \cite{Zaperty:17}. However, this method requires multiple SLMs, and as only one SLM is available, a method that involves only one SLM needs to be found. In 2017, Lin and Kim demonstrated a way to display 3D models with a single SLM in \cite{lin2017single}. this method requires 3 different lasers, and 3 highly optimized filters to imbue certain optical characteristics to the beams such that beams can be adjusted by the single SLM differently. The kinds of lasers and filters that were used were too expensive to obtain. Two methods were proposed to solve the single SLM 3D effect problem. The first method was to use a thick medium to project onto, and anoother method was to use stereoscopic pairs to imbue the 3D effect.
 
-Instead of using a crystal, we decided to utilize a cross-eyed hologram; this works by displaying the right and left eyed images in front of the opposite eye so that the viewer crosses their eyes and sees a 3D image (by illusion).
+The idea of the thick medium was to project the laser beams through the medium at different angles at the same time such that the beams will form a 3-D model of an object that floats in the medium. There have been various attempts in implementing a hologram using this technique, such as \cite{ochiai2015fairy}, and \cite{sano2017holography}. The work in \cite{ochiai2015fairy} utilizes focused femtosecond plasma lasers to fix voxels into any arbitrary space in the air, and crystal SLM to generate images desired. This system was able to generate small volumetric displays, when viewed from different angles have different scenes as the hologram occupies actual space. Unfortunately, this technique could not be incorporated to the project as femtosecond plasma lasers were required to create the holographic voxels in the air, as well as Galvano scanners to scan and steer the laser beams accurately. These devices are way beyond the budget as well: the cheapest femtosecond laser available online was 4500 USD \cite{Femto}, and Galvano scanner was about 300 USD \cite{Galvano}. However, this work indicated that it was possible to embed the hologram into a medium, although to do it in the air, more expensive devices were required. Unfortunately, all the other possible methods of creating volumetric holograms require either multiple projectors or a moving screen that rotates around a single projector \cite{sano2017holography}. As the project only has 1 SLM available, creating a true 3-D object using a single SLM was not possible.
+
+Instead of using a thick medium, the project was decided to utilize a cross-eyed hologram; this works by displaying the right and left eyed images in front of the opposite eye so that the viewer crosses their eyes and sees a 3D image (by illusion).
 
 \section{Stereoscopic Pair Generation}
 
-At this stage, we had developed the WPF application to obtain a color/depth map and immidiately send it to the SLM, but needed to figure out how to convert color/depth information to right and left eyed views (the stereoscopic pair). We tried to find a library to do this conversion, but most (in particular OpenCV) provided libraries to solve the opposite problem (converting a stereoscopic pair to a color/depth map). Upon further examination, we determined our problem could be solved with simple geometry, so we came up with the following solution:
+At this stage, the WPF application was developed to obtain a color/depth map and immediately send it to the SLM. However, the system still needed to convert color/depth information to right and left eyed views (the stereoscopic pair). There was no library to do this conversion as most provided libraries, in particular OpenCV, solved the opposite reverse problem of converting a stereoscopic pair to a color/depth map. Upon further investigation, it was determined that the problem could be solved with a simple geometry. Hence, the following solution was proposed.
 
-\begin{center}
-\includegraphics[width=100mm]{eye_disp_pic.png}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{eye_disp_pic.png}
+    \caption{Eye Displacement Illustration}
+    \label{fig:eyedisp}
+\end{figure}
 
-To create the image pair, we need to find how far each eye is from the center, then dilate pixels accordingly. To get eye distance, we assume a certain focal distance (f), eye-angle (\(\theta\)), and pixel density (D); the pairs are not highly sensitive to these parameters because the viewer can adjust depth as needed (with the use of their finger) but we needed reasonable values, so we chose f = 2, \(\theta\) = \sfrac{\(\pi\)}{6}, and D = 75. We need to solve for x in the picture. Using basic trig and scaling by our pixel density, we get: \[x = Df\tan(\theta)\]
+To create the image pair, information on how far each eye is from the center was needed to dilate pixels for the pairs accordingly. To get the eye distance, a certain focal distance (f), an eye-angle (\(\theta\)), and a pixel density (D) were assumed. The pairs are not highly sensitive to these parameters because the viewer can adjust depth as needed with the use of their finger. The values chosen were f = 2, \(\theta\) = \sfrac{\(\pi\)}{6}, and D = 75. Using these parameters, the problem is to solve for x in Figure \ref{fig:eyedisp}. Using basic trigonometry and scaling by the pixel density, the solution for x is: \[x = Df\tan(\theta)\]
 
-Next, we need to dilate each pixel depending on its depth (given by the depth map) and distance from the eye:
+The next step is to dilate each pixel depending on its depth given by the depth map and the distance from the eye:
 
-\begin{center}
-\includegraphics[width=100mm]{dilation_pic.png}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{dilation_pic.png}
+    \caption{Pixel Dilation Illustration}
+    \label{fig:pixeldi}
+\end{figure}
 
-We derive that \(r_{1}\) = \(r_{0}\)\sfrac{\(d_{1}\)}{\(d_{0}\)} because the real and virtual distances form similar triangles. Note that \(d_{0}\) is not very important because it is constant. We first produce the following pattern as a matrix representing all the \(r_{0}\) values:
+Using the notation in Figure \ref{fig:pixeldi}, because the real and virtual distances form similar triangles, the equation \(r_{1}\) = \(r_{0}\)\sfrac{\(d_{1}\)}{\(d_{0}\)} is true. Note that \(d_{0}\) is not very important because it is constant. Then the following pattern as a matrix representing all the \(r_{0}\) values is constructed. The constructed values are represented visually in Figure \ref{fig:eyedistance}.
 
-\begin{center}
-\includegraphics[width=100mm]{eye_distances.png}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{eye_distances.png}
+    \caption{Eye Distances}
+    \label{fig:eyedistance}
+\end{figure}
 
-Note that this is just a linear decay away from the eye. We utilize element-wise multiplication by the depth map to get the virtual distances of every pixel in the image. Finally, we create two "larger" matrices of all zeros and loop through the 2D image pixel by pixel. We fill in each pixel value we loop through at the correct position in the "larger" left and right matrices according to the left and right eyed depths.
+It is noted that this is just a linear decay away from the eye.
+The virtual distances of every pixel in an image is obtained by element-wise multiplying the image by the depth map. Finally, two "larger" matrices of all zeros are created and looped through the 2D image pixel by pixel.
+Then each pixel value that is looped through at the correct position in the "larger" left and right matrices is filled according to the left and right eyed depths.
 
-The only problem is that this mapping is not mathematically surjective (onto). This results in dark line patterns that run down the image; to fix this, we sacrifice some image resolution. For a 2D signal, a 2D Gaussian distribution acts as a low-pass filter under 2D convolution (equation 56). We convolve the noisy image with a Gaussian of \(\sigma\) = 2 to arrive at our final stereoscopic pairs.
+The only problem is that this mapping is not mathematically surjective, or onto. This results in dark line patterns that run down the image. To fix this dark line pattern problem, some image resolution was sacrificed. For a 2D signal, a 2D Gaussian distribution acts as a low-pass filter under 2D convolution (equation 56). To remove the dark lines, the noisy image was convolved with a Gaussian of \(\sigma\) = 2 to arrive at our final stereoscopic pairs.
 
-The following image and depth map:
+The image and depth map in Figure \ref{fig:imadep} turns into the stereoscopic pair in Figure \ref{fig:stereosco} using this algorithm.
 
-\begin{center}
-\includegraphics[width=100mm]{image_depth_pair.png}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{image_depth_pair.png}
+    \caption{Image and Depth Map}
+    \label{fig:imadep}
+\end{figure}
 
-Turns into:
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{stereoscopic_pair.png}
+    \caption{Stereoscopic Pair}
+    \label{fig:stereosco}
+\end{figure}
 
-\begin{center}
-\includegraphics[width=100mm]{stereoscopic_pair.png}
-\end{center}
+If one zooms into the above image, and follows the instructions detailed on this page: https://www.kula3d.com/how-to-use-the-cross-eyed-method, one should be able to view a 3D cube. It should be noted that although the link does not use a finger to focus on, but it is recommended to use a finger to adjust the focal-depth.
 
-If one zooms into the above image, and follows the instructions detailed on this page: https://www.kula3d.com/how-to-use-the-cross-eyed-method, one should be able to view a 3D cube. (Note the link does not use a finger to focus on, but I recommend using a finger to adjust the focal-depth).
+Finally, a goggle was used to test the system. The goggle was captured using the Kinect and shown in Figure \ref{fig:goggle}. The algorithm generated the stereoscopic pair as shown in Figure \ref{fig:goggle_stereo}. Then the pairs were projected using the holography system, and the result is shown in Figure \ref{fig:goggle_holo}.
 
-Finally, we captured image and depth information from goggles on the Kinect:
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{goggles.png}
+    \caption{A Goggle Captured Using the Kinect}
+    \label{fig:goggle}
+\end{figure}
 
-\begin{center}
-\includegraphics[width=100mm]{goggles.png}
-\end{center}
 
-Generated the stereoscopic pairs:
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{goggle_stereoscopic.png}
+    \caption{A Goggle Converted into a Stereoscopic pair}
+    \label{fig:goggle_stereo}
+\end{figure}
 
-\begin{center}
-\includegraphics[width=100mm]{goggle_stereoscopic.png}
-\end{center}
-
-and turned it into the following output from the SLM:
-
-\begin{center}
-\includegraphics[width=100mm]{final_hologram.jpg}
-\end{center}
+\begin{figure}
+    \centering
+    \includegraphics[width=100mm]{final_hologram.jpg}
+    \caption{A Goggle Hologram}
+    \label{fig:goggle_holo}
+\end{figure}
 
 Once again, the focusing technique can be used to visualize a 3D pair of the goggles. Ben and Ostap in particular noticed that the mind naturally cleans up some of the noise artifacts when viewed in 3D (information loss in one image is alleviated by the other image possessing it).
 
-\section{Status}
-Our progress of the project so far was greatly hindered by materials that we need not arriving due to the Canada Post strike. However, we have started setting up the system at the lab, and we feel confident that the hologram system would work with our knowledge. On the software side of the project, the program that converts images into inputs appropriate for the spatial light modulator (SLM) is implemented in two different algorithms. In addition, the Windows Presentation Foundation application that guides the transportation of the Microsoft Kinect images or videos into the SLM is implemented and waiting for testing.
+\section{Conclusion and Future Goals}
+
+The progress of the project so far was greatly hindered by materials that we need not arriving due to the Canada Post strike. However, we have started setting up the system at the lab, and we feel confident that the hologram system would work with our knowledge. On the software side of the project, the program that converts images into inputs appropriate for the spatial light modulator (SLM) is implemented in two different algorithms. In addition, the Windows Presentation Foundation application that guides the transportation of the Microsoft Kinect images or videos into the SLM is implemented and waiting for testing.
 
 It has been tested that the digital projection stage of the SLM assisted by slmPy module works flawlessly on a computer monitor. The desired image in the form of numpy array is automatically resized to fit the entire screen, and both still image and animation are displayed without any issue. However, additional testing on the SLM is yet to be done as the setup was not completed for projection.
 
