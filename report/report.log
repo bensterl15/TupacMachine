@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.1.17)  16 APR 2019 13:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.1.17)  28 APR 2019 17:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -744,7 +744,30 @@ File: noisy_hologram.jpg Graphic file (type jpg)
 <use noisy_hologram.jpg>
 Package pdftex.def Info: noisy_hologram.jpg  used on input line 661.
 (pdftex.def)             Requested size: 284.52756pt x 161.47054pt.
- [28 <./initHologram.png (PNG copy)>] [29 <./noisy_hologram.jpg>]
+ [28 <./initHologram.png (PNG copy)>]
+
+LaTeX Warning: Reference `ochiai2015fairy' on page 29 undefined on input line 6
+68.
+
+
+LaTeX Warning: Reference `sano2017holography' on page 29 undefined on input lin
+e 668.
+
+
+LaTeX Warning: Reference `ochiai2015fairy' on page 29 undefined on input line 6
+68.
+
+
+LaTeX Warning: Reference `Femto' on page 29 undefined on input line 668.
+
+
+LaTeX Warning: Reference `Galvano' on page 29 undefined on input line 668.
+
+
+LaTeX Warning: Reference `sano2017holography' on page 29 undefined on input lin
+e 668.
+
+[29 <./noisy_hologram.jpg>]
 <eye_disp_pic.png, id=131, 578.16pt x 327.47343pt>
 File: eye_disp_pic.png Graphic file (type png)
 <use eye_disp_pic.png>
@@ -752,8 +775,7 @@ Package pdftex.def Info: eye_disp_pic.png  used on input line 677.
 (pdftex.def)             Requested size: 284.52756pt x 161.15794pt.
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 680.
 
-
-(/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+ (/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Try loading font information for TS1+ptm on input line 680.
@@ -781,34 +803,35 @@ LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.34996> not available
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <3.34996> not available
 (Font)              size <5> substituted on input line 680.
 
-<dilation_pic.png, id=132, 309.40594pt x 371.13657pt>
+[30 <./eye_disp_pic.png (PNG copy)>]
+<dilation_pic.png, id=135, 309.40594pt x 371.13657pt>
 File: dilation_pic.png Graphic file (type png)
 <use dilation_pic.png>
 Package pdftex.def Info: dilation_pic.png  used on input line 685.
 (pdftex.def)             Requested size: 284.52756pt x 341.32518pt.
-[30 <./eye_disp_pic.png (PNG copy)>]
-<eye_distances.png, id=139, 556.32843pt x 175.40532pt>
+ [31 <./dilation_pic.png (PNG copy)>]
+<eye_distances.png, id=143, 556.32843pt x 175.40532pt>
 File: eye_distances.png Graphic file (type png)
 <use eye_distances.png>
 Package pdftex.def Info: eye_distances.png  used on input line 691.
 (pdftex.def)             Requested size: 284.52756pt x 89.70978pt.
- [31 <./dilation_pic.png (PNG copy)> <./eye_distances.png (PNG copy)>]
-<image_depth_pair.png, id=145, 325.96782pt x 102.3825pt>
+<image_depth_pair.png, id=144, 325.96782pt x 102.3825pt>
 File: image_depth_pair.png Graphic file (type png)
 <use image_depth_pair.png>
 Package pdftex.def Info: image_depth_pair.png  used on input line 701.
 (pdftex.def)             Requested size: 284.52756pt x 89.37357pt.
-<stereoscopic_pair.png, id=146, 324.46219pt x 101.62968pt>
+<stereoscopic_pair.png, id=145, 324.46219pt x 101.62968pt>
 File: stereoscopic_pair.png Graphic file (type png)
 <use stereoscopic_pair.png>
 Package pdftex.def Info: stereoscopic_pair.png  used on input line 707.
 (pdftex.def)             Requested size: 284.52756pt x 89.12733pt.
-<goggles.png, id=147, 1927.2pt x 1084.05pt>
+
+[32 <./eye_distances.png (PNG copy)> <./image_depth_pair.png (PNG copy)>]
+<goggles.png, id=150, 1927.2pt x 1084.05pt>
 File: goggles.png Graphic file (type png)
 <use goggles.png>
 Package pdftex.def Info: goggles.png  used on input line 715.
 (pdftex.def)             Requested size: 284.52756pt x 160.03659pt.
- [32 <./image_depth_pair.png (PNG copy)> <./stereoscopic_pair.png (PNG copy)>]
 <goggle_stereoscopic.png, id=151, 975.645pt x 197.23688pt>
 File: goggle_stereoscopic.png Graphic file (type png)
 <use goggle_stereoscopic.png>
@@ -819,25 +842,29 @@ File: final_hologram.jpg Graphic file (type jpg)
 <use final_hologram.jpg>
 Package pdftex.def Info: final_hologram.jpg  used on input line 727.
 (pdftex.def)             Requested size: 284.52756pt x 213.3755pt.
- [33 <./goggles.png (PNG copy)> <./goggle_stereoscopic.png (PNG copy)> <./final
-_hologram.jpg>] [34] (./report.bbl [35]) [36]
-(./report.aux)
+
+[33 <./stereoscopic_pair.png (PNG copy)> <./goggles.png (PNG copy)> <./goggle_s
+tereoscopic.png (PNG copy)>] [34 <./final_hologram.jpg>] [35] (./report.bbl)
+[36] (./report.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.65004pt have occurred.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14522 strings out of 492639
- 262240 string characters out of 6135497
+ 14530 strings out of 492639
+ 262331 string characters out of 6135497
  304347 words of memory out of 5000000
- 18267 multiletter control sequences out of 15000+600000
- 546437 words of font info for 78 fonts, out of 8000000 for 9000
+ 18273 multiletter control sequences out of 15000+600000
+ 547058 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,12n,68p,1272b,275s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,12n,68p,1625b,275s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
@@ -854,7 +881,7 @@ s/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 exmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist
 /fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texmf-dist/fonts/type1/urw/time
 s/utmr8a.pfb>
-Output written on report.pdf (36 pages, 4769490 bytes).
+Output written on report.pdf (36 pages, 4771990 bytes).
 PDF statistics:
  225 PDF objects out of 1000 (max. 8388607)
  136 compressed objects within 2 object streams

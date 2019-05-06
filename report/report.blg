@@ -3,6 +3,14 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: report.aux
 The style file: unsrt.bst
 Database file #1: ref.bib
+I was expecting a `,' or a `}'---line 41 of file ref.bib
+ : title=”NEW 
+ :              ~ Cambridge Technology 6870M Galvanometer Galvano Scanner”,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 47 of file ref.bib
+ : title = “Supercontinuum 
+ :                           Generation Device, Femtosecond 800 nm Pulses”,
+I'm skipping whatever remains of this entry
 You've used 3 entries,
             1791 wiz_defined-function locations,
             465 strings with 4115 characters,
@@ -44,3 +52,4 @@ warning$ -- 0
 while$ -- 3
 width$ -- 4
 write$ -- 34
+(There were 2 error messages)
